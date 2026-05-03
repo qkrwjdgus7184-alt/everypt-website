@@ -1212,6 +1212,15 @@ section{padding:80px 28px}
     transform:none;
   }
 }
+    .intro-loader{
+  pointer-events:none;
+}
+
+.intro-loader.hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
   </style>
 </head>
 
@@ -1795,6 +1804,7 @@ ctx.fillText(`${bpm} BPM`, 18, 34);
       window.addEventListener("resize", resizeCanvas);
    const heartInterval = window.innerWidth <= 560 ? 110 : 65;
 setInterval(updateHeart, heartInterval);
+      }
   
 document.querySelectorAll(".everypt-faq-item").forEach(item => {
   const btn = item.querySelector(".everypt-faq-btn");
@@ -1807,12 +1817,13 @@ document.querySelectorAll(".everypt-faq-item").forEach(item => {
     item.classList.toggle("active");
   });
 });
-    window.addEventListener("load", () => {
-  const introLoader = document.getElementById("introLoader");
+ const introLoader = document.getElementById("introLoader");
+
 setTimeout(() => {
-  introLoader.classList.add("hide");
-}, 650);
-});
+  if(introLoader){
+    introLoader.classList.add("hide");
+  }
+}, 900);
   </script>
 </body>
 </html>
