@@ -4,30 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>에브리피티 수유 | 수유역 무제한 PT · 소그룹 PT</title>
-  <meta name="description" content="수유역 1:1급 소그룹 무제한 PT 에브리피티. 심박수 기반 운동, 월별 인바디, 식단 상담, 개인운동까지 가능한 프리미엄 PT 센터." />
-  <meta name="keywords" content="수유역헬스장, 수유헬스장, 수유PT, 수유역PT, 수유그룹PT, 강북구헬스장, 무제한PT, 에브리피티" />
-  <meta property="og:title" content="에브리피티 수유 | 수유역 무제한 PT" />
-  <meta property="og:description" content="혼자서 실패했던 운동, 이제는 관리받으며 바꾸세요." />
-  <meta property="og:image" content="center.jpg" />
+  <title>EVERYPT | 에브리피티 공식 홈페이지</title>
+  <meta name="description" content="에브리피티 EVERYPT 공식 홈페이지. 무제한 PT, 소그룹 트레이닝, 심박수 기반 운동관리, 인바디 변화관리, 수유점 안내 및 무료 체험 예약." />
 
   <style>
-    :root {
-      --navy:#071846;
-      --navy2:#0b245f;
-      --deep:#050914;
+    :root{
+      --black:#050505;
+      --deep:#0a0d12;
+      --dark:#111827;
+      --gray:#f5f5f7;
+      --text:#1d1d1f;
+      --muted:#6e6e73;
+      --white:#fff;
       --gold:#d6ad5f;
-      --gold2:#f4d58b;
-      --cream:#f8f4ec;
-      --gray:#f5f6f8;
-      --text:#111827;
-      --muted:#687083;
-      --green:#34d399;
-      --red:#ef4444;
-      --blue:#38bdf8;
-      --line:rgba(7,24,70,.12);
-      --shadow:0 34px 90px rgba(7,24,70,.14);
-      --shadow-dark:0 40px 110px rgba(0,0,0,.35);
+      --gold2:#f6d98d;
+      --green:#37d99e;
+      --red:#ff5d75;
+      --blue:#58b8ff;
+      --line:rgba(255,255,255,.14);
+      --line-dark:rgba(0,0,0,.08);
+      --shadow:0 34px 100px rgba(0,0,0,.16);
+      --radius:34px;
     }
 
     *{margin:0;padding:0;box-sizing:border-box}
@@ -39,1177 +36,862 @@
       word-break:keep-all;
       overflow-x:hidden;
     }
-    body.lock{overflow:hidden}
     a{text-decoration:none;color:inherit}
-    img,video{display:block;max-width:100%}
-
-    .loader{
-      position:fixed;inset:0;z-index:9999;
-      background:radial-gradient(circle at 50% 35%,rgba(214,173,95,.25),transparent 34%),linear-gradient(180deg,#071846,#050914);
-      display:flex;align-items:center;justify-content:center;color:#fff;
-      transition:opacity .8s ease,visibility .8s ease;
-    }
-    .loader.hide{opacity:0;visibility:hidden}
-    .loader-logo{
-      font-family:Georgia,serif;font-size:clamp(42px,7vw,84px);
-      letter-spacing:5px;color:var(--gold2);
-      animation:introUp 1.1s ease both;
-    }
-    .loader-line{width:230px;height:1px;background:rgba(255,255,255,.2);margin:20px auto 0;overflow:hidden}
-    .loader-line span{display:block;height:100%;background:var(--gold2);animation:loadLine 1.2s ease both}
-    @keyframes introUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-    @keyframes loadLine{from{transform:translateX(-100%)}to{transform:none}}
+    img,video{max-width:100%;display:block}
+    button{font-family:inherit}
 
     .progress{
-      position:fixed;top:0;left:0;height:3px;width:0%;
+      position:fixed;top:0;left:0;height:3px;width:0;
       background:linear-gradient(90deg,var(--gold),var(--gold2));
-      z-index:3000;box-shadow:0 0 18px rgba(244,213,139,.8);
+      z-index:9999;
     }
 
-    .top-cta{
-      position:fixed;top:0;left:0;width:100%;height:38px;z-index:1800;
-      background:linear-gradient(90deg,#c99a43,#f6dc9b,#c99a43);
-      color:#111;display:flex;align-items:center;justify-content:center;
-      font-size:14px;font-weight:950;
-    }
-    .top-cta span{opacity:.72;margin-left:10px;font-weight:800}
-
-    .header{
-      position:fixed;top:38px;left:0;width:100%;height:74px;z-index:1700;
-      background:rgba(7,24,70,.82);
+    .nav{
+      position:fixed;top:0;left:0;width:100%;height:72px;
+      z-index:1000;
+      background:rgba(5,5,5,.72);
       backdrop-filter:blur(24px);
       border-bottom:1px solid rgba(255,255,255,.08);
       transition:.35s ease;
     }
-    .header.scrolled{height:64px;background:rgba(7,24,70,.96);box-shadow:0 18px 40px rgba(0,0,0,.22)}
-    .nav{
-      max-width:1320px;height:100%;margin:0 auto;padding:0 36px;
+    .nav.scrolled{height:62px;background:rgba(5,5,5,.92)}
+    .nav-inner{
+      max-width:1240px;height:100%;margin:0 auto;padding:0 28px;
       display:flex;align-items:center;justify-content:space-between;
     }
-    .logo{font-family:Georgia,serif;color:var(--gold2);font-size:33px;font-weight:800;letter-spacing:2.2px}
-    .menu{display:flex;align-items:center;gap:25px;color:#fff;font-size:13px;font-weight:950}
-    .menu a{position:relative;opacity:.92;transition:.25s}
-    .menu a:hover{color:var(--gold2);opacity:1}
-    .menu a::after{content:"";position:absolute;left:0;bottom:-9px;width:0;height:2px;background:var(--gold2);transition:.25s}
-    .menu a:hover::after{width:100%}
-    .menu .reserve{
-      background:#fff;color:var(--navy);padding:11px 18px;border-radius:999px;
-      box-shadow:0 12px 28px rgba(0,0,0,.18);
+    .logo{
+      font-family:Georgia,serif;
+      color:var(--gold2);
+      letter-spacing:2.4px;
+      font-size:28px;
+      font-weight:800;
     }
-    .menu .reserve::after{display:none}
-    .mobile-toggle{display:none;flex-direction:column;gap:6px;cursor:pointer}
-    .mobile-toggle span{width:28px;height:2px;background:#fff}
+    .menu{display:flex;align-items:center;gap:26px;color:#fff;font-size:13px;font-weight:800}
+    .menu a{opacity:.86;transition:.25s}
+    .menu a:hover{opacity:1;color:var(--gold2)}
+    .nav-cta{
+      padding:11px 17px;border-radius:999px;
+      background:#fff;color:#000;
+      font-weight:900;
+    }
+    .hamburger{display:none;flex-direction:column;gap:6px}
+    .hamburger span{width:26px;height:2px;background:#fff}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      height:56px;padding:0 28px;border-radius:999px;
+      font-weight:900;position:relative;overflow:hidden;
+      transition:.28s ease;
+    }
+    .btn:hover{transform:translateY(-4px)}
+    .btn-primary{background:#fff;color:#000}
+    .btn-gold{background:var(--gold2);color:#111;box-shadow:0 18px 48px rgba(214,173,95,.32)}
+    .btn-dark{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line);backdrop-filter:blur(18px)}
+    .btn::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(110deg,transparent,rgba(255,255,255,.45),transparent);
+      transform:translateX(-120%);
+      transition:.8s ease;
+    }
+    .btn:hover::after{transform:translateX(120%)}
+
+    section{padding:130px 28px}
+    .container{max-width:1180px;margin:0 auto}
+    .section-head{text-align:center;margin-bottom:62px}
+    .eyebrow{
+      color:var(--gold);
+      font-size:13px;
+      font-weight:950;
+      letter-spacing:3px;
+      margin-bottom:16px;
+      text-transform:uppercase;
+    }
+    .title{
+      font-size:clamp(38px,5vw,72px);
+      line-height:1.08;
+      letter-spacing:-3px;
+      font-weight:980;
+    }
+    .desc{
+      max-width:740px;margin:22px auto 0;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.8;
+      font-weight:560;
+    }
+    .dark{background:var(--black);color:#fff}
+    .dark .desc{color:rgba(255,255,255,.7)}
+
+    .reveal{opacity:0;transform:translateY(54px) scale(.985);transition:opacity .9s ease,transform .9s ease}
+    .reveal.show{opacity:1;transform:none}
 
     .hero{
-      position:relative;height:100vh;min-height:850px;overflow:hidden;background:#000;padding-top:112px;
+      min-height:100vh;
+      padding:160px 28px 80px;
+      position:relative;
+      overflow:hidden;
+      background:#000;
+      color:#fff;
+      display:flex;
+      align-items:center;
     }
-    .hero-video{
-      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-      transform:scale(1.06);filter:brightness(.58) contrast(1.12) saturate(.9);
-      will-change:transform;
+    .hero video{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;
+      filter:brightness(.45) contrast(1.1);
+      transform:scale(1.05);
     }
-    .hero::before{
-      content:"";position:absolute;inset:0;z-index:1;
-      background:radial-gradient(circle at 72% 42%,rgba(214,173,95,.18),transparent 30%),
-      linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.18) 52%,rgba(0,0,0,.54)),
-      linear-gradient(180deg,rgba(7,24,70,.18),rgba(7,24,70,.92));
+    .hero::after{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 70% 35%,rgba(214,173,95,.20),transparent 34%),
+        linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.25),rgba(0,0,0,.62)),
+        linear-gradient(180deg,transparent,rgba(0,0,0,.84));
     }
     .hero-inner{
-      position:relative;z-index:2;max-width:1320px;height:100%;margin:0 auto;
-      padding:0 36px 88px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:44px;
+      position:relative;z-index:2;
+      max-width:1240px;margin:0 auto;
+      display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
     }
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:10px;color:var(--gold2);
-      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
-      backdrop-filter:blur(16px);padding:10px 16px;border-radius:999px;
-      font-size:13px;font-weight:950;letter-spacing:1.3px;margin-bottom:25px;
+    .hero h1{
+      font-size:clamp(46px,7vw,98px);
+      line-height:.98;
+      letter-spacing:-4px;
+      font-weight:980;
+      margin-bottom:28px;
     }
-    .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 6px rgba(52,211,153,.16)}
-    .hero h1{color:#fff;font-size:clamp(48px,7vw,96px);line-height:1.02;letter-spacing:-4px;font-weight:980;margin-bottom:28px}
     .hero h1 span{color:var(--gold2)}
-    .hero p{font-size:clamp(17px,2vw,22px);line-height:1.82;color:rgba(255,255,255,.84);font-weight:560;margin-bottom:38px;max-width:690px}
-    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
-    .btn{
-      height:58px;padding:0 30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;
-      font-weight:950;position:relative;overflow:hidden;transition:.25s ease;
+    .hero p{
+      max-width:680px;
+      color:rgba(255,255,255,.78);
+      font-size:clamp(17px,2vw,22px);
+      line-height:1.82;
+      margin-bottom:34px;
+      font-weight:560;
     }
-    .btn::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent,rgba(255,255,255,.42),transparent);transform:translateX(-130%);transition:.75s}
-    .btn:hover::before{transform:translateX(130%)}
-    .btn:hover{transform:translateY(-4px)}
-    .btn-primary{background:var(--gold2);color:#111;box-shadow:0 22px 52px rgba(214,173,95,.3)}
-    .btn-dark{color:#fff;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);backdrop-filter:blur(14px)}
-    .hero-metrics{display:flex;gap:14px;flex-wrap:wrap}
-    .hero-metric{
-      min-width:154px;padding:18px 20px;border-radius:22px;
-      background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px)
-    }
-    .hero-metric strong{display:block;color:var(--gold2);font-size:24px;margin-bottom:5px}
-    .hero-metric span{color:rgba(255,255,255,.76);font-size:14px;font-weight:800}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
     .hero-panel{
-      align-self:end;margin-bottom:42px;color:#fff;border-radius:38px;
-      background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
-      backdrop-filter:blur(22px);padding:30px;box-shadow:var(--shadow-dark);
-      animation:floatPanel 4.2s ease-in-out infinite;
+      border-radius:36px;
+      background:rgba(255,255,255,.09);
+      border:1px solid var(--line);
+      backdrop-filter:blur(24px);
+      padding:32px;
+      box-shadow:0 40px 100px rgba(0,0,0,.34);
+      animation:float 4.2s ease-in-out infinite;
     }
-    .hero-panel h3{font-size:25px;margin-bottom:16px;color:var(--gold2)}
-    .hero-panel ul{list-style:none;display:grid;gap:13px}
-    .hero-panel li{display:flex;gap:10px;line-height:1.56;color:rgba(255,255,255,.86);font-weight:760}
-    .hero-panel li::before{content:"✓";color:var(--gold2);font-weight:980}
-    @keyframes floatPanel{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .hero-panel h3{font-size:26px;color:var(--gold2);margin-bottom:18px}
+    .hero-panel ul{list-style:none;display:grid;gap:15px}
+    .hero-panel li{color:rgba(255,255,255,.82);font-weight:700;line-height:1.6}
+    .hero-panel li::before{content:"✓";color:var(--gold2);margin-right:9px}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
-    section{position:relative;padding:128px 36px}
-    .container{max-width:1200px;margin:0 auto}
-    .section-head{text-align:center;margin-bottom:66px}
-    .kicker{color:var(--gold);font-size:13px;font-weight:980;letter-spacing:2.9px;margin-bottom:15px;text-transform:uppercase}
-    .title{color:var(--navy);font-size:clamp(36px,4.4vw,64px);line-height:1.13;letter-spacing:-2.4px;font-weight:980}
-    .desc{margin-top:19px;color:var(--muted);font-size:18px;line-height:1.82;font-weight:580}
-    .dark .title{color:#fff}.dark .desc{color:rgba(255,255,255,.74)}
-
-    .reveal,.reveal-left,.reveal-right{opacity:0;will-change:transform,opacity}
-    .reveal{transform:translateY(58px) scale(.985);transition:opacity .95s ease,transform .95s ease}
-    .reveal-left{transform:translateX(-58px);transition:opacity 1s ease,transform 1s ease}
-    .reveal-right{transform:translateX(58px);transition:opacity 1s ease,transform 1s ease}
-    .show{opacity:1;transform:translate(0,0) scale(1)}
-    .tilt,.magnetic{transform-style:preserve-3d;will-change:transform}
-
-    .cinema{background:#fff;padding:0}
-    .cinema-inner{
-      min-height:100vh;display:grid;place-items:center;padding:130px 36px;
-      background:radial-gradient(circle at 20% 20%,rgba(214,173,95,.10),transparent 32%),linear-gradient(180deg,#fff,#f7f8fb)
+    .brand-statement{
+      min-height:86vh;
+      display:grid;place-items:center;
+      background:linear-gradient(180deg,#fff,var(--gray));
     }
-    .cinema-text{max-width:1100px;text-align:center}
-    .cinema-text h2{color:var(--navy);font-size:clamp(44px,7vw,104px);line-height:1.06;letter-spacing:-4px;font-weight:980}
-    .cinema-text h2 span{color:var(--gold)}
-    .cinema-text p{margin:30px auto 0;max-width:760px;color:#4b5563;font-size:clamp(18px,2vw,24px);line-height:1.85;font-weight:620}
+    .brand-statement h2{
+      text-align:center;
+      font-size:clamp(42px,7vw,104px);
+      line-height:1.05;
+      letter-spacing:-4px;
+      font-weight:980;
+    }
+    .brand-statement h2 span{color:var(--gold)}
 
-    .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .why-grid,.system-grid,.program-grid,.worry-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+    }
     .card{
-      background:linear-gradient(145deg,#fff,#f5f7fb);border:1px solid var(--line);
-      border-radius:32px;padding:36px;box-shadow:0 22px 64px rgba(7,24,70,.07)
+      border-radius:32px;
+      padding:34px;
+      background:#fff;
+      border:1px solid var(--line-dark);
+      box-shadow:0 20px 70px rgba(0,0,0,.06);
+      transition:.35s ease;
     }
-    .card .num{width:56px;height:56px;border-radius:50%;background:var(--navy);color:var(--gold2);display:flex;align-items:center;justify-content:center;font-weight:980;margin-bottom:24px;font-family:Georgia,serif}
-    .card h3{color:var(--navy);font-size:25px;margin-bottom:14px;letter-spacing:-.8px}
-    .card p{color:#4b5563;line-height:1.75;font-weight:580}
+    .card:hover{transform:translateY(-10px);box-shadow:var(--shadow)}
+    .card-number{
+      width:48px;height:48px;border-radius:50%;
+      display:grid;place-items:center;
+      background:#111;color:var(--gold2);
+      font-weight:950;margin-bottom:22px;
+    }
+    .card h3{font-size:24px;margin-bottom:14px;letter-spacing:-1px}
+    .card p{color:var(--muted);line-height:1.74;font-weight:560}
 
-    .unlimited,.live-body,.heart,.detail-system,.final-cta{
-      background:radial-gradient(circle at 85% 12%,rgba(214,173,95,.20),transparent 32%),linear-gradient(180deg,#081532,#050914);
-      color:#fff;overflow:hidden;
+    .system-card{
+      background:linear-gradient(145deg,#141820,#08090c);
+      color:#fff;border:1px solid rgba(255,255,255,.12);
     }
-    .unlimited-wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:42px;align-items:start}
-    .price-card{
-      position:sticky;top:150px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.16);
-      border-radius:40px;padding:44px;backdrop-filter:blur(24px);box-shadow:var(--shadow-dark);overflow:hidden;
+    .system-card p{color:rgba(255,255,255,.68)}
+    .system-icon{
+      width:58px;height:58px;border-radius:18px;
+      background:rgba(214,173,95,.16);
+      color:var(--gold2);
+      display:grid;place-items:center;
+      font-size:25px;margin-bottom:22px;
     }
-    .price-card .label,.price-highlight .label{display:inline-flex;color:#111;background:var(--gold2);border-radius:999px;padding:9px 15px;font-size:13px;font-weight:980;margin-bottom:23px}
-    .price-card h3,.price-highlight h3{font-size:clamp(34px,4vw,54px);line-height:1.16;margin-bottom:20px;letter-spacing:-1.6px}
-    .price-card p,.price-highlight p{color:rgba(255,255,255,.76);line-height:1.85;font-weight:580;margin-bottom:28px}
-    .price-points,.price-list{display:grid;gap:12px;margin-bottom:30px}
-    .price-points div{display:flex;gap:10px;color:rgba(255,255,255,.9);font-weight:850}
-    .price-points div::before{content:"✓";color:var(--gold2)}
-    .unlimited-list{display:grid;gap:18px}
-    .glass-card{
-      background:rgba(255,255,255,.075);border:1px solid rgba(255,255,255,.12);
-      border-radius:30px;padding:31px;backdrop-filter:blur(16px);box-shadow:0 30px 86px rgba(0,0,0,.22);
-    }
-    .glass-card strong{display:block;color:var(--gold2);font-size:23px;margin-bottom:10px}
-    .glass-card span,.glass-card p{color:rgba(255,255,255,.78);line-height:1.75;font-weight:580}
 
-    .live-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
-    .live-panel{
-      border-radius:40px;padding:34px;background:rgba(255,255,255,.085);
-      border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(22px);box-shadow:var(--shadow-dark);
+    .data{
+      background:
+        radial-gradient(circle at 80% 10%,rgba(214,173,95,.18),transparent 34%),
+        linear-gradient(180deg,#050505,#111827);
+      color:#fff;
     }
-    .live-panel h3{font-size:28px;color:var(--gold2);margin-bottom:14px}
-    .live-panel p{color:rgba(255,255,255,.75);line-height:1.78;font-weight:580;margin-bottom:24px}
-    .live-numbers{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .live-number{
-      border-radius:26px;padding:28px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
-      position:relative;overflow:hidden;
+    .data-board{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      align-items:stretch;
     }
-  .live-number::after {
-  display: none;
+    .data-card{
+      border-radius:34px;
+      padding:32px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      backdrop-filter:blur(20px);
+      box-shadow:0 36px 90px rgba(0,0,0,.25);
     }
-    .live-number .label{position:relative;z-index:1;color:rgba(255,255,255,.72);font-weight:850;margin-bottom:10px}
-    .live-number .big{position:relative;z-index:1;font-size:clamp(38px,5vw,64px);font-weight:980;letter-spacing:-2px}
-    .live-number .big.green{color:var(--green)}
-    .live-number .big.red{color:#fb7185}
-    .live-number small{position:relative;z-index:1;display:block;margin-top:8px;color:rgba(255,255,255,.65);font-weight:700}
-    .total-ribbon{
-      margin-top:18px;border-radius:28px;padding:24px;
-      background:linear-gradient(135deg,rgba(244,213,139,.18),rgba(255,255,255,.07));
-      border:1px solid rgba(255,255,255,.14);
+    .data-card h3{font-size:24px;color:var(--gold2);margin-bottom:18px}
+    .data-numbers{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
     }
-    .total-ribbon h4{font-size:22px;margin-bottom:14px;color:#fff}
-    .total-ribbon-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .total-ribbon-row div{background:rgba(0,0,0,.15);border-radius:18px;padding:18px}
-    .total-ribbon-row b{font-size:34px;color:var(--gold2)}
-    .total-ribbon-row span{display:block;color:rgba(255,255,255,.72);font-weight:800;margin-top:6px}
-
-    .body-visual{
-      min-height:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+    .number-box{
+      border-radius:26px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      padding:26px;
     }
-    .body-ring{
-      width:min(360px,80vw);height:min(360px,80vw);border-radius:50%;
-      border:1px solid rgba(255,255,255,.16);position:relative;
-      background:radial-gradient(circle,rgba(244,213,139,.12),transparent 60%);
-      animation:pulseGlow 2.4s ease-in-out infinite;
+    .number-box span{display:block;color:rgba(255,255,255,.68);font-weight:800;margin-bottom:10px}
+    .number-box strong{font-size:clamp(42px,5vw,66px);letter-spacing:-2px}
+    .green{color:var(--green)}
+    .red{color:var(--red)}
+    .live-visual{
+      min-height:420px;
+      display:grid;
+      place-items:center;
     }
-    .body-ring::before,.body-ring::after{
-      content:"";position:absolute;inset:34px;border-radius:50%;border:1px solid rgba(255,255,255,.14);
+    .body-orbit{
+      position:relative;
+      width:min(360px,82vw);
+      height:min(360px,82vw);
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.16);
+      background:radial-gradient(circle,rgba(55,217,158,.16),transparent 58%);
+      box-shadow:0 0 80px rgba(55,217,158,.16);
     }
-    .body-ring::after{inset:72px;border-color:rgba(244,213,139,.22)}
     .body-core{
-      position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-      width:120px;height:190px;border-radius:60px 60px 44px 44px;
-      background:linear-gradient(180deg,rgba(52,211,153,.95),rgba(56,189,248,.65));
-      box-shadow:0 0 70px rgba(52,211,153,.35);
-      animation:bodyBreath 2.6s ease-in-out infinite;
+      position:absolute;left:50%;top:50%;
+      width:118px;height:190px;
+      transform:translate(-50%,-50%);
+      border-radius:70px 70px 46px 46px;
+      background:linear-gradient(180deg,var(--green),var(--blue));
+      box-shadow:0 0 70px rgba(55,217,158,.4);
+      animation:grow 2.8s ease-in-out infinite;
     }
-    .fat-dot,.muscle-dot{position:absolute;width:12px;height:12px;border-radius:50%}
-    .fat-dot{background:#fb7185;animation:fatOut 3s ease-in-out infinite}
-    .muscle-dot{background:#34d399;animation:muscleIn 3s ease-in-out infinite}
-    @keyframes pulseGlow{0%,100%{box-shadow:0 0 20px rgba(244,213,139,.12)}50%{box-shadow:0 0 80px rgba(244,213,139,.24)}}
-    @keyframes bodyBreath{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.06)}}
-    @keyframes fatOut{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(.15);opacity:0}}
-    @keyframes muscleIn{0%{transform:translate(var(--x),var(--y)) scale(.15);opacity:0}100%{transform:translate(0,0) scale(1);opacity:1}}
+    .fat,.muscle{position:absolute;border-radius:50%}
+    .fat{width:16px;height:16px;background:var(--red);animation:fatOut 2.8s ease-in-out infinite}
+    .muscle{width:14px;height:14px;background:var(--green);box-shadow:0 0 20px rgba(55,217,158,.8);animation:muscleIn 2.8s ease-in-out infinite}
+    @keyframes grow{0%,100%{transform:translate(-50%,-50%) scale(.96)}50%{transform:translate(-50%,-50%) scale(1.08)}}
+    @keyframes fatOut{0%{opacity:.9;transform:scale(1)}80%{opacity:.15;transform:translateY(-48px) scale(.25)}100%{opacity:0;transform:translateY(-70px) scale(0)}}
+    @keyframes muscleIn{0%{opacity:.2;transform:scale(.4)}60%{opacity:1;transform:scale(1.45)}100%{opacity:.82;transform:scale(1)}}
 
-    .heart-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:30px;align-items:center}
-    .heart-device{
-      border-radius:40px;padding:34px;background:rgba(255,255,255,.085);
-      border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(22px);box-shadow:var(--shadow-dark);
+    .program-card{
+      min-height:310px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
-    .heart-rate-main{display:flex;align-items:flex-end;gap:12px;margin-bottom:16px}
-    .heart-icon{
-      width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:rgba(239,68,68,.18);
-      animation:heartBeat .9s ease-in-out infinite;color:#fb7185;font-size:34px;
+    .program-card .tag{
+      display:inline-flex;width:max-content;
+      padding:8px 12px;border-radius:999px;
+      background:#111;color:#fff;
+      font-size:13px;font-weight:900;
+      margin-bottom:18px;
     }
-    .bpm{font-size:70px;font-weight:980;color:#fff;letter-spacing:-3px}
-    .bpm-unit{font-size:18px;color:rgba(255,255,255,.65);font-weight:900;margin-bottom:14px}
-    .zone-pill{display:inline-flex;background:rgba(52,211,153,.16);color:#86efac;border:1px solid rgba(52,211,153,.28);padding:10px 14px;border-radius:999px;font-weight:950;margin-bottom:22px}
-    .heart-device p{color:rgba(255,255,255,.75);line-height:1.8;font-weight:580}
-    .graph-card{
-      border-radius:40px;padding:30px;background:rgba(255,255,255,.085);
-      border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow-dark);overflow:hidden;
-    }
-    .graph-card h3{color:var(--gold2);font-size:26px;margin-bottom:16px}
-    .heart-svg{width:100%;height:290px;overflow:visible}
-    .grid-line{stroke:rgba(255,255,255,.10);stroke-width:1}
-    .hr-path{fill:none;stroke:url(#hrGradient);stroke-width:5;stroke-linecap:round;filter:drop-shadow(0 0 12px rgba(56,189,248,.65))}
-    .hr-dot{fill:#fff;filter:drop-shadow(0 0 12px rgba(244,213,139,.9))}
-    @keyframes heartBeat{0%,100%{transform:scale(1)}20%{transform:scale(1.18)}40%{transform:scale(.98)}60%{transform:scale(1.12)}}
+    .program-card strong{font-size:30px;letter-spacing:-1.2px}
 
-    .proof-section,.result,.price-section,.facility,.location{background:#fff}
-    .proof-grid,.result-grid,.price-layout{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}
-    .proof-image,.result-img,.price-image-card,.review-image,.coach-image,.timetable-wrap,.map-box{
-      border-radius:40px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:#fff;cursor:zoom-in;
+    .class-slider{
+      display:flex;gap:20px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      padding:10px 0 26px;
     }
-    .proof-copy,.coach-text,.review-card,.price-highlight{
-      border-radius:40px;padding:46px;box-shadow:0 26px 76px rgba(7,24,70,.09);
+    .class-slider::-webkit-scrollbar{height:8px}
+    .class-slider::-webkit-scrollbar-thumb{background:#d1d1d6;border-radius:99px}
+    .class-card{
+      min-width:360px;
+      height:500px;
+      border-radius:34px;
+      overflow:hidden;
+      scroll-snap-align:start;
+      position:relative;
+      background:linear-gradient(145deg,#181818,#333);
+      box-shadow:var(--shadow);
     }
-    .proof-copy,.coach-text,.review-card{background:linear-gradient(145deg,#fff,#f6f7fb);border:1px solid var(--line)}
-    .proof-copy .badge{display:inline-flex;background:#ffe500;color:#111;padding:10px 16px;border-radius:999px;font-weight:980;margin-bottom:20px}
-    .proof-copy h3,.coach-text h2,.review-card h3{color:var(--navy);font-size:clamp(31px,4vw,54px);line-height:1.2;letter-spacing:-1.6px;margin-bottom:20px}
-    .proof-copy p,.coach-text p,.review-card p{color:#374151;font-size:18px;line-height:1.88;font-weight:610;margin-bottom:20px}
-    .proof-copy strong{color:var(--red)}
-    .detail-grid,.service-grid,.facility-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-    .detail-card,.service-card{
-      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);
-      border-radius:36px;padding:26px;backdrop-filter:blur(18px);box-shadow:0 30px 86px rgba(0,0,0,.24);
-      cursor:zoom-in;overflow:hidden;
+    .class-card img{
+      width:100%;height:100%;object-fit:cover;
+      opacity:.8;transition:1s ease;
     }
-    .detail-card img,.service-card img{width:100%;border-radius:25px;margin-bottom:24px;transition:1s}
-    .detail-card:hover img,.service-card:hover img{transform:scale(1.035)}
-    .detail-card h3{color:var(--gold2);font-size:26px;margin-bottom:12px}
-    .detail-card p{color:rgba(255,255,255,.78);font-size:17px;line-height:1.75;font-weight:580}
-    .coach{background:var(--cream)}
-    .coach-grid,.review-grid,.heart-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:center}
-    .coach-image img{width:100%;height:660px;object-fit:cover;object-position:center}
-    .coach-tags{display:flex;gap:10px;flex-wrap:wrap}
-    .coach-tags span{background:var(--navy);color:#fff;padding:10px 14px;border-radius:999px;font-weight:850;font-size:14px}
-    .stat-card{
-      padding:35px;border-radius:32px;background:linear-gradient(145deg,#071846,#0a225f);
-      color:#fff;box-shadow:0 28px 74px rgba(7,24,70,.22);margin-bottom:18px;
+    .class-card:hover img{transform:scale(1.06);opacity:1}
+    .class-caption{
+      position:absolute;left:22px;right:22px;bottom:22px;
+      border-radius:24px;padding:22px;
+      background:rgba(255,255,255,.86);
+      backdrop-filter:blur(18px);
     }
-    .stat-card strong{display:block;color:var(--gold2);font-size:50px;margin-bottom:10px}
-    .stat-card span{font-weight:930;font-size:18px}
-    .stat-card p{margin-top:12px;color:rgba(255,255,255,.72);line-height:1.72;font-weight:580}
-    .review{background:var(--gray)}
-    .keyword-list{display:grid;gap:12px}
-    .keyword{background:#f5f7fb;border-radius:17px;padding:16px 18px;display:flex;justify-content:space-between;color:var(--navy);font-weight:950;position:relative;overflow:hidden}
-    .keyword::before{content:"";position:absolute;inset:0;width:var(--w);background:rgba(14,165,183,.11)}
-    .keyword b,.keyword span{position:relative;z-index:1}.keyword span{color:#0ea5b7}
-    .service-section{background:var(--cream)}
-    .service-grid{grid-template-columns:repeat(3,1fr)}
-    .service-card{background:rgba(255,255,255,.8);border-color:rgba(7,24,70,.08);box-shadow:0 25px 76px rgba(7,24,70,.08)}
-    .service-card h3{color:var(--navy);font-size:24px;margin-bottom:12px}
-    .service-card p{color:#4b5563;line-height:1.75;font-weight:610}
-    .price-highlight{background:radial-gradient(circle at 80% 0%,rgba(214,173,95,.22),transparent 34%),linear-gradient(145deg,var(--navy),var(--navy2));color:#fff}
-    .price-list div{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:16px 18px;font-weight:900}
-    .price-list strong{color:var(--gold2)}
-    .facility-card{position:relative;border-radius:40px;overflow:hidden;min-height:510px;background:#111;box-shadow:var(--shadow);cursor:zoom-in}
-    .facility-card img{width:100%;height:100%;min-height:510px;object-fit:cover;filter:brightness(.86);transition:1s}
-    .facility-card:hover img{transform:scale(1.06)}
-    .facility-label{position:absolute;left:24px;right:24px;bottom:24px;padding:24px;border-radius:25px;background:rgba(255,255,255,.88);backdrop-filter:blur(18px)}
-    .facility-label h3{color:var(--navy);font-size:28px;margin-bottom:8px}
-    .facility-label p{color:#4b5563;font-weight:760;line-height:1.6}
-    .timetable-section{background:var(--gray)}
-    .timetable-wrap,.map-box{max-width:900px;margin:0 auto}
-    .location-info{text-align:center;margin-top:34px}
-    .location-info h3{color:var(--navy);font-size:29px;margin-bottom:10px}
-    .location-info p{color:#374151;line-height:1.82;font-size:18px;font-weight:720}
+    .class-caption h3{font-size:24px;margin-bottom:8px}
+    .class-caption p{color:#555;line-height:1.6;font-weight:650}
 
-    .faq{background:#fff}
-    .faq-list{max-width:900px;margin:0 auto;display:grid;gap:14px}
-    .faq-item{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 18px 50px rgba(7,24,70,.06)}
-    .faq-q{padding:22px 24px;display:flex;justify-content:space-between;gap:20px;cursor:pointer;font-weight:950;color:var(--navy)}
-    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-    .faq-a p{padding:0 24px 22px;color:#4b5563;line-height:1.75;font-weight:580}
-    .faq-item.active .faq-a{max-height:180px}
+    .branch{
+      background:var(--gray);
+    }
+    .branch-wrap{
+      display:grid;
+      grid-template-columns:.92fr 1.08fr;
+      gap:28px;
+      align-items:center;
+    }
+    .branch-card{
+      border-radius:36px;
+      background:#fff;
+      border:1px solid var(--line-dark);
+      padding:38px;
+      box-shadow:var(--shadow);
+    }
+    .branch-card h3{font-size:36px;letter-spacing:-1.6px;margin-bottom:18px}
+    .branch-card p{color:var(--muted);line-height:1.8;font-weight:560;margin-bottom:24px}
+    .branch-info{display:grid;gap:12px}
+    .branch-info div{
+      padding:16px 18px;border-radius:18px;
+      background:#f5f5f7;
+      font-weight:800;
+    }
+    .map{
+      border-radius:36px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:#ddd;
+    }
 
-    .cta-box{max-width:890px;margin:46px auto 0;padding:42px;background:rgba(255,255,255,.085);border:1px solid rgba(255,255,255,.14);border-radius:40px;backdrop-filter:blur(22px);box-shadow:var(--shadow-dark);text-align:center}
-    .cta-box h3{font-size:32px;margin-bottom:18px;color:var(--gold2)}
-    .cta-box p{color:rgba(255,255,255,.78);line-height:1.85;font-weight:600;margin-bottom:28px}
-    .cta-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .cta-final{
+      background:
+        radial-gradient(circle at 50% 0%,rgba(214,173,95,.24),transparent 38%),
+        linear-gradient(180deg,#080808,#000);
+      color:#fff;
+      text-align:center;
+    }
+    .cta-box{
+      max-width:920px;margin:0 auto;
+      border-radius:40px;
+      background:rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      backdrop-filter:blur(24px);
+      padding:54px 34px;
+      box-shadow:0 40px 110px rgba(0,0,0,.36);
+    }
+    .cta-box h2{
+      font-size:clamp(38px,5vw,76px);
+      line-height:1.08;
+      letter-spacing:-3px;
+      margin-bottom:22px;
+    }
+    .cta-box p{
+      color:rgba(255,255,255,.72);
+      line-height:1.8;
+      font-size:18px;
+      margin-bottom:30px;
+    }
+    .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-    .footer{background:var(--navy);color:#fff;text-align:center;padding:58px 36px 44px}
-    .footer-logo{font-family:Georgia,serif;font-size:34px;letter-spacing:3px;margin-bottom:24px}
-    .footer-menu{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:28px;font-size:14px;font-weight:820}
-    .footer-line{max-width:980px;height:1px;background:rgba(255,255,255,.52);margin:0 auto 26px}
-    .footer p{color:rgba(255,255,255,.86);line-height:1.8;font-weight:720;font-size:15px}
+    .footer{
+      background:#000;color:#fff;
+      padding:62px 28px;
+    }
+    .footer-inner{
+      max-width:1180px;margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:start;
+    }
+    .footer-logo{
+      font-family:Georgia,serif;
+      color:var(--gold2);
+      font-size:32px;
+      letter-spacing:2.4px;
+      margin-bottom:14px;
+    }
+    .footer p{color:rgba(255,255,255,.6);line-height:1.7}
+    .footer-links{
+      display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end;
+      color:rgba(255,255,255,.75);
+      font-weight:700;
+    }
 
-    .floating{position:fixed;right:24px;bottom:24px;z-index:1900;display:flex;flex-direction:column;gap:10px}
-    .floating a{min-width:138px;height:52px;padding:0 18px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:980;box-shadow:0 18px 44px rgba(0,0,0,.25);transition:.25s}
-    .floating a:hover{transform:translateY(-4px)}
-    .floating .yellow{background:#ffd400;color:#111}.floating .blue{background:var(--navy);color:#fff}
-
-    .modal{position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.82);backdrop-filter:blur(18px);display:none;align-items:center;justify-content:center;padding:24px}
-    .modal.show{display:flex}
-    .modal img{max-width:min(1100px,94vw);max-height:86vh;border-radius:26px;box-shadow:0 40px 110px rgba(0,0,0,.55);animation:modalIn .35s ease both}
-    .modal-close{position:fixed;right:24px;top:24px;width:48px;height:48px;border-radius:50%;background:#fff;color:#111;border:0;font-size:24px;font-weight:900;cursor:pointer}
-    @keyframes modalIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+    .floating{
+      position:fixed;
+      right:18px;bottom:18px;
+      z-index:1200;
+      display:flex;gap:10px;flex-direction:column;
+    }
+    .floating a{
+      height:52px;padding:0 20px;border-radius:999px;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:950;box-shadow:0 18px 44px rgba(0,0,0,.24);
+    }
+    .floating .yellow{background:#ffd400;color:#111}
+    .floating .black{background:#111;color:#fff}
 
     @media(max-width:980px){
-      .header{height:64px}.nav{padding:0 22px}.logo{font-size:27px}.mobile-toggle{display:flex}
-      .menu{position:fixed;top:102px;right:0;width:100%;background:rgba(7,24,70,.985);backdrop-filter:blur(20px);padding:20px 28px 30px;flex-direction:column;align-items:flex-start;gap:0;transform:translateY(-120%);opacity:0;pointer-events:none;transition:.35s}
+      .hamburger{display:flex}
+      .menu{
+        position:fixed;top:72px;left:0;width:100%;
+        background:rgba(0,0,0,.94);
+        backdrop-filter:blur(20px);
+        flex-direction:column;align-items:flex-start;
+        padding:22px 28px;
+        transform:translateY(-130%);
+        opacity:0;pointer-events:none;
+        transition:.32s ease;
+      }
       .menu.active{transform:translateY(0);opacity:1;pointer-events:auto}
-      .menu a{width:100%;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1)}
-      .menu .reserve{width:auto;padding:12px 18px;margin-top:16px;border-bottom:none}
-      .hero{min-height:860px}.hero-inner{grid-template-columns:1fr;padding:0 24px 76px;align-items:end}.hero-panel,.hero-metrics{display:none}
-      .hero h1{font-size:43px;letter-spacing:-1.8px}.hero p{font-size:17px}
-      section{padding:94px 22px}.cinema-inner{padding:100px 22px}
-      .problem-grid,.unlimited-wrap,.live-grid,.heart-grid,.proof-grid,.detail-grid,.coach-grid,.result-grid,.review-grid,.service-grid,.price-layout,.facility-grid{grid-template-columns:1fr}
-      .price-card{position:relative;top:auto}
-      .proof-copy,.coach-text,.review-card,.price-highlight,.price-card,.cta-box,.live-panel{padding:30px;border-radius:30px}
-      .coach-image img{height:auto}.facility-card,.facility-card img{min-height:360px}
-      .floating{right:16px;bottom:16px}.floating a{min-width:112px;height:48px;font-size:14px}
+      .menu a{padding:12px 0;width:100%}
+      .hero-inner,.data-board,.branch-wrap,.footer-inner{grid-template-columns:1fr}
+      .hero-panel{display:none}
+      .why-grid,.system-grid,.program-grid,.worry-grid,.data-numbers{grid-template-columns:1fr}
+      section{padding:96px 22px}
+      .hero{padding:132px 22px 74px;min-height:860px}
+      .hero h1{letter-spacing:-2.2px}
+      .class-card{min-width:82vw}
+      .footer-links{justify-content:flex-start}
     }
-    @media(max-width:520px){
-      .top-cta{font-size:12px;padding:0 10px}.top-cta span{display:none}
-      .hero h1{font-size:38px}.hero-actions,.cta-actions{flex-direction:column}.btn{width:100%}
-      .title{font-size:34px;letter-spacing:-1.4px}.cinema-text h2{font-size:40px;letter-spacing:-1.7px}
-      .live-numbers,.total-ribbon-row{grid-template-columns:1fr}
-      .bpm{font-size:56px}
-      .floating{left:14px;right:14px;flex-direction:row}.floating a{flex:1;min-width:auto}
+
+    @media(max-width:560px){
+      .nav-inner{padding:0 18px}
+      .logo{font-size:24px}
+      .hero h1{font-size:42px}
+      .hero-actions,.cta-actions{flex-direction:column}
+      .btn{width:100%}
+      .floating{
+        left:12px;right:12px;bottom:12px;
+        flex-direction:row;
+      }
+      .floating a{flex:1;padding:0 12px;font-size:14px}
+      .title{letter-spacing:-1.8px}
+      .footer{padding-bottom:96px}
     }
-    .body-change-box {
-  width: 100%;
-  text-align: center;
-}
-
-.body-title {
-  color: var(--gold2);
-  font-weight: 950;
-  letter-spacing: 2px;
-  margin-bottom: 28px;
-}
-
-.body-stage {
-  position: relative;
-  width: min(360px, 78vw);
-  height: 360px;
-  margin: 0 auto;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, rgba(52,211,153,.18), transparent 52%),
-    radial-gradient(circle, rgba(244,213,139,.12), transparent 68%);
-  border: 1px solid rgba(255,255,255,.14);
-  box-shadow: 0 0 80px rgba(52,211,153,.15);
-  overflow: hidden;
-}
-
-.body-stage .body-core {
-  position: absolute;
-  left: 50%;
-  top: 52%;
-  width: 118px;
-  height: 190px;
-  transform: translate(-50%, -50%);
-  border-radius: 70px 70px 46px 46px;
-  background: linear-gradient(180deg, #34d399, #38bdf8);
-  box-shadow: 0 0 60px rgba(52,211,153,.35);
-  animation: muscleGrow 2.8s ease-in-out infinite;
-}
-
-.fat-layer span {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background: #fb7185;
-  border-radius: 50%;
-  opacity: .75;
-  animation: fatBurn 2.8s ease-in-out infinite;
-}
-
-.fat-layer span:nth-child(1) { left: 28%; top: 35%; animation-delay: .1s; }
-.fat-layer span:nth-child(2) { left: 66%; top: 32%; animation-delay: .4s; }
-.fat-layer span:nth-child(3) { left: 70%; top: 64%; animation-delay: .7s; }
-.fat-layer span:nth-child(4) { left: 25%; top: 68%; animation-delay: 1s; }
-
-.muscle-layer span {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  background: #34d399;
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(52,211,153,.7);
-  animation: muscleDot 2.8s ease-in-out infinite;
-}
-
-.muscle-layer span:nth-child(1) { left: 45%; top: 45%; animation-delay: .2s; }
-.muscle-layer span:nth-child(2) { left: 55%; top: 50%; animation-delay: .5s; }
-.muscle-layer span:nth-child(3) { left: 48%; top: 60%; animation-delay: .8s; }
-.muscle-layer span:nth-child(4) { left: 58%; top: 62%; animation-delay: 1.1s; }
-
-.body-caption {
-  margin-top: 24px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.body-caption strong {
-  color: #fff;
-  background: rgba(255,255,255,.09);
-  border: 1px solid rgba(255,255,255,.14);
-  padding: 12px 16px;
-  border-radius: 999px;
-}
-
-@keyframes muscleGrow {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(.95);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.08);
-  }
-}
-
-@keyframes fatBurn {
-  0% {
-    transform: scale(1);
-    opacity: .8;
-  }
-  70% {
-    transform: scale(.35) translateY(-40px);
-    opacity: .25;
-  }
-  100% {
-    transform: scale(0);
-    opacity: 0;
-  }
-}
-
-@keyframes muscleDot {
-  0% {
-    transform: scale(.4);
-    opacity: .2;
-  }
-  60% {
-    transform: scale(1.4);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-    opacity: .8;
-  }
-}
   </style>
 </head>
 
 <body>
-  <script>
-    /* DATA SETTINGS: 실제 누적 데이터가 있으면 여기 숫자만 수정하세요 */
- const DATA = Object.freeze({
-  memberMuscleGainKg: 0.6,
-  memberFatLossKg: 7.8,
-  totalMuscleGainKg: 128.4,
-  totalFatLossKg: 936.7,
-  reviewCount: 463,
-  bpmMin: 118,
-  bpmMax: 156
-});
-
-    window.EVERYPT_LINKS = {
-      naver: "#contact",
-      kakao: "#contact",
-      instagram: "#",
-      blog: "#"
-    };
-  </script>
-
-  <div class="loader" id="loader">
-    <div>
-      <div class="loader-logo">EVERY PT</div>
-      <div class="loader-line"><span></span></div>
-    </div>
-  </div>
-
   <div class="progress" id="progress"></div>
 
-  <div class="top-cta">첫 방문 무료 체험 가능 <span>수유역 1:1급 소그룹 무제한 PT</span></div>
-
-  <header class="header" id="header">
-    <nav class="nav">
-      <a href="#home" class="logo">EVERY PT</a>
-      <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="logo">EVERYPT</a>
+      <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
       <div class="menu" id="menu">
-        <a href="#brand">BRAND</a>
-        <a href="#unlimited">UNLIMITED PT</a>
-        <a href="#live-body">INBODY DATA</a>
-        <a href="#heart">HEART RATE</a>
-        <a href="#price">PRICE</a>
-        <a href="#review">REVIEW</a>
-        <a href="#contact" class="reserve">무료 체험 예약</a>
+        <a href="#brand">Brand</a>
+        <a href="#system">System</a>
+        <a href="#program">Program</a>
+        <a href="#suyu">Suyu</a>
+        <a href="#reserve" class="nav-cta">무료 체험 예약</a>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
-  <section class="hero" id="home">
-    <video class="hero-video" autoplay muted loop playsinline>
+  <header class="hero" id="home">
+    <video autoplay muted loop playsinline poster="center.jpg">
       <source src="lesson.mp4" type="video/mp4" />
     </video>
 
     <div class="hero-inner">
-      <div class="hero-copy reveal-left">
-        <div class="eyebrow">EVERY PT SUYU</div>
-        <h1>혼자서 실패했던 운동,<br>이제는 <span>관리받으며</span><br>바꾸세요.</h1>
+      <div class="reveal">
+        <div class="eyebrow">EVERYPT OFFICIAL BRAND</div>
+        <h1>
+          운동은 더 쉽게,<br>
+          관리는 더 <span>정교하게.</span>
+        </h1>
         <p>
-          에브리피티는 수유역에서 시작하는 1:1급 소그룹 무제한 PT입니다.
-          심박수 기반 강도 관리, 월별 인바디, 운동·통증·식단 상담까지 운동이 생활이 되도록 설계합니다.
+          에브리피티는 단순한 헬스장이 아니라, 운동을 지속할 수 있도록 설계된
+          관리형 피트니스 브랜드입니다. 무제한 PT, 소그룹 트레이닝, 심박수 기반 관리로
+          당신의 운동 습관을 바꿉니다.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary magnetic">무료 체험 예약하기</a>
-          <a href="#live-body" class="btn btn-dark magnetic">실제 변화 데이터 보기</a>
-        </div>
-        <div class="hero-metrics">
-          <div class="hero-metric tilt"><strong>무제한</strong><span>PT 수업 시스템</span></div>
-          <div class="hero-metric tilt"><strong>1:1급</strong><span>소그룹 자세 관리</span></div>
-          <div class="hero-metric tilt"><strong>70~90%</strong><span>심박수 강도 관리</span></div>
+          <a href="#reserve" class="btn btn-gold">바로 예약하기</a>
+          <a href="#suyu" class="btn btn-dark">수유점 상담 신청</a>
         </div>
       </div>
 
-      <div class="hero-panel tilt reveal-right">
-        <h3>에브리피티가 다른 이유</h3>
+      <div class="hero-panel reveal">
+        <h3>EVERYPT Core Care</h3>
         <ul>
-          <li>운동 초보자도 따라올 수 있는 단계별 수업</li>
-          <li>심박수와 컨디션을 고려한 강도 조절</li>
-          <li>수업 외 개인운동까지 가능한 실용적 시스템</li>
-          <li>월별 인바디 기록으로 변화 확인</li>
+          <li>운동 초보자를 위한 단계별 코칭</li>
+          <li>심박수 기반 운동 강도 조절</li>
+          <li>인바디 변화 기록과 상담</li>
+          <li>개인운동까지 가능한 실용적 시스템</li>
         </ul>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section class="cinema" id="brand">
-    <div class="cinema-inner">
-      <div class="cinema-text reveal">
-        <h2>운동을 못 이어간 이유는<br>의지가 아니라 <span>구조</span>였습니다.</h2>
-        <p>에브리피티는 운동을 더 많이 시키는 곳이 아니라, 회원님이 꾸준히 올 수밖에 없는 환경과 시스템을 만드는 곳입니다.</p>
-      </div>
+  <section class="brand-statement" id="brand">
+    <div class="container reveal">
+      <h2>
+        혼자서 실패했던 운동,<br>
+        이제는 <span>시스템</span>으로 바꿉니다.
+      </h2>
     </div>
   </section>
 
-  <section class="problem">
+  <section>
     <div class="container">
       <div class="section-head reveal">
-        <div class="kicker">WHY EVERY PT</div>
-        <h2 class="title">대부분의 운동 실패는<br>혼자 시작했기 때문에 생깁니다</h2>
-        <p class="desc">기구는 많지만 무엇을 해야 할지 모르고, 자세가 맞는지 불안하고, 꾸준히 갈 이유가 없으면 운동은 다시 멈춥니다.</p>
+        <div class="eyebrow">WHY EVERYPT</div>
+        <h2 class="title">왜 에브리피티인가</h2>
+        <p class="desc">
+          운동은 의지만으로 오래 지속되기 어렵습니다. 에브리피티는 관리, 코칭, 루틴을 하나의 구조로 묶어
+          고객이 자연스럽게 운동을 이어갈 수 있도록 만듭니다.
+        </p>
       </div>
-      <div class="problem-grid">
-        <div class="card tilt reveal"><div class="num">01</div><h3>무엇을 해야 할지 모름</h3><p>내 몸에 맞는 운동 순서와 강도를 몰라 시작부터 막히는 경우가 많습니다.</p></div>
-        <div class="card tilt reveal"><div class="num">02</div><h3>자세가 맞는지 불안함</h3><p>혼자 운동하면 자세가 틀어져도 알기 어렵고, 통증이나 부상 걱정으로 이어집니다.</p></div>
-        <div class="card tilt reveal"><div class="num">03</div><h3>꾸준히 갈 이유가 없음</h3><p>운동은 반복이 핵심이지만, 혼자서는 출석과 루틴을 유지하기 어렵습니다.</p></div>
-      </div>
-    </div>
-  </section>
 
-  <section class="unlimited dark" id="unlimited">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">UNLIMITED PT SYSTEM</div>
-        <h2 class="title">에브리피티의 핵심은<br>무제한 PT 시스템입니다</h2>
-        <p class="desc">운동을 자주 오게 만들고, 자주 오더라도 무리하지 않게 관리하는 구조가 에브리피티의 강점입니다.</p>
-      </div>
-      <div class="unlimited-wrap">
-        <div class="price-card tilt reveal-left">
-          <div class="label">BEST PROGRAM</div>
-          <h3>1:1급 소그룹<br>무제한 PT</h3>
-          <p>단순 헬스 이용권이 아니라, 전문 코치가 수업 안에서 자세와 강도를 관리하는 PT형 운동 시스템입니다.</p>
-          <div class="price-points">
-            <div>소그룹 수업으로 자세 체크</div>
-            <div>수업 외 개인운동 가능</div>
-            <div>월별 인바디 변화 기록</div>
-            <div>초보자도 가능한 단계별 운동</div>
-          </div>
-          <a href="#contact" class="btn btn-primary magnetic">무료 체험으로 시작하기</a>
+      <div class="why-grid">
+        <div class="card reveal">
+          <div class="card-number">01</div>
+          <h3>관리형 피트니스</h3>
+          <p>등록만 하고 끝나는 구조가 아니라, 출석·강도·변화를 함께 관리합니다.</p>
         </div>
-        <div class="unlimited-list">
-          <div class="glass-card tilt reveal-right"><strong>1. 출석 빈도를 높이는 구조</strong><span>운동은 한 번 잘하는 것보다 자주 반복하는 것이 중요합니다.</span></div>
-          <div class="glass-card tilt reveal-right"><strong>2. 혼자 운동하지 않는 안정감</strong><span>코치가 수업 안에서 자세와 강도를 확인하기 때문에 초보자도 부담 없이 시작할 수 있습니다.</span></div>
-          <div class="glass-card tilt reveal-right"><strong>3. 체력과 컨디션에 맞춘 진행</strong><span>회원님의 체력, 목적, 컨디션에 따라 운동 강도와 종목을 조정합니다.</span></div>
-          <div class="glass-card tilt reveal-right"><strong>4. 변화가 보이는 관리</strong><span>인바디와 실제 후기를 통해 몸의 변화를 확인하고 다음 운동 방향을 설정합니다.</span></div>
+        <div class="card reveal">
+          <div class="card-number">02</div>
+          <h3>초보자 친화 설계</h3>
+          <p>운동을 처음 시작하는 분도 부담 없이 따라올 수 있도록 수업을 조절합니다.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-number">03</div>
+          <h3>지속 가능한 습관</h3>
+          <p>한 번의 강한 운동보다, 오래 이어지는 루틴을 만드는 데 집중합니다.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="live-body dark" id="live-body">
+  <section class="dark" id="system">
     <div class="container">
       <div class="section-head reveal">
-        <div class="kicker">LIVE BODY COMPOSITION</div>
-        <h2 class="title">근육은 올라가고,<br>지방은 내려갑니다</h2>
-        <p class="desc">인바디 변화 데이터를 시각화하여 에브리피티의 운동 효과를 숫자로 보여줍니다.</p>
+        <div class="eyebrow">EVERYPT SYSTEM</div>
+        <h2 class="title">에브리피티 핵심 시스템</h2>
+        <p class="desc">
+          여러 지점으로 확장되어도 유지되어야 할 에브리피티의 핵심 기준입니다.
+        </p>
       </div>
 
-      <div class="live-grid">
-        <div class="live-panel reveal-left">
-          <h3>회원 변화 데이터</h3>
-          <p>개별 회원님의 인바디 변화 예시입니다. 숫자가 움직이며 변화의 방향을 직관적으로 보여줍니다.</p>
-          <div class="live-numbers">
-            <div class="live-number">
-              <div class="label">평균 근육량 증가</div>
-              <div class="big green">+<span class="count" data-key="memberMuscleGainKg" data-decimal="1">0</span>kg</div>
-              <small>운동을 통해 증가하는 근육량</small>
-            </div>
-            <div class="live-number">
-              <div class="label">평균 체지방량 감소</div>
-              <div class="big red">-<span class="count" data-key="memberFatLossKg" data-decimal="1">0</span>kg</div>
-              <small>다이어트를 통해 감소하는 지방량</small>
-            </div>
-          </div>
-
-          <div class="total-ribbon">
-            <h4>에브리피티 오픈 후 누적 변화</h4>
-            <div class="total-ribbon-row">
-              <div><b>+<span class="count" data-key="totalMuscleGainKg" data-decimal="1">0</span>kg</b><span>누적 근육 증가량</span></div>
-              <div><b>-<span class="count" data-key="totalFatLossKg" data-decimal="1">0</span>kg</b><span>누적 체지방 감소량</span></div>
-            </div>
-          </div>
-        </div>
-
-     <div class="live-panel body-visual reveal-right">
-  <div class="body-change-box">
-    <div class="body-title">BODY CHANGE SIMULATION</div>
-
-    <div class="body-stage">
-      <div class="fat-layer">
-        <span></span><span></span><span></span><span></span>
-      </div>
-
-      <div class="body-core"></div>
-
-      <div class="muscle-layer">
-        <span></span><span></span><span></span><span></span>
-      </div>
-    </div>
-
-    <div class="body-caption">
-      <strong>근육은 채워지고</strong>
-      <strong>지방은 줄어듭니다</strong>
-    </div>
-  </div>
-</div>
+      <div class="system-grid">
+        <div class="card system-card reveal"><div class="system-icon">∞</div><h3>무제한 PT</h3><p>꾸준한 운동 빈도를 만들기 위한 에브리피티의 대표 시스템입니다.</p></div>
+        <div class="card system-card reveal"><div class="system-icon">👥</div><h3>소그룹 트레이닝</h3><p>1:1급 자세 관리를 유지하면서 합리적인 운동 경험을 제공합니다.</p></div>
+        <div class="card system-card reveal"><div class="system-icon">♥</div><h3>심박수 기반 관리</h3><p>운동 강도를 감이 아니라 데이터로 확인하고 조절합니다.</p></div>
+        <div class="card system-card reveal"><div class="system-icon">📊</div><h3>인바디 변화 관리</h3><p>체중보다 중요한 근육량과 체지방 변화를 추적합니다.</p></div>
+        <div class="card system-card reveal"><div class="system-icon">◎</div><h3>3D 체형 분석</h3><p>자세와 체형 상태를 확인하여 운동 방향을 더 명확하게 설정합니다.</p></div>
+        <div class="card system-card reveal"><div class="system-icon">⚙</div><h3>개인별 강도 조절</h3><p>체력, 통증, 목표에 맞춰 운동 강도와 종목을 유연하게 조정합니다.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="heart dark" id="heart">
+  <section class="data" id="data">
     <div class="container">
       <div class="section-head reveal">
-        <div class="kicker">POLAR HEART RATE SYSTEM</div>
-        <h2 class="title">운동 강도는 감이 아니라<br>심박수로 확인합니다</h2>
-        <p class="desc">심박수가 오르고 곡선 그래프가 움직이면서 운동 강도와 몰입감을 눈으로 확인할 수 있습니다.</p>
+        <div class="eyebrow">BODY CHANGE DATA</div>
+        <h2 class="title">변화는 숫자로 확인됩니다</h2>
+        <p class="desc">
+          평균 변화와 누적 변화를 데이터로 보여주어 고객이 결과를 직관적으로 이해할 수 있게 합니다.
+        </p>
       </div>
 
-      <div class="heart-grid">
-        <div class="heart-device tilt reveal-left">
-          <div class="zone-pill">실시간 운동 강도 체크</div>
-          <div class="heart-rate-main">
-            <div class="heart-icon">♥</div>
-            <div class="bpm" id="bpm">128</div>
-            <div class="bpm-unit">BPM</div>
+      <div class="data-board">
+        <div class="data-card reveal">
+          <h3>회원 평균 변화 데이터</h3>
+          <div class="data-numbers">
+            <div class="number-box">
+              <span>평균 근육량 증가</span>
+              <strong class="green">+<em class="count" data-target="0.6" data-decimal="1">0</em>kg</strong>
+            </div>
+            <div class="number-box">
+              <span>평균 체지방량 감소</span>
+              <strong class="red">-<em class="count" data-target="7.8" data-decimal="1">0</em>kg</strong>
+            </div>
+            <div class="number-box">
+              <span>누적 근육 증가량</span>
+              <strong class="green">+<em class="live-count" data-base="128.4" data-direction="up">128.4</em>kg</strong>
+            </div>
+            <div class="number-box">
+              <span>누적 체지방 감소량</span>
+              <strong class="red">-<em class="live-count" data-base="936.7" data-direction="up">936.7</em>kg</strong>
+            </div>
           </div>
+        </div>
+
+        <div class="data-card live-visual reveal">
+          <div class="body-orbit" id="bodyOrbit">
+            <div class="body-core"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="program">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">PROGRAM</div>
+        <h2 class="title">프로그램 소개</h2>
+        <p class="desc">
+          고객의 운동 빈도, 목적, 생활 패턴에 따라 선택할 수 있는 에브리피티의 기본 프로그램입니다.
+        </p>
+      </div>
+
+      <div class="program-grid">
+        <div class="card program-card reveal">
+          <div>
+            <span class="tag">BEST</span>
+            <h3>무제한 PT</h3>
+            <p>꾸준한 운동을 원하는 고객을 위한 대표 프로그램. 수업과 개인운동을 함께 활용할 수 있습니다.</p>
+          </div>
+          <strong>지속형 관리</strong>
+        </div>
+        <div class="card program-card reveal">
+          <div>
+            <span class="tag">GROUP</span>
+            <h3>그룹 PT</h3>
+            <p>소그룹 안에서 코치의 자세 관리와 운동 루틴을 경험할 수 있는 효율적인 프로그램입니다.</p>
+          </div>
+          <strong>1:1급 코칭</strong>
+        </div>
+        <div class="card program-card reveal">
+          <div>
+            <span class="tag">TRIAL</span>
+            <h3>체험권</h3>
+            <p>처음 방문하는 고객이 수업 방식, 분위기, 운동 강도를 직접 확인할 수 있습니다.</p>
+          </div>
+          <strong>무료 체험 가능</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">CLASS MOOD</div>
+        <h2 class="title">실제 수업 분위기</h2>
+        <p class="desc">
+          운동 공간, 수업 장면, 회원 변화 자료를 브랜드 경험처럼 보여주는 영역입니다.
+        </p>
+      </div>
+
+      <div class="class-slider reveal">
+        <article class="class-card">
+          <img src="center.jpg" alt="에브리피티 센터 공간" loading="lazy">
+          <div class="class-caption"><h3>프리미엄 운동 공간</h3><p>수업과 개인운동을 함께 고려한 공간 구성</p></div>
+        </article>
+        <article class="class-card">
+          <img src="equipment.jpg" alt="에브리피티 운동기구" loading="lazy">
+          <div class="class-caption"><h3>실용적인 기구 구성</h3><p>근력, 유산소, 소도구 운동까지 가능한 시스템</p></div>
+        </article>
+        <article class="class-card">
+          <img src="inbody.png" alt="인바디 변화 관리" loading="lazy">
+          <div class="class-caption"><h3>인바디 변화 관리</h3><p>숫자로 확인하는 체성분 변화</p></div>
+        </article>
+        <article class="class-card">
+          <img src="review.png" alt="에브리피티 고객 후기" loading="lazy">
+          <div class="class-caption"><h3>실제 고객 후기</h3><p>회원이 직접 남긴 수업 경험</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">CUSTOMER WORRIES</div>
+        <h2 class="title">고객이 자주 하는 고민</h2>
+      </div>
+
+      <div class="worry-grid">
+        <div class="card reveal"><h3>운동을 처음 해도 괜찮을까?</h3><p>처음 시작하는 분을 기준으로 강도와 종목을 조정합니다.</p></div>
+        <div class="card reveal"><h3>혼자 하면 오래 못할까?</h3><p>에브리피티는 출석과 수업 루틴이 유지되도록 구조화되어 있습니다.</p></div>
+        <div class="card reveal"><h3>체력이 부족해도 가능할까?</h3><p>심박수와 컨디션을 확인하며 무리하지 않게 진행합니다.</p></div>
+        <div class="card reveal"><h3>PT는 부담스럽지 않을까?</h3><p>소그룹 기반으로 전문 코칭은 유지하고 가격 부담은 낮췄습니다.</p></div>
+        <div class="card reveal"><h3>식단도 같이 봐줄까?</h3><p>목표와 체성분에 맞춰 현실적인 식단 방향을 안내합니다.</p></div>
+        <div class="card reveal"><h3>개인운동도 가능할까?</h3><p>상품에 따라 수업 외 개인운동까지 함께 이용할 수 있습니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="branch" id="suyu">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">CURRENT BRANCH</div>
+        <h2 class="title">에브리피티 수유점</h2>
+        <p class="desc">
+          현재 운영 중인 에브리피티 지점입니다. 수유역 근처에서 관리형 피트니스 프로그램을 경험할 수 있습니다.
+        </p>
+      </div>
+
+      <div class="branch-wrap">
+        <div class="branch-card reveal">
+          <h3>EVERYPT SUYU</h3>
           <p>
-            에브리피티는 회원님의 컨디션과 목표에 따라 70~90% 심박수 구간을 조절합니다.
-            단순히 힘든 운동이 아니라, 안전하고 효과적인 강도를 데이터로 확인합니다.
+            에브리피티 수유점은 예약제로 운영되는 프리미엄 관리형 피트니스 센터입니다.
+            무제한 PT, 소그룹 트레이닝, 인바디 관리, 개인운동 이용을 함께 제공합니다.
           </p>
-        </div>
-
-        <div class="graph-card reveal-right">
-          <h3>Live Heart Rate Curve</h3>
-          <svg class="heart-svg" viewBox="0 0 720 290" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="hrGradient" x1="0" x2="1">
-                <stop offset="0%" stop-color="#34d399"/>
-                <stop offset="45%" stop-color="#38bdf8"/>
-                <stop offset="100%" stop-color="#f4d58b"/>
-              </linearGradient>
-            </defs>
-            <line class="grid-line" x1="0" y1="60" x2="720" y2="60"/>
-            <line class="grid-line" x1="0" y1="130" x2="720" y2="130"/>
-            <line class="grid-line" x1="0" y1="200" x2="720" y2="200"/>
-            <path id="hrPath" class="hr-path" d=""></path>
-            <circle id="hrDot" class="hr-dot" r="7" cx="0" cy="0"></circle>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="proof-section" id="good-price">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">GOVERNMENT CERTIFIED</div>
-        <h2 class="title">정부가 인증한<br>착한가격업소 피트니스센터</h2>
-        <p class="desc">합리적인 가격과 안정적인 운영을 바탕으로 지역에서 인정받은 센터입니다.</p>
-      </div>
-      <div class="proof-grid">
-        <div class="proof-image reveal-left zoomable"><img loading="lazy" src="good-price.png" alt="착한가격업소 인증"></div>
-        <div class="proof-copy tilt reveal-right">
-          <div class="badge">착한가격업소 인증</div>
-          <h3>가격만 낮춘 것이 아니라<br>가치를 유지했습니다.</h3>
-          <p>에브리피티는 행정안전부, 서울특별시, 강북구가 인증한 <strong>착한가격업소 피트니스센터</strong>입니다. 동일 업종 대비 최대 92.5% 수준의 혜택을 유지합니다.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="detail-system dark" id="system-detail">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">SCIENTIFIC TRAINING SYSTEM</div>
-        <h2 class="title">감이 아니라<br>데이터와 구조로 운동합니다</h2>
-        <p class="desc">근육순환운동, 심박수 관리, 운동 진행 순서를 바탕으로 안전하고 효율적인 수업을 제공합니다.</p>
-      </div>
-      <div class="detail-grid">
-        <div class="detail-card tilt reveal zoomable"><img loading="lazy" src="circuit-intro.png"><h3>근육순환운동</h3><p>지방 정리, 근력 발달, 체력 강화를 동시에 고려한 순환운동 방식입니다.</p></div>
-        <div class="detail-card tilt reveal zoomable"><img loading="lazy" src="circuit-flow.png"><h3>1분 운동 · 30초 휴식</h3><p>각 종목을 정확한 자세로 수행하고 짧은 회복 후 다음 종목으로 전환합니다.</p></div>
-        <div class="detail-card tilt reveal zoomable"><img loading="lazy" src="polar-system.png"><h3>심박수 기반 강도 관리</h3><p>폴라 심박수 시스템을 활용하여 운동 강도를 실시간으로 확인합니다.</p></div>
-        <div class="detail-card tilt reveal zoomable"><img loading="lazy" src="heart-rate.png"><h3>70~90% 운동 구간</h3><p>목적과 컨디션에 맞는 심박수 구간을 기준으로 운동 효과를 높입니다.</p></div>
-        <div class="detail-card tilt reveal zoomable"><img loading="lazy" src="class-process.png"><h3>운동 진행 순서</h3><p>스트레칭, 본운동, 운동평가 순서로 약 40분 동안 효율적으로 진행됩니다.</p></div>
-        <div class="detail-card tilt reveal zoomable"><img loading="lazy" src="coach-care.png"><h3>운동·통증·식단 상담</h3><p>운동 중 궁금한 점, 통증, 식단 고민까지 정성껏 안내합니다.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="coach" id="coach">
-    <div class="container">
-      <div class="coach-grid">
-        <div class="coach-image reveal-left zoomable"><img loading="lazy" src="profile.png" alt="대표원장 박정현"></div>
-        <div class="coach-text tilt reveal-right">
-          <h2>대표원장 박정현</h2>
-          <p>에브리피티는 단순히 운동을 시키는 곳이 아니라, 회원님의 몸 상태와 목표에 맞게 운동을 설계하고 지속 가능한 방식으로 관리하는 공간입니다.</p>
-          <p>운동생리학 기반의 전문성과 실제 회원 변화 데이터를 바탕으로 다이어트·체력 향상·자세 개선을 목적에 맞게 지도합니다.</p>
-          <div class="coach-tags"><span>운동생리학 기반</span><span>초보자 맞춤</span><span>체성분 관리</span><span>무제한 PT 운영</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="result" id="result">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">REAL RESULT</div>
-        <h2 class="title">변화는 말보다<br>숫자로 설득됩니다</h2>
-        <p class="desc">체중보다 중요한 체지방률, 근육량, 운동 습관의 변화를 함께 관리합니다.</p>
-      </div>
-      <div class="result-grid">
-        <div class="result-img reveal-left zoomable"><img loading="lazy" src="inbody.png" alt="인바디 변화 자료"></div>
-        <div class="result-panel reveal-right">
-          <div class="stat-card tilt"><strong>-10.6%</strong><span>체지방률 감소</span><p>단순히 체중만 줄이는 것이 아니라 몸의 구성을 바꾸는 방향으로 관리합니다.</p></div>
-          <div class="stat-card tilt"><strong>+0.6kg</strong><span>골격근량 증가</span><p>다이어트 중에도 근육량을 지키고 체력을 높이는 운동 방향을 중요하게 봅니다.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="review" id="review">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">CUSTOMER REVIEW</div>
-        <h2 class="title">회원님들이 직접 남긴<br>에브리피티의 강점</h2>
-        <p class="desc">실제 리뷰 키워드는 에브리피티가 어떤 경험을 제공하는지 가장 정확하게 보여줍니다.</p>
-      </div>
-      <div class="review-grid">
-        <div class="review-card tilt reveal-left">
-          <h3>좋았어요 <span class="count" data-key="reviewCount">0</span>회</h3>
-          <p>회원님들은 수업의 체계성, 자세 관리, 친절함, 시설 청결, 합리적인 가격을 강점으로 평가했습니다.</p>
-          <div class="keyword-list">
-            <div class="keyword" style="--w:100%"><b>수업이 체계적이에요</b><span>367</span></div>
-            <div class="keyword" style="--w:95%"><b>자세를 꼼꼼히 봐주세요</b><span>348</span></div>
-            <div class="keyword" style="--w:93%"><b>친절해요</b><span>343</span></div>
-            <div class="keyword" style="--w:58%"><b>시설이 깔끔해요</b><span>215</span></div>
-            <div class="keyword" style="--w:54%"><b>가격이 합리적이에요</b><span>200</span></div>
+          <div class="branch-info">
+            <div>위치: 서울특별시 강북구 도봉로87길 26, 지하 1층</div>
+            <div>운영: 예약제 기반 수업 운영</div>
+            <div>상담: 무료 체험 및 카카오톡 상담 가능</div>
           </div>
         </div>
-        <div class="review-image reveal-right zoomable"><img loading="lazy" src="review.png" alt="회원 후기"></div>
-      </div>
-    </div>
-  </section>
 
-  <section class="service-section" id="service">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">MEMBER CARE SERVICE</div>
-        <h2 class="title">운동 외 관리까지<br>기본으로 제공합니다</h2>
-        <p class="desc">수업 시간뿐 아니라 회원님의 생활 속 운동과 식단까지 함께 관리합니다.</p>
-      </div>
-      <div class="service-grid">
-        <div class="service-card tilt reveal zoomable"><img loading="lazy" src="basic-service.png"><h3>맞춤 영상·운동 가이드</h3><p>불편한 부위에 맞는 영상, 개인운동 가이드, 맞춤 식단 자료를 제공합니다.</p></div>
-        <div class="service-card tilt reveal zoomable"><img loading="lazy" src="diet-system.png"><h3>데이터 기반 식단 관리</h3><p>목표 체중, 체지방률, 예상 감량 기간을 기준으로 현실적인 식단 방향을 제안합니다.</p></div>
-        <div class="service-card tilt reveal zoomable"><img loading="lazy" src="product-guide.png"><h3>목적별 상품 선택</h3><p>무제한 PT, 쿠폰 상품, 1:1 전문코칭형 중 회원님에게 맞는 방식을 선택할 수 있습니다.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="price-section" id="price">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">PRICE VALUE</div>
-        <h2 class="title">1:1 PT가 부담스러웠다면<br>에브리피티가 현실적인 대안입니다</h2>
-        <p class="desc">전문 코칭의 장점은 유지하고, 반복 가능한 가격 구조로 운동을 꾸준히 이어갈 수 있게 만들었습니다.</p>
-      </div>
-      <div class="price-layout">
-        <div class="price-image-card reveal-left zoomable"><img loading="lazy" src="price-compare.png"></div>
-        <div class="price-highlight tilt reveal-right">
-          <div class="label">BEST VALUE</div>
-          <h3>1:1 PT 대비 최대 80% 절감<br>무제한 PT</h3>
-          <p>1:1 PT 비용이 부담스러웠던 분들에게 에브리피티의 무제한 PT는 꾸준한 운동을 시작할 수 있는 현실적인 선택입니다.</p>
-          <div class="price-list">
-            <div><strong>01</strong> 정기적으로 운동하고 싶은 분께 추천</div>
-            <div><strong>02</strong> 수업 외 개인운동까지 가능</div>
-            <div><strong>03</strong> 가격 부담은 낮추고 코칭은 유지</div>
-          </div>
-          <a href="#contact" class="btn btn-primary magnetic">무료 체험 예약하기</a>
+        <div class="map reveal">
+          <img src="map.png" alt="에브리피티 수유점 지도" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <section class="facility" id="facility">
+  <section class="cta-final" id="reserve">
     <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">FACILITY</div>
-        <h2 class="title">운동을 지속하기 좋은<br>실용적인 공간</h2>
-        <p class="desc">수업과 개인운동이 함께 가능한 공간으로 운동을 일상에 가깝게 만들 수 있도록 구성했습니다.</p>
-      </div>
-      <div class="facility-grid">
-        <div class="facility-card reveal-left zoomable"><img loading="lazy" src="center.jpg"><div class="facility-label"><h3>센터 공간</h3><p>수업과 개인운동을 함께 고려한 운동 공간</p></div></div>
-        <div class="facility-card reveal-right zoomable"><img loading="lazy" src="equipment.jpg"><div class="facility-label"><h3>운동기구</h3><p>근력운동, 유산소, 소도구 운동까지 가능한 구성</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq" id="faq">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">FAQ</div>
-        <h2 class="title">처음 방문 전<br>자주 묻는 질문</h2>
-      </div>
-      <div class="faq-list reveal">
-        <div class="faq-item active"><div class="faq-q">운동을 처음 해도 괜찮나요?<span>+</span></div><div class="faq-a"><p>네. 에브리피티는 초보자도 따라올 수 있도록 강도와 종목을 조절해서 진행합니다.</p></div></div>
-        <div class="faq-item"><div class="faq-q">무제한 PT는 어떤 방식인가요?<span>+</span></div><div class="faq-a"><p>정해진 수업 시간에 소그룹 형태로 참여하며, 코치가 자세와 강도를 관리합니다.</p></div></div>
-        <div class="faq-item"><div class="faq-q">수업 외 개인운동도 가능한가요?<span>+</span></div><div class="faq-a"><p>네. 에브리피티 상품에는 헬스 이용이 포함되어 있어 개인운동도 가능합니다.</p></div></div>
-        <div class="faq-item"><div class="faq-q">식단도 봐주시나요?<span>+</span></div><div class="faq-a"><p>목표 체중, 체지방률, 예상 감량 기간을 기준으로 현실적인 식단 방향을 안내드립니다.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="final-cta dark">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">START TODAY</div>
-        <h2 class="title">처음이라면<br>무료 체험부터 시작하세요</h2>
-        <p class="desc">운동을 잘하는 사람만 오는 곳이 아닙니다. 운동을 다시 시작하고 싶은 분들을 위한 공간입니다.</p>
-      </div>
-      <div class="cta-box tilt reveal">
-        <h3>에브리피티 무료 체험 예약</h3>
-        <p>체험 수업을 통해 실제 수업 방식, 운동 강도, 센터 분위기, 코치의 관리 방식을 직접 확인해보세요.</p>
+      <div class="cta-box reveal">
+        <h2>지금 시작하면<br>운동은 더 쉬워집니다.</h2>
+        <p>
+          망설이는 시간이 길어질수록 운동은 더 어려워집니다.
+          체험 수업으로 에브리피티의 관리 방식과 수업 분위기를 먼저 확인해보세요.
+        </p>
         <div class="cta-actions">
-          <a href="#contact" class="btn btn-primary magnetic">무료 체험 예약하기</a>
-          <a href="#contact" class="btn btn-dark magnetic">카카오톡 상담하기</a>
+          <a href="#" class="btn btn-gold">네이버 예약</a>
+          <a href="#" class="btn btn-dark">카카오톡 상담</a>
+          <a href="#" class="btn btn-primary">무료 체험 신청</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="timetable-section" id="timetable">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">TIME TABLE</div>
-        <h2 class="title">운동 가능한 시간에 맞춰<br>수업과 개인운동을 이용하세요</h2>
-      </div>
-      <div class="timetable-wrap reveal zoomable"><img loading="lazy" src="timetable.png"></div>
-    </div>
-  </section>
-
-  <section class="location" id="contact">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="kicker">LOCATION</div>
-        <h2 class="title">수유역에서 가까운<br>에브리피티</h2>
-        <p class="desc">처음 방문하시는 분도 쉽게 찾아오실 수 있도록 안내드립니다.</p>
-      </div>
-      <div class="map-box reveal zoomable"><img loading="lazy" src="map.png"></div>
-      <div class="location-info reveal">
-        <h3>에브리피티 프리미엄 그룹 & PT 수유점</h3>
-        <p>서울특별시 강북구 도봉로87길 26, 지하 1층<br>무료 체험 및 상담 예약 가능</p>
       </div>
     </div>
   </section>
 
   <footer class="footer">
-    <div class="footer-logo">EVERY PT</div>
-    <div class="footer-menu">
-      <a href="#brand">Brand</a><a href="#unlimited">Unlimited PT</a><a href="#live-body">InBody</a><a href="#heart">Heart Rate</a><a href="#price">Price</a><a href="#contact">Contact</a>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">EVERYPT</div>
+        <p>
+          에브리피티 공식 홈페이지<br>
+          현재 운영 지점: 에브리피티 수유점<br>
+          Copyright © EVERYPT. All Rights Reserved.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="#brand">Brand</a>
+        <a href="#system">System</a>
+        <a href="#program">Program</a>
+        <a href="#suyu">Suyu Branch</a>
+        <a href="#reserve">Reserve</a>
+      </div>
     </div>
-    <div class="footer-line"></div>
-    <p>에브리피티 프리미엄 그룹 & PT 수유점<br>Tel 010-0000-0000  E-mail everypt@naver.com  Copyright © EVERY PT. All Rights Reserved.</p>
   </footer>
 
   <div class="floating">
-    <a href="#contact" class="yellow magnetic">무료 체험</a>
-    <a href="#contact" class="blue magnetic">상담 문의</a>
-  </div>
-
-  <div class="modal" id="modal">
-    <button class="modal-close" id="modalClose">×</button>
-    <img src="" alt="확대 이미지" id="modalImg">
+    <a href="#reserve" class="yellow">무료 체험</a>
+    <a href="#suyu" class="black">수유점 상담</a>
   </div>
 
   <script>
-    const loader = document.getElementById("loader");
-    const header = document.getElementById("header");
+    const nav = document.getElementById("nav");
     const progress = document.getElementById("progress");
-    const mobileToggle = document.getElementById("mobileToggle");
+    const hamburger = document.getElementById("hamburger");
     const menu = document.getElementById("menu");
-    const heroVideo = document.querySelector(".hero-video");
 
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        loader.classList.add("hide");
-        document.body.classList.remove("lock");
-      }, 900);
+    hamburger.addEventListener("click", () => {
+      menu.classList.toggle("active");
     });
 
-    function handleScroll() {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
-      header.classList.toggle("scrolled", scrollTop > 80);
-      if (heroVideo) heroVideo.style.transform = `scale(${1.06 + scrollTop * 0.00008}) translateY(${scrollTop * 0.08}px)`;
-    }
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
+    document.querySelectorAll(".menu a").forEach(a => {
+      a.addEventListener("click", () => menu.classList.remove("active"));
+    });
 
-    mobileToggle.addEventListener("click", () => menu.classList.toggle("active"));
-    document.querySelectorAll(".menu a").forEach(link => link.addEventListener("click", () => menu.classList.remove("active")));
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${(y / h) * 100}%`;
+      nav.classList.toggle("scrolled", y > 40);
+    });
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add("show"), index * 80);
-          revealObserver.unobserve(entry.target);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if(entry.isIntersecting){
+          setTimeout(() => entry.target.classList.add("show"), i * 80);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.14 });
-    document.querySelectorAll(".reveal,.reveal-left,.reveal-right").forEach(item => revealObserver.observe(item));
+    }, {threshold:.16});
 
-    const countObserver = new IntersectionObserver((entries) => {
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    const countObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
+        if(!entry.isIntersecting) return;
         const el = entry.target;
-        const key = el.dataset.key;
-        const target = parseFloat(DATA[key] ?? el.dataset.target ?? 0);
+        const target = parseFloat(el.dataset.target);
         const decimal = parseInt(el.dataset.decimal || "0", 10);
-        const duration = 1800;
         const start = performance.now();
+        const duration = 1700;
 
-        function animate(now) {
+        function tick(now){
           const p = Math.min((now - start) / duration, 1);
           const eased = 1 - Math.pow(1 - p, 3);
           el.textContent = (target * eased).toFixed(decimal);
-          if (p < 1) requestAnimationFrame(animate);
+          if(p < 1) requestAnimationFrame(tick);
           else el.textContent = target.toFixed(decimal);
         }
-        requestAnimationFrame(animate);
+
+        requestAnimationFrame(tick);
         countObserver.unobserve(el);
       });
-    }, { threshold: 0.45 });
-    document.querySelectorAll(".count").forEach(item => countObserver.observe(item));
+    }, {threshold:.5});
 
-    document.querySelectorAll(".tilt").forEach(card => {
-      card.addEventListener("mousemove", e => {
-        const r = card.getBoundingClientRect();
-        const x = e.clientX - r.left, y = e.clientY - r.top;
-        const rx = ((y - r.height / 2) / (r.height / 2)) * -4;
-        const ry = ((x - r.width / 2) / (r.width / 2)) * 4;
-        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
-      });
-      card.addEventListener("mouseleave", () => card.style.transform = "perspective(900px) rotateX(0) rotateY(0) translateY(0)");
+    document.querySelectorAll(".count").forEach(el => countObserver.observe(el));
+
+    document.querySelectorAll(".live-count").forEach(el => {
+      let value = parseFloat(el.dataset.base);
+      setInterval(() => {
+        value += Math.random() * 0.05;
+        el.textContent = value.toFixed(1);
+      }, 1300);
     });
 
-    document.querySelectorAll(".magnetic").forEach(item => {
-      item.addEventListener("mousemove", e => {
-        const r = item.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width / 2;
-        const y = e.clientY - r.top - r.height / 2;
-        item.style.transform = `translate(${x * 0.12}px, ${y * 0.18}px) translateY(-4px)`;
-      });
-      item.addEventListener("mouseleave", () => item.style.transform = "translate(0,0)");
-    });
-
-    const bodyRing = document.getElementById("bodyRing");
-    if (bodyRing) {
-      for (let i = 0; i < 28; i++) {
+    const orbit = document.getElementById("bodyOrbit");
+    if(orbit){
+      for(let i=0;i<18;i++){
         const dot = document.createElement("span");
-        dot.className = i % 2 ? "fat-dot" : "muscle-dot";
-        const angle = Math.random() * Math.PI * 2;
-        const dist = 120 + Math.random() * 90;
-        dot.style.left = "50%";
-        dot.style.top = "50%";
-        dot.style.setProperty("--x", `${Math.cos(angle) * dist}px`);
-        dot.style.setProperty("--y", `${Math.sin(angle) * dist}px`);
-        dot.style.animationDelay = `${Math.random() * 3}s`;
-        bodyRing.appendChild(dot);
+        dot.className = i % 2 === 0 ? "muscle" : "fat";
+        dot.style.left = `${25 + Math.random()*50}%`;
+        dot.style.top = `${25 + Math.random()*50}%`;
+        dot.style.animationDelay = `${Math.random()*2.8}s`;
+        orbit.appendChild(dot);
       }
     }
 
-   const bpmEl = document.getElementById("bpm");
-const path = document.getElementById("hrPath");
-const dot = document.getElementById("hrDot");
-
-let hrTime = 0;
-let currentBpm = 132;
-let targetBpm = 142;
-
-function smoothNoise(t) {
-  return (
-    Math.sin(t * 0.9) * 18 +
-    Math.sin(t * 1.7) * 9 +
-    Math.sin(t * 3.1) * 5 +
-    Math.sin(t * 4.8) * 3
-  );
-}
-
-function updateHeartGraphSmooth() {
-  if (!bpmEl || !path || !dot) return;
-
-  const min = DATA.bpmMin || 118;
-  const max = DATA.bpmMax || 156;
-
-  hrTime += 0.025;
-
-  if (Math.random() < 0.01) {
-    targetBpm = min + Math.random() * (max - min);
-  }
-
-  currentBpm += (targetBpm - currentBpm) * 0.025;
-
-  const liveBpm = currentBpm + smoothNoise(hrTime) * 0.12;
-  bpmEl.textContent = Math.round(liveBpm);
-
-  const w = 720;
-  const h = 290;
-  const points = [];
-
-  for (let i = 0; i < 110; i++) {
-    const x = (i / 109) * w;
-    const t = hrTime + i * 0.055;
-    const bpm = currentBpm + smoothNoise(t);
-    const y = h - 35 - ((bpm - 90) / 90) * 220;
-    points.push({ x, y });
-  }
-
-  let d = `M ${points[0].x} ${points[0].y}`;
-
-  for (let i = 1; i < points.length; i++) {
-    const prev = points[i - 1];
-    const curr = points[i];
-
-    const cp1x = prev.x + (curr.x - prev.x) * 0.45;
-    const cp1y = prev.y;
-    const cp2x = prev.x + (curr.x - prev.x) * 0.55;
-    const cp2y = curr.y;
-
-    d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${curr.x} ${curr.y}`;
-  }
-
-  path.setAttribute("d", d);
-
-  const last = points[points.length - 1];
-  dot.setAttribute("cx", last.x);
-  dot.setAttribute("cy", last.y);
-
-  requestAnimationFrame(updateHeartGraphSmooth);
-}
-
-updateHeartGraphSmooth();
-
-    document.querySelectorAll(".faq-q").forEach(q => {
-      q.addEventListener("click", () => q.parentElement.classList.toggle("active"));
-    });
-
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const modalClose = document.getElementById("modalClose");
-    document.querySelectorAll(".zoomable img").forEach(img => {
-      img.addEventListener("click", () => {
-        modalImg.src = img.src;
-        modal.classList.add("show");
-        document.body.classList.add("lock");
+    document.querySelectorAll(".card,.data-card,.branch-card,.cta-box").forEach(card => {
+      card.addEventListener("mousemove", e => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        card.style.transform = `perspective(900px) rotateX(${y / -80}deg) rotateY(${x / 80}deg) translateY(-6px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
       });
     });
-    function closeModal() {
-      modal.classList.remove("show");
-      document.body.classList.remove("lock");
-      modalImg.src = "";
-    }
-    modalClose.addEventListener("click", closeModal);
-    modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
-
-function liveTotalCounter(selector, baseValue, direction = "up", decimal = 1) {
-  const el = document.querySelector(selector);
-  if (!el) return;
-
-  let value = baseValue;
-
-  setInterval(() => {
-    const movement = Math.random() * 0.08;
-    value = direction === "up" ? value + movement : value - movement;
-    el.textContent = Math.abs(value).toFixed(decimal);
-  }, 1200);
-}
-
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    liveTotalCounter('[data-key="totalMuscleGainKg"]', DATA.totalMuscleGainKg, "up", 1);
-    liveTotalCounter('[data-key="totalFatLossKg"]', DATA.totalFatLossKg, "down", 1);
-  }, 2500);
-});
-</script>
+  </script>
 </body>
 </html>
