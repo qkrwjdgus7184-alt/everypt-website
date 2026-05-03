@@ -38,7 +38,7 @@
     }
     a{text-decoration:none;color:inherit}
     img,video{max-width:100%;display:block}
-    button{font-family:inherit}
+    button{font-family:inherit;border:0;background:none;cursor:pointer}
 
     .progress{
       position:fixed;top:0;left:0;height:3px;width:0;
@@ -51,6 +51,7 @@
       z-index:1000;
       background:rgba(5,5,5,.72);
       backdrop-filter:blur(24px);
+      -webkit-backdrop-filter:blur(24px);
       border-bottom:1px solid rgba(255,255,255,.08);
       transition:.35s ease;
     }
@@ -82,25 +83,21 @@
       height:56px;padding:0 28px;border-radius:999px;
       font-weight:900;position:relative;overflow:hidden;
       transition:.28s ease;
+      white-space:nowrap;
     }
     .btn:hover{transform:translateY(-4px)}
     .btn-primary{background:#fff;color:#000}
-    .btn-gold{background:var(--gold2);color:#111;box-shadow:0 18px 48px rgba(214,173,95,.32)}
+    .btn-dark{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
     .btn-gold{
-  animation:ctaPulse 2.4s ease-in-out infinite;
-}
-
-@keyframes ctaPulse{
-  0%,100%{
-    box-shadow:0 18px 48px rgba(214,173,95,.32);
-    transform:translateY(0) scale(1);
-  }
-  50%{
-    box-shadow:0 24px 70px rgba(246,217,141,.48);
-    transform:translateY(-2px) scale(1.025);
-  }
-}
-    .btn-dark{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line);backdrop-filter:blur(18px)}
+      background:var(--gold2);
+      color:#111;
+      box-shadow:0 18px 48px rgba(214,173,95,.32);
+      animation:ctaPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes ctaPulse{
+      0%,100%{box-shadow:0 18px 48px rgba(214,173,95,.32);transform:translateY(0) scale(1)}
+      50%{box-shadow:0 24px 70px rgba(246,217,141,.48);transform:translateY(-2px) scale(1.025)}
+    }
     .btn::after{
       content:"";position:absolute;inset:0;
       background:linear-gradient(110deg,transparent,rgba(255,255,255,.45),transparent);
@@ -136,21 +133,16 @@
     .dark{background:var(--black);color:#fff}
     .dark .desc{color:rgba(255,255,255,.7)}
 
- .reveal{
-  opacity:0;
-  transform:translateY(64px) scale(.96);
-  filter:blur(10px);
-  transition:
-    opacity 1s cubic-bezier(.22,1,.36,1),
-    transform 1s cubic-bezier(.22,1,.36,1),
-    filter 1s cubic-bezier(.22,1,.36,1);
-}
-
-.reveal.show{
-  opacity:1;
-  transform:translateY(0) scale(1);
-  filter:blur(0);
-}
+    .reveal{
+      opacity:0;
+      transform:translateY(64px) scale(.96);
+      filter:blur(10px);
+      transition:
+        opacity 1s cubic-bezier(.22,1,.36,1),
+        transform 1s cubic-bezier(.22,1,.36,1),
+        filter 1s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.show{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
 
     .hero{
       min-height:100vh;
@@ -179,6 +171,7 @@
       position:relative;z-index:2;
       max-width:1240px;margin:0 auto;
       display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
+      will-change:transform;
     }
     .hero h1{
       font-size:clamp(46px,7vw,98px);
@@ -202,6 +195,7 @@
       background:rgba(255,255,255,.09);
       border:1px solid var(--line);
       backdrop-filter:blur(24px);
+      -webkit-backdrop-filter:blur(24px);
       padding:32px;
       box-shadow:0 40px 100px rgba(0,0,0,.34);
       animation:float 4.2s ease-in-out infinite;
@@ -216,6 +210,7 @@
       min-height:86vh;
       display:grid;place-items:center;
       background:linear-gradient(180deg,#fff,var(--gray));
+      will-change:transform;
     }
     .brand-statement h2{
       text-align:center;
@@ -226,7 +221,7 @@
     }
     .brand-statement h2 span{color:var(--gold)}
 
-    .why-grid,.system-grid,.program-grid,.worry-grid{
+    .why-grid,.system-grid,.program-grid,.worry-grid,.proof-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:22px;
@@ -268,40 +263,54 @@
         linear-gradient(180deg,#050505,#111827);
       color:#fff;
     }
-  .data-board{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-  align-items:stretch;
-
+    .data-board{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      align-items:stretch;
     }
     .data-card{
+      min-height:420px;
       border-radius:34px;
       padding:32px;
       background:rgba(255,255,255,.08);
       border:1px solid var(--line);
       backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
       box-shadow:0 36px 90px rgba(0,0,0,.25);
+      overflow:hidden;
     }
     .data-card h3{font-size:24px;color:var(--gold2);margin-bottom:18px}
-    .data-numbers{
-      display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
-    }
+    .data-numbers{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     .number-box{
       border-radius:26px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));
+      border:1px solid rgba(255,255,255,.13);
       padding:26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .number-box::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:3px;
+      background:linear-gradient(90deg,var(--gold),transparent);
+      opacity:.7;
     }
     .number-box span{display:block;color:rgba(255,255,255,.68);font-weight:800;margin-bottom:10px}
-    .number-box strong{font-size:clamp(42px,5vw,66px);letter-spacing:-2px}
+    .number-box strong{font-size:clamp(38px,4.8vw,60px);letter-spacing:-2px;font-style:normal}
+    .number-box em{font-style:normal}
     .green{color:var(--green)}
     .red{color:var(--red)}
-    .live-visual{
-      min-height:420px;
-      display:grid;
-      place-items:center;
+    .data-note{
+      margin-top:18px;
+      color:rgba(255,255,255,.46);
+      font-size:12px;
+      line-height:1.6;
+      font-weight:600;
     }
+    .live-visual{display:grid;place-items:center}
     .body-orbit{
       position:relative;
       width:min(360px,82vw);
@@ -320,19 +329,42 @@
       box-shadow:0 0 70px rgba(55,217,158,.4);
       animation:grow 2.8s ease-in-out infinite;
     }
-    .fat,.muscle{position:absolute;border-radius:50%}
+    .fat,.muscle{position:absolute;border-radius:50%;pointer-events:none}
     .fat{width:16px;height:16px;background:var(--red);animation:fatOut 2.8s ease-in-out infinite}
     .muscle{width:14px;height:14px;background:var(--green);box-shadow:0 0 20px rgba(55,217,158,.8);animation:muscleIn 2.8s ease-in-out infinite}
     @keyframes grow{0%,100%{transform:translate(-50%,-50%) scale(.96)}50%{transform:translate(-50%,-50%) scale(1.08)}}
     @keyframes fatOut{0%{opacity:.9;transform:scale(1)}80%{opacity:.15;transform:translateY(-48px) scale(.25)}100%{opacity:0;transform:translateY(-70px) scale(0)}}
     @keyframes muscleIn{0%{opacity:.2;transform:scale(.4)}60%{opacity:1;transform:scale(1.45)}100%{opacity:.82;transform:scale(1)}}
 
-    .program-card{
-      min-height:310px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+    .heart-card{display:flex;flex-direction:column}
+    .heart-card p{
+      color:rgba(255,255,255,.68);
+      line-height:1.7;
+      font-weight:600;
+      margin-bottom:22px;
     }
+    .heart-label{
+      display:inline-flex;width:max-content;
+      padding:7px 11px;
+      border-radius:999px;
+      background:rgba(255,93,117,.14);
+      color:#ff8da0;
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:1.8px;
+      margin-bottom:14px;
+    }
+    .heart-canvas-wrap{
+      margin-top:auto;
+      border-radius:24px;
+      overflow:hidden;
+      background:rgba(0,0,0,.28);
+      border:1px solid rgba(255,255,255,.12);
+      padding:12px;
+    }
+    #heartChart{width:100%;height:220px;display:block}
+
+    .program-card{min-height:310px;display:flex;flex-direction:column;justify-content:space-between}
     .program-card .tag{
       display:inline-flex;width:max-content;
       padding:8px 12px;border-radius:999px;
@@ -360,29 +392,33 @@
       background:linear-gradient(145deg,#181818,#333);
       box-shadow:var(--shadow);
     }
-    .class-card img{
-      width:100%;height:100%;object-fit:cover;
-      opacity:.8;transition:1s ease;
-    }
+    .class-card img{width:100%;height:100%;object-fit:cover;opacity:.8;transition:1s ease}
     .class-card:hover img{transform:scale(1.06);opacity:1}
     .class-caption{
       position:absolute;left:22px;right:22px;bottom:22px;
       border-radius:24px;padding:22px;
       background:rgba(255,255,255,.86);
       backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
     }
     .class-caption h3{font-size:24px;margin-bottom:8px}
     .class-caption p{color:#555;line-height:1.6;font-weight:650}
 
-    .branch{
-      background:var(--gray);
+    .review-proof{background:#fff}
+    .proof-card{
+      border-radius:32px;
+      padding:34px;
+      background:linear-gradient(180deg,#fff,#f7f7f8);
+      border:1px solid var(--line-dark);
+      box-shadow:0 24px 80px rgba(0,0,0,.07);
+      transition:.35s ease;
     }
-    .branch-wrap{
-      display:grid;
-      grid-template-columns:.92fr 1.08fr;
-      gap:28px;
-      align-items:center;
-    }
+    .proof-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+    .proof-card strong{display:block;font-size:22px;line-height:1.55;letter-spacing:-.8px;margin-bottom:24px}
+    .proof-card span{color:var(--muted);font-weight:800}
+
+    .branch{background:var(--gray)}
+    .branch-wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:28px;align-items:center}
     .branch-card{
       border-radius:36px;
       background:#fff;
@@ -393,17 +429,8 @@
     .branch-card h3{font-size:36px;letter-spacing:-1.6px;margin-bottom:18px}
     .branch-card p{color:var(--muted);line-height:1.8;font-weight:560;margin-bottom:24px}
     .branch-info{display:grid;gap:12px}
-    .branch-info div{
-      padding:16px 18px;border-radius:18px;
-      background:#f5f5f7;
-      font-weight:800;
-    }
-    .map{
-      border-radius:36px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      background:#ddd;
-    }
+    .branch-info div{padding:16px 18px;border-radius:18px;background:#f5f5f7;font-weight:800}
+    .map{border-radius:36px;overflow:hidden;box-shadow:var(--shadow);background:#ddd}
 
     .cta-final{
       background:
@@ -418,47 +445,39 @@
       background:rgba(255,255,255,.08);
       border:1px solid var(--line);
       backdrop-filter:blur(24px);
+      -webkit-backdrop-filter:blur(24px);
       padding:54px 34px;
       box-shadow:0 40px 110px rgba(0,0,0,.36);
     }
-    .cta-box h2{
-      font-size:clamp(38px,5vw,76px);
-      line-height:1.08;
-      letter-spacing:-3px;
+    .cta-badge{
+      display:inline-flex;
+      padding:9px 15px;
+      border-radius:999px;
+      background:rgba(246,217,141,.14);
+      border:1px solid rgba(246,217,141,.28);
+      color:var(--gold2);
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.3px;
       margin-bottom:22px;
     }
-    .cta-box p{
-      color:rgba(255,255,255,.72);
-      line-height:1.8;
-      font-size:18px;
-      margin-bottom:30px;
-    }
+    .cta-box h2{font-size:clamp(38px,5vw,76px);line-height:1.08;letter-spacing:-3px;margin-bottom:22px}
+    .cta-box p{color:rgba(255,255,255,.72);line-height:1.8;font-size:18px;margin-bottom:30px}
     .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .cta-box .cta-sub{
+      margin-top:18px;
+      margin-bottom:0;
+      color:rgba(255,255,255,.52);
+      font-size:14px;
+      line-height:1.6;
+      font-weight:650;
+    }
 
-    .footer{
-      background:#000;color:#fff;
-      padding:62px 28px;
-    }
-    .footer-inner{
-      max-width:1180px;margin:0 auto;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:30px;
-      align-items:start;
-    }
-    .footer-logo{
-      font-family:Georgia,serif;
-      color:var(--gold2);
-      font-size:32px;
-      letter-spacing:2.4px;
-      margin-bottom:14px;
-    }
+    .footer{background:#000;color:#fff;padding:62px 28px}
+    .footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+    .footer-logo{font-family:Georgia,serif;color:var(--gold2);font-size:32px;letter-spacing:2.4px;margin-bottom:14px}
     .footer p{color:rgba(255,255,255,.6);line-height:1.7}
-    .footer-links{
-      display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end;
-      color:rgba(255,255,255,.75);
-      font-weight:700;
-    }
+    .footer-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end;color:rgba(255,255,255,.75);font-weight:700}
 
     .floating{
       position:fixed;
@@ -474,12 +493,18 @@
     .floating .yellow{background:#ffd400;color:#111}
     .floating .black{background:#111;color:#fff}
 
+    @media(max-width:1080px){
+      .data-board{grid-template-columns:1fr 1fr}
+      .heart-card{grid-column:1 / -1}
+    }
+
     @media(max-width:980px){
       .hamburger{display:flex}
       .menu{
         position:fixed;top:72px;left:0;width:100%;
         background:rgba(0,0,0,.94);
         backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);
         flex-direction:column;align-items:flex-start;
         padding:22px 28px;
         transform:translateY(-130%);
@@ -488,7 +513,7 @@
       }
       .menu.active{transform:translateY(0);opacity:1;pointer-events:auto}
       .menu a{padding:12px 0;width:100%}
-      .hero-inner,.data-board,.branch-wrap,.footer-inner{grid-template-columns:1fr}
+      .hero-inner,.data-board,.branch-wrap,.footer-inner,.proof-grid{grid-template-columns:1fr}
       .hero-panel{display:none}
       .why-grid,.system-grid,.program-grid,.worry-grid,.data-numbers{grid-template-columns:1fr}
       section{padding:96px 22px}
@@ -496,6 +521,8 @@
       .hero h1{letter-spacing:-2.2px}
       .class-card{min-width:82vw}
       .footer-links{justify-content:flex-start}
+      .data-card{min-height:auto}
+      .heart-card{grid-column:auto}
     }
 
     @media(max-width:560px){
@@ -504,46 +531,13 @@
       .hero h1{font-size:42px}
       .hero-actions,.cta-actions{flex-direction:column}
       .btn{width:100%}
-      .floating{
-        left:12px;right:12px;bottom:12px;
-        flex-direction:row;
-      }
+      .floating{left:12px;right:12px;bottom:12px;flex-direction:row}
       .floating a{flex:1;padding:0 12px;font-size:14px}
       .title{letter-spacing:-1.8px}
       .footer{padding-bottom:96px}
+      .brand-statement h2{letter-spacing:-2.2px}
+      .cta-badge{font-size:12px;line-height:1.5}
     }
-    .heart-card p{
-  color:rgba(255,255,255,.68);
-  line-height:1.7;
-  font-weight:600;
-  margin-bottom:22px;
-}
-
-.heart-label{
-  display:inline-flex;
-  padding:7px 11px;
-  border-radius:999px;
-  background:rgba(255,93,117,.14);
-  color:#ff8da0;
-  font-size:12px;
-  font-weight:950;
-  letter-spacing:1.8px;
-  margin-bottom:14px;
-}
-
-.heart-canvas-wrap{
-  border-radius:24px;
-  overflow:hidden;
-  background:rgba(0,0,0,.28);
-  border:1px solid rgba(255,255,255,.12);
-  padding:12px;
-}
-
-#heartChart{
-  width:100%;
-  height:220px;
-  display:block;
-}
   </style>
 </head>
 
@@ -574,17 +568,14 @@
     <div class="hero-inner parallax">
       <div class="reveal">
         <div class="eyebrow">EVERYPT OFFICIAL BRAND</div>
-        <h1>
-          운동은 더 쉽게,<br>
-          관리는 더 <span>정교하게.</span>
-        </h1>
+        <h1>운동은 더 쉽게,<br>관리는 더 <span>정교하게.</span></h1>
         <p>
           에브리피티는 단순한 헬스장이 아니라, 운동을 지속할 수 있도록 설계된
           관리형 피트니스 브랜드입니다. 무제한 PT, 소그룹 트레이닝, 심박수 기반 관리로
           당신의 운동 습관을 바꿉니다.
         </p>
         <div class="hero-actions">
-          <a href="#reserve" class="btn btn-gold">바로 예약하기</a>
+          <a href="#reserve" class="btn btn-gold">무료 체험 예약하기</a>
           <a href="#suyu" class="btn btn-dark">수유점 상담 신청</a>
         </div>
       </div>
@@ -601,12 +592,9 @@
     </div>
   </header>
 
-<section class="brand-statement parallax" id="brand">
-  <div class="container reveal">
-      <h2>
-        혼자서 실패했던 운동,<br>
-        이제는 <span>시스템</span>으로 바꿉니다.
-      </h2>
+  <section class="brand-statement parallax" id="brand">
+    <div class="container reveal">
+      <h2>혼자서 실패했던 운동,<br>이제는 <span>시스템</span>으로 바꿉니다.</h2>
     </div>
   </section>
 
@@ -646,9 +634,7 @@
       <div class="section-head reveal">
         <div class="eyebrow">EVERYPT SYSTEM</div>
         <h2 class="title">에브리피티 핵심 시스템</h2>
-        <p class="desc">
-          여러 지점으로 확장되어도 유지되어야 할 에브리피티의 핵심 기준입니다.
-        </p>
+        <p class="desc">여러 지점으로 확장되어도 유지되어야 할 에브리피티의 핵심 기준입니다.</p>
       </div>
 
       <div class="system-grid">
@@ -663,67 +649,55 @@
   </section>
 
   <section class="data" id="data">
-  
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow">BODY CHANGE DATA</div>
-        <h2 class="title">변화는 숫자로 확인됩니다</h2>
+        <h2 class="title">운동의 변화는<br>감이 아니라 데이터로 확인합니다.</h2>
         <p class="desc">
-          평균 변화와 누적 변화를 데이터로 보여주어 고객이 결과를 직관적으로 이해할 수 있게 합니다.
+          에브리피티는 인바디 변화, 근육량 증가, 체지방 감소, 심박수 흐름을 함께 확인하며
+          고객이 자신의 변화를 눈으로 이해할 수 있도록 관리합니다.
         </p>
       </div>
 
-    <div class="data-board">
-
-  <div class="data-card reveal">
-    <h3>회원 평균 변화 데이터</h3>
-    <div class="data-numbers">
-      <div class="number-box">
-        <span>평균 근육량 증가</span>
-        <strong class="green">+<em class="count" data-target="0.6" data-decimal="1">0</em>kg</strong>
-      </div>
-
-      <div class="number-box">
-        <span>평균 체지방량 감소</span>
-        <strong class="red">-<em class="count" data-target="7.8" data-decimal="1">0</em>kg</strong>
-      </div>
-
-      <div class="number-box">
-        <span>누적 근육 증가량</span>
-        <strong class="green">+<em class="live-count" data-base="128.4" data-direction="up">128.4</em>kg</strong>
-      </div>
-
-      <div class="number-box">
-        <span>누적 체지방 감소량</span>
-        <strong class="red">-<em class="live-count" data-base="936.7" data-direction="up">936.7</em>kg</strong>
-      </div>
-    </div>
-  </div>
-
-  <div class="data-card live-visual reveal">
-    <div class="body-orbit" id="bodyOrbit">
-      <div class="body-core"></div>
-    </div>
-  </div>
-
-<div class="data-card heart-card reveal">
-  <div class="heart-label">LIVE HEART RATE</div>
-  <h3>실시간 심박수 트레이닝</h3>
-  <p>
-    운동 강도를 감으로 판단하지 않고, 심박수 흐름을 보며
-    고객에게 맞는 강도로 조절합니다.
-  </p>
-  <div class="heart-canvas-wrap">
-    <canvas id="heartChart"></canvas>
-  </div>
-</div>
-
-</div>
+      <div class="data-board">
+        <div class="data-card reveal">
+          <h3>회원 평균 변화 데이터</h3>
+          <div class="data-numbers">
+            <div class="number-box">
+              <span>평균 근육량 증가</span>
+              <strong class="green">+<em class="count" data-target="0.6" data-decimal="1">0</em>kg</strong>
+            </div>
+            <div class="number-box">
+              <span>평균 체지방량 감소</span>
+              <strong class="red">-<em class="count" data-target="7.8" data-decimal="1">0</em>kg</strong>
+            </div>
+            <div class="number-box">
+              <span>누적 근육 증가량</span>
+              <strong class="green">+<em class="live-count" data-base="128.4">128.4</em>kg</strong>
+            </div>
+            <div class="number-box">
+              <span>누적 체지방 감소량</span>
+              <strong class="red">-<em class="live-count" data-base="936.7">936.7</em>kg</strong>
+            </div>
+          </div>
+          <p class="data-note">* 수치는 실제 운영 데이터 입력 전까지 예시 기준으로 표시되며, 향후 지점별 누적 데이터로 업데이트할 수 있습니다.</p>
         </div>
 
         <div class="data-card live-visual reveal">
           <div class="body-orbit" id="bodyOrbit">
             <div class="body-core"></div>
+          </div>
+        </div>
+
+        <div class="data-card heart-card reveal">
+          <div class="heart-label">LIVE HEART RATE</div>
+          <h3>실시간 심박수 트레이닝</h3>
+          <p>
+            운동 강도를 감으로 판단하지 않고, 심박수 흐름을 보며
+            고객에게 맞는 강도로 조절합니다.
+          </p>
+          <div class="heart-canvas-wrap">
+            <canvas id="heartChart"></canvas>
           </div>
         </div>
       </div>
@@ -735,34 +709,20 @@
       <div class="section-head reveal">
         <div class="eyebrow">PROGRAM</div>
         <h2 class="title">프로그램 소개</h2>
-        <p class="desc">
-          고객의 운동 빈도, 목적, 생활 패턴에 따라 선택할 수 있는 에브리피티의 기본 프로그램입니다.
-        </p>
+        <p class="desc">고객의 운동 빈도, 목적, 생활 패턴에 따라 선택할 수 있는 에브리피티의 기본 프로그램입니다.</p>
       </div>
 
       <div class="program-grid">
         <div class="card program-card reveal">
-          <div>
-            <span class="tag">BEST</span>
-            <h3>무제한 PT</h3>
-            <p>꾸준한 운동을 원하는 고객을 위한 대표 프로그램. 수업과 개인운동을 함께 활용할 수 있습니다.</p>
-          </div>
+          <div><span class="tag">BEST</span><h3>무제한 PT</h3><p>꾸준한 운동을 원하는 고객을 위한 대표 프로그램. 수업과 개인운동을 함께 활용할 수 있습니다.</p></div>
           <strong>지속형 관리</strong>
         </div>
         <div class="card program-card reveal">
-          <div>
-            <span class="tag">GROUP</span>
-            <h3>그룹 PT</h3>
-            <p>소그룹 안에서 코치의 자세 관리와 운동 루틴을 경험할 수 있는 효율적인 프로그램입니다.</p>
-          </div>
+          <div><span class="tag">GROUP</span><h3>그룹 PT</h3><p>소그룹 안에서 코치의 자세 관리와 운동 루틴을 경험할 수 있는 효율적인 프로그램입니다.</p></div>
           <strong>1:1급 코칭</strong>
         </div>
         <div class="card program-card reveal">
-          <div>
-            <span class="tag">TRIAL</span>
-            <h3>체험권</h3>
-            <p>처음 방문하는 고객이 수업 방식, 분위기, 운동 강도를 직접 확인할 수 있습니다.</p>
-          </div>
+          <div><span class="tag">TRIAL</span><h3>체험권</h3><p>처음 방문하는 고객이 수업 방식, 분위기, 운동 강도를 직접 확인할 수 있습니다.</p></div>
           <strong>무료 체험 가능</strong>
         </div>
       </div>
@@ -774,9 +734,7 @@
       <div class="section-head reveal">
         <div class="eyebrow">CLASS MOOD</div>
         <h2 class="title">실제 수업 분위기</h2>
-        <p class="desc">
-          운동 공간, 수업 장면, 회원 변화 자료를 브랜드 경험처럼 보여주는 영역입니다.
-        </p>
+        <p class="desc">운동 공간, 수업 장면, 회원 변화 자료를 브랜드 경험처럼 보여주는 영역입니다.</p>
       </div>
 
       <div class="class-slider reveal">
@@ -796,6 +754,31 @@
           <img src="review.png" alt="에브리피티 고객 후기" loading="lazy">
           <div class="class-caption"><h3>실제 고객 후기</h3><p>회원이 직접 남긴 수업 경험</p></div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="review-proof">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="eyebrow">MEMBER PROOF</div>
+        <h2 class="title">운동을 망설이던 분들이<br>에브리피티에서 계속하는 이유</h2>
+        <p class="desc">처음에는 걱정으로 시작하지만, 결국 꾸준함을 만드는 것은 관리와 분위기입니다.</p>
+      </div>
+
+      <div class="proof-grid">
+        <div class="proof-card reveal">
+          <strong>“혼자서는 못 했는데, 예약된 수업이 있으니 계속 오게 돼요.”</strong>
+          <span>운동 습관 형성 후기</span>
+        </div>
+        <div class="proof-card reveal">
+          <strong>“심박수를 보면서 하니까 내가 제대로 운동하고 있다는 느낌이 들어요.”</strong>
+          <span>심박수 기반 수업 후기</span>
+        </div>
+        <div class="proof-card reveal">
+          <strong>“체중보다 인바디 변화가 보여서 동기부여가 확실했어요.”</strong>
+          <span>체성분 변화 후기</span>
+        </div>
       </div>
     </div>
   </section>
@@ -823,9 +806,7 @@
       <div class="section-head reveal">
         <div class="eyebrow">CURRENT BRANCH</div>
         <h2 class="title">에브리피티 수유점</h2>
-        <p class="desc">
-          현재 운영 중인 에브리피티 지점입니다. 수유역 근처에서 관리형 피트니스 프로그램을 경험할 수 있습니다.
-        </p>
+        <p class="desc">현재 운영 중인 에브리피티 지점입니다. 수유역 근처에서 관리형 피트니스 프로그램을 경험할 수 있습니다.</p>
       </div>
 
       <div class="branch-wrap">
@@ -852,22 +833,18 @@
   <section class="cta-final" id="reserve">
     <div class="container">
       <div class="cta-box reveal">
- <h2>
-  운동을 다시 시작해야겠다고<br>
-  느낀 순간이 가장 좋은 타이밍입니다.
-</h2>
-
-<p>
-  처음부터 잘할 필요는 없습니다.
-  에브리피티는 운동을 어려워하는 분들도 부담 없이 시작할 수 있도록
-  체력, 목적, 컨디션에 맞춰 수업 강도를 조절합니다.
-  먼저 무료 체험으로 나에게 맞는 운동인지 확인해보세요.
-</p>
+        <div class="cta-badge">첫 방문 고객 무료 체험 가능 · 상담 후 등록 여부 자유 결정</div>
+        <h2>운동을 다시 시작해야겠다고<br>느낀 순간이 가장 좋은 타이밍입니다.</h2>
+        <p>
+          처음부터 잘할 필요는 없습니다. 에브리피티는 운동을 어려워하는 분들도 부담 없이 시작할 수 있도록
+          체력, 목적, 컨디션에 맞춰 수업 강도를 조절합니다. 먼저 무료 체험으로 나에게 맞는 운동인지 확인해보세요.
+        </p>
         <div class="cta-actions">
-   <a href="#" class="btn btn-gold">무료 체험 예약하기</a>
-<a href="#" class="btn btn-dark">카카오톡으로 상담하기</a>
-<a href="#" class="btn btn-primary">수유점 프로그램 보기</a>
+          <a href="#" class="btn btn-gold">무료 체험 예약하기</a>
+          <a href="#" class="btn btn-dark">카카오톡으로 상담하기</a>
+          <a href="#program" class="btn btn-primary">프로그램 보기</a>
         </div>
+        <p class="cta-sub">무료 체험 후 등록 여부는 자유롭게 결정하실 수 있으며, 상담은 부담 없이 진행됩니다.</p>
       </div>
     </div>
   </section>
@@ -953,141 +930,150 @@
 
     document.querySelectorAll(".count").forEach(el => countObserver.observe(el));
 
-document.querySelectorAll(".live-count").forEach(el => {
-  let value = parseFloat(el.dataset.base);
+    document.querySelectorAll(".live-count").forEach(el => {
+      let value = parseFloat(el.dataset.base);
+      setInterval(() => {
+        let speed = Math.random() * 0.12;
+        if (Math.random() > 0.82) speed += Math.random() * 0.28;
+        value += speed;
+        el.textContent = value.toFixed(1);
+      }, 900);
+    });
 
-  setInterval(() => {
-    let speed = Math.random() * 0.12;
-
-    if (Math.random() > 0.82) {
-      speed += Math.random() * 0.28;
+    const orbit = document.getElementById("bodyOrbit");
+    if (orbit) {
+      setInterval(() => {
+        const dot = document.createElement("span");
+        dot.className = Math.random() > 0.5 ? "muscle" : "fat";
+        dot.style.left = `${30 + Math.random() * 40}%`;
+        dot.style.top = `${30 + Math.random() * 40}%`;
+        orbit.appendChild(dot);
+        setTimeout(() => dot.remove(), 3000);
+      }, 300);
     }
 
-    value += speed;
-    el.textContent = value.toFixed(1);
-  }, 900);
-});
+    if (window.innerWidth > 980) {
+      document.querySelectorAll(".card,.data-card,.branch-card,.cta-box,.proof-card").forEach(card => {
+        card.addEventListener("mousemove", e => {
+          const r = card.getBoundingClientRect();
+          const x = e.clientX - r.left - r.width / 2;
+          const y = e.clientY - r.top - r.height / 2;
+          card.style.transform = `perspective(900px) rotateX(${y / -80}deg) rotateY(${x / 80}deg) translateY(-6px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+        });
+      });
+    }
 
-const orbit = document.getElementById("bodyOrbit");
+    const canvas = document.getElementById("heartChart");
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      let heartData = Array(50).fill(100);
+      let phase = 0;
+      let phaseTime = 0;
 
-if (orbit) {
-  setInterval(() => {
-    const dot = document.createElement("span");
-    dot.className = Math.random() > 0.5 ? "muscle" : "fat";
+      function resizeCanvas(){
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
 
-    dot.style.left = `${30 + Math.random() * 40}%`;
-    dot.style.top = `${30 + Math.random() * 40}%`;
+      function drawChart() {
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        ctx.clearRect(0, 0, width, height);
 
-    orbit.appendChild(dot);
+        ctx.fillStyle = "rgba(255,255,255,0.03)";
+        ctx.fillRect(0, 0, width, height);
 
-    setTimeout(() => dot.remove(), 3000);
-  }, 300);
-}
+        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+        ctx.lineWidth = 1;
 
-document.querySelectorAll(".card,.data-card,.branch-card,.cta-box").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const r = card.getBoundingClientRect();
-    const x = e.clientX - r.left - r.width / 2;
-    const y = e.clientY - r.top - r.height / 2;
+        for (let x = 0; x < width; x += 40) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
 
-    card.style.transform =
-      `perspective(900px) rotateX(${y / -80}deg) rotateY(${x / 80}deg) translateY(-6px)`;
-  });
+        for (let y = 0; y < height; y += 40) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+          ctx.stroke();
+        }
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
-  });
-});
+        const gradient = ctx.createLinearGradient(0, 0, width, 0);
+        gradient.addColorStop(0, "#ff5d75");
+        gradient.addColorStop(0.5, "#f6d98d");
+        gradient.addColorStop(1, "#37d99e");
 
-const canvas = document.getElementById("heartChart");
+        const scale = height / 190;
+        const step = width / (heartData.length - 1);
 
-if (canvas) {
-  const ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        heartData.forEach((v, i) => {
+          const x = i * step;
+          const y = height - (v * scale);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
 
-  canvas.width = 400;
-  canvas.height = 200;
+        ctx.shadowColor = "rgba(255,93,117,0.8)";
+        ctx.shadowBlur = 14;
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 4;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
 
-  let heartData = Array(50).fill(80);
+        const bpm = Math.round(heartData[heartData.length - 1]);
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "700 22px -apple-system, BlinkMacSystemFont, sans-serif";
+        ctx.fillText(`${bpm} BPM`, 18, 34);
+      }
 
- function drawChart() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+      function updateHeart() {
+        phaseTime++;
+        if (phaseTime > 80) {
+          phase = (phase + 1) % 4;
+          phaseTime = 0;
+        }
 
-  ctx.fillStyle = "rgba(255,255,255,0.03)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+        let base = 100;
+        if (phase === 0) base = 105;
+        if (phase === 1) base = 130;
+        if (phase === 2) base = 150;
+        if (phase === 3) base = 118;
 
-  ctx.strokeStyle = "rgba(255,255,255,0.08)";
-  ctx.lineWidth = 1;
+        const rhythm = Math.sin(Date.now() / 300) * 10;
+        const breathing = Math.sin(Date.now() / 650) * 6;
+        const spike = phase === 2 && Math.random() > 0.94 ? 24 : 0;
+        const noise = (Math.random() - 0.5) * 6;
 
-  for (let x = 0; x < canvas.width; x += 40) {
-    ctx.beginPath();
-    ctx.moveTo(x, 0);
-    ctx.lineTo(x, canvas.height);
-    ctx.stroke();
-  }
+        let next = base + rhythm + breathing + spike + noise;
+        next = Math.max(78, Math.min(178, next));
 
-  for (let y = 0; y < canvas.height; y += 40) {
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(canvas.width, y);
-    ctx.stroke();
-  }
+        heartData.push(next);
+        heartData.shift();
+        drawChart();
+      }
 
-  const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-  gradient.addColorStop(0, "#ff5d75");
-  gradient.addColorStop(0.5, "#f6d98d");
-  gradient.addColorStop(1, "#37d99e");
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+      setInterval(updateHeart, 120);
+    }
 
-  ctx.beginPath();
-  ctx.moveTo(0, canvas.height - heartData[0]);
-
-  heartData.forEach((v, i) => {
-    ctx.lineTo(i * 8, canvas.height - v);
-  });
-
-  ctx.shadowColor = "rgba(255,93,117,0.8)";
-  ctx.shadowBlur = 14;
-  ctx.strokeStyle = gradient;
-  ctx.lineWidth = 4;
-  ctx.stroke();
-  ctx.shadowBlur = 0;
-
-  const bpm = Math.round(heartData[heartData.length - 1]);
-
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "700 22px -apple-system, BlinkMacSystemFont, sans-serif";
-  ctx.fillText(`${bpm} BPM`, 18, 34);
-}
-
-function updateHeart() {
-  const time = Date.now() / 500;
-
-  const warmUp = 115;
-  const rhythm = Math.sin(time) * 18;
-  const breathing = Math.sin(time * 0.45) * 8;
-  const spike = Math.random() > 0.96 ? 32 : 0;
-  const noise = (Math.random() - 0.5) * 6;
-
-  let next = warmUp + rhythm + breathing + spike + noise;
-
-  next = Math.max(78, Math.min(178, next));
-
-  heartData.push(next);
-  heartData.shift();
-
-  drawChart();
-}
-
-  setInterval(updateHeart, 120);
-}
-
-window.addEventListener("scroll", () => {
-  const scrolled = window.scrollY;
-
-  document.querySelectorAll(".parallax").forEach((el, index) => {
-    const speed = 0.1 + index * 0.05;
-    el.style.transform = `translateY(${scrolled * speed}px)`;
-  });
-});
+    window.addEventListener("scroll", () => {
+      const scrolled = window.scrollY;
+      document.querySelectorAll(".parallax").forEach((el, index) => {
+        if (window.innerWidth <= 980) return;
+        const speed = 0.08 + index * 0.035;
+        el.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
   </script>
 </body>
 </html>
