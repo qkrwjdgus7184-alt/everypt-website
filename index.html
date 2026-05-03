@@ -226,9 +226,8 @@
       border-radius:26px;padding:28px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
       position:relative;overflow:hidden;
     }
-    .live-number::after{
-      content:"";position:absolute;right:-50px;top:-50px;width:150px;height:150px;border-radius:50%;
-      background:rgba(244,213,139,.14);
+  .live-number::after {
+  display: none;
     }
     .live-number .label{position:relative;z-index:1;color:rgba(255,255,255,.72);font-weight:850;margin-bottom:10px}
     .live-number .big{position:relative;z-index:1;font-size:clamp(38px,5vw,64px);font-weight:980;letter-spacing:-2px}
@@ -412,22 +411,144 @@
       .bpm{font-size:56px}
       .floating{left:14px;right:14px;flex-direction:row}.floating a{flex:1;min-width:auto}
     }
+    .body-change-box {
+  width: 100%;
+  text-align: center;
+}
+
+.body-title {
+  color: var(--gold2);
+  font-weight: 950;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+
+.body-stage {
+  position: relative;
+  width: min(360px, 78vw);
+  height: 360px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(52,211,153,.18), transparent 52%),
+    radial-gradient(circle, rgba(244,213,139,.12), transparent 68%);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 0 80px rgba(52,211,153,.15);
+  overflow: hidden;
+}
+
+.body-stage .body-core {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 118px;
+  height: 190px;
+  transform: translate(-50%, -50%);
+  border-radius: 70px 70px 46px 46px;
+  background: linear-gradient(180deg, #34d399, #38bdf8);
+  box-shadow: 0 0 60px rgba(52,211,153,.35);
+  animation: muscleGrow 2.8s ease-in-out infinite;
+}
+
+.fat-layer span {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #fb7185;
+  border-radius: 50%;
+  opacity: .75;
+  animation: fatBurn 2.8s ease-in-out infinite;
+}
+
+.fat-layer span:nth-child(1) { left: 28%; top: 35%; animation-delay: .1s; }
+.fat-layer span:nth-child(2) { left: 66%; top: 32%; animation-delay: .4s; }
+.fat-layer span:nth-child(3) { left: 70%; top: 64%; animation-delay: .7s; }
+.fat-layer span:nth-child(4) { left: 25%; top: 68%; animation-delay: 1s; }
+
+.muscle-layer span {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #34d399;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(52,211,153,.7);
+  animation: muscleDot 2.8s ease-in-out infinite;
+}
+
+.muscle-layer span:nth-child(1) { left: 45%; top: 45%; animation-delay: .2s; }
+.muscle-layer span:nth-child(2) { left: 55%; top: 50%; animation-delay: .5s; }
+.muscle-layer span:nth-child(3) { left: 48%; top: 60%; animation-delay: .8s; }
+.muscle-layer span:nth-child(4) { left: 58%; top: 62%; animation-delay: 1.1s; }
+
+.body-caption {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.body-caption strong {
+  color: #fff;
+  background: rgba(255,255,255,.09);
+  border: 1px solid rgba(255,255,255,.14);
+  padding: 12px 16px;
+  border-radius: 999px;
+}
+
+@keyframes muscleGrow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(.95);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes fatBurn {
+  0% {
+    transform: scale(1);
+    opacity: .8;
+  }
+  70% {
+    transform: scale(.35) translateY(-40px);
+    opacity: .25;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes muscleDot {
+  0% {
+    transform: scale(.4);
+    opacity: .2;
+  }
+  60% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: .8;
+  }
+}
   </style>
 </head>
 
-<body class="lock">
-
+<body>
   <script>
     /* DATA SETTINGS: 실제 누적 데이터가 있으면 여기 숫자만 수정하세요 */
-    window.EVERYPT_DATA = {
-      memberMuscleGainKg: 0.6,
-      memberFatLossKg: 7.8,
-      totalMuscleGainKg: 128.4,
-      totalFatLossKg: 936.7,
-      reviewCount: 463,
-      bpmMin: 118,
-      bpmMax: 156
-    };
+ const DATA = Object.freeze({
+  memberMuscleGainKg: 0.6,
+  memberFatLossKg: 7.8,
+  totalMuscleGainKg: 128.4,
+  totalFatLossKg: 936.7,
+  reviewCount: 463,
+  bpmMin: 118,
+  bpmMax: 156
+});
 
     window.EVERYPT_LINKS = {
       naver: "#contact",
@@ -568,12 +689,12 @@
           <p>개별 회원님의 인바디 변화 예시입니다. 숫자가 움직이며 변화의 방향을 직관적으로 보여줍니다.</p>
           <div class="live-numbers">
             <div class="live-number">
-              <div class="label">근육량 증가</div>
+              <div class="label">평균 근육량 증가</div>
               <div class="big green">+<span class="count" data-key="memberMuscleGainKg" data-decimal="1">0</span>kg</div>
               <small>운동을 통해 증가하는 근육량</small>
             </div>
             <div class="live-number">
-              <div class="label">체지방량 감소</div>
+              <div class="label">평균 체지방량 감소</div>
               <div class="big red">-<span class="count" data-key="memberFatLossKg" data-decimal="1">0</span>kg</div>
               <small>다이어트를 통해 감소하는 지방량</small>
             </div>
@@ -588,11 +709,28 @@
           </div>
         </div>
 
-        <div class="live-panel body-visual reveal-right">
-          <div class="body-ring" id="bodyRing">
-            <div class="body-core"></div>
-          </div>
-        </div>
+     <div class="live-panel body-visual reveal-right">
+  <div class="body-change-box">
+    <div class="body-title">BODY CHANGE SIMULATION</div>
+
+    <div class="body-stage">
+      <div class="fat-layer">
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="body-core"></div>
+
+      <div class="muscle-layer">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="body-caption">
+      <strong>근육은 채워지고</strong>
+      <strong>지방은 줄어듭니다</strong>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </section>
@@ -757,7 +895,7 @@
         <div class="price-image-card reveal-left zoomable"><img loading="lazy" src="price-compare.png"></div>
         <div class="price-highlight tilt reveal-right">
           <div class="label">BEST VALUE</div>
-          <h3>월 최소 180,000원<br>무제한 PT</h3>
+          <h3>1:1 PT 대비 최대 80% 절감<br>무제한 PT</h3>
           <p>1:1 PT 비용이 부담스러웠던 분들에게 에브리피티의 무제한 PT는 꾸준한 운동을 시작할 수 있는 현실적인 선택입니다.</p>
           <div class="price-list">
             <div><strong>01</strong> 정기적으로 운동하고 싶은 분께 추천</div>
@@ -862,7 +1000,6 @@
   </div>
 
   <script>
-    const DATA = window.EVERYPT_DATA;
     const loader = document.getElementById("loader");
     const header = document.getElementById("header");
     const progress = document.getElementById("progress");
@@ -960,42 +1097,76 @@
       }
     }
 
-    const bpmEl = document.getElementById("bpm");
-    const path = document.getElementById("hrPath");
-    const dot = document.getElementById("hrDot");
-    let hrPoints = Array.from({ length: 48 }, (_, i) => 130 + Math.sin(i * 0.5) * 28);
+   const bpmEl = document.getElementById("bpm");
+const path = document.getElementById("hrPath");
+const dot = document.getElementById("hrDot");
 
-    function updateHeartGraph() {
-      const min = DATA.bpmMin;
-      const max = DATA.bpmMax;
-      const next = min + Math.random() * (max - min);
-      hrPoints.push(next);
-      hrPoints = hrPoints.slice(-48);
-      bpmEl.textContent = Math.round(next);
+let hrTime = 0;
+let currentBpm = 132;
+let targetBpm = 142;
 
-      const w = 720, h = 290;
-      const xStep = w / (hrPoints.length - 1);
-      const yMap = v => h - 35 - ((v - 90) / 90) * 220;
+function smoothNoise(t) {
+  return (
+    Math.sin(t * 0.9) * 18 +
+    Math.sin(t * 1.7) * 9 +
+    Math.sin(t * 3.1) * 5 +
+    Math.sin(t * 4.8) * 3
+  );
+}
 
-      let d = "";
-      hrPoints.forEach((v, i) => {
-        const x = i * xStep;
-        const y = yMap(v);
-        if (i === 0) d += `M ${x} ${y}`;
-        else {
-          const prevX = (i - 1) * xStep;
-          const prevY = yMap(hrPoints[i - 1]);
-          const cx = (prevX + x) / 2;
-          d += ` C ${cx} ${prevY}, ${cx} ${y}, ${x} ${y}`;
-        }
-      });
+function updateHeartGraphSmooth() {
+  if (!bpmEl || !path || !dot) return;
 
-      path.setAttribute("d", d);
-      dot.setAttribute("cx", w);
-      dot.setAttribute("cy", yMap(hrPoints[hrPoints.length - 1]));
-    }
-    updateHeartGraph();
-    setInterval(updateHeartGraph, 650);
+  const min = DATA.bpmMin || 118;
+  const max = DATA.bpmMax || 156;
+
+  hrTime += 0.025;
+
+  if (Math.random() < 0.01) {
+    targetBpm = min + Math.random() * (max - min);
+  }
+
+  currentBpm += (targetBpm - currentBpm) * 0.025;
+
+  const liveBpm = currentBpm + smoothNoise(hrTime) * 0.12;
+  bpmEl.textContent = Math.round(liveBpm);
+
+  const w = 720;
+  const h = 290;
+  const points = [];
+
+  for (let i = 0; i < 110; i++) {
+    const x = (i / 109) * w;
+    const t = hrTime + i * 0.055;
+    const bpm = currentBpm + smoothNoise(t);
+    const y = h - 35 - ((bpm - 90) / 90) * 220;
+    points.push({ x, y });
+  }
+
+  let d = `M ${points[0].x} ${points[0].y}`;
+
+  for (let i = 1; i < points.length; i++) {
+    const prev = points[i - 1];
+    const curr = points[i];
+
+    const cp1x = prev.x + (curr.x - prev.x) * 0.45;
+    const cp1y = prev.y;
+    const cp2x = prev.x + (curr.x - prev.x) * 0.55;
+    const cp2y = curr.y;
+
+    d += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${curr.x} ${curr.y}`;
+  }
+
+  path.setAttribute("d", d);
+
+  const last = points[points.length - 1];
+  dot.setAttribute("cx", last.x);
+  dot.setAttribute("cy", last.y);
+
+  requestAnimationFrame(updateHeartGraphSmooth);
+}
+
+updateHeartGraphSmooth();
 
     document.querySelectorAll(".faq-q").forEach(q => {
       q.addEventListener("click", () => q.parentElement.classList.toggle("active"));
@@ -1019,6 +1190,26 @@
     modalClose.addEventListener("click", closeModal);
     modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
-  </script>
+
+function liveTotalCounter(selector, baseValue, direction = "up", decimal = 1) {
+  const el = document.querySelector(selector);
+  if (!el) return;
+
+  let value = baseValue;
+
+  setInterval(() => {
+    const movement = Math.random() * 0.08;
+    value = direction === "up" ? value + movement : value - movement;
+    el.textContent = Math.abs(value).toFixed(decimal);
+  }, 1200);
+}
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    liveTotalCounter('[data-key="totalMuscleGainKg"]', DATA.totalMuscleGainKg, "up", 1);
+    liveTotalCounter('[data-key="totalFatLossKg"]', DATA.totalFatLossKg, "down", 1);
+  }, 2500);
+});
+</script>
 </body>
 </html>
