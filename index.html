@@ -136,7 +136,7 @@
       50%{box-shadow:0 24px 70px rgba(246,217,141,.46);transform:translateY(-2px) scale(1.02)}
     }
 
-    section{padding:130px 28px}
+section{padding:100px 28px}
     .container{max-width:1180px;margin:0 auto}
     .section-head{text-align:center;margin-bottom:62px}
     .eyebrow{
@@ -213,13 +213,13 @@
       align-items:center;
       will-change:transform;
     }
-    .hero h1{
-      font-size:clamp(46px,7vw,98px);
-      line-height:.98;
-      letter-spacing:-4px;
-      font-weight:980;
-      margin-bottom:28px;
-    }
+ .hero h1{
+  font-size:clamp(42px,5.8vw,82px);
+  line-height:1.08;
+  letter-spacing:-3px;
+  font-weight:980;
+  margin-bottom:28px;
+}
     .hero h1 span{color:var(--gold2)}
     .hero p{
       max-width:680px;
@@ -331,14 +331,15 @@
     }
     .data-card h3{font-size:24px;color:var(--gold2);margin-bottom:18px}
     .data-numbers{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .number-box{
-      border-radius:26px;
-      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));
-      border:1px solid rgba(255,255,255,.13);
-      padding:26px;
-      position:relative;
-      overflow:hidden;
-    }
+ .number-box{
+  border-radius:26px;
+  min-width:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));
+  border:1px solid rgba(255,255,255,.13);
+  padding:26px;
+  position:relative;
+  overflow:hidden;
+}
     .number-box::after{
       content:"";
       position:absolute;
@@ -348,7 +349,12 @@
       opacity:.7;
     }
     .number-box span{display:block;color:rgba(255,255,255,.68);font-weight:800;margin-bottom:10px}
-    .number-box strong{font-size:clamp(38px,4.8vw,60px);letter-spacing:-2px;font-style:normal}
+  .number-box strong{
+  font-size:clamp(30px,3.8vw,48px);
+  letter-spacing:-1.5px;
+  font-style:normal;
+  white-space:nowrap;
+};letter-spacing:-2px;font-style:normal}
     .number-box em{font-style:normal}
     .green{color:var(--green)}
     .red{color:var(--red)}
@@ -573,7 +579,7 @@
       .hero-inner,.data-board,.branch-wrap,.footer-inner,.proof-grid{grid-template-columns:1fr}
       .hero-panel{display:none}
       .why-grid,.system-grid,.program-grid,.worry-grid,.data-numbers{grid-template-columns:1fr}
-      section{padding:96px 22px}
+      section{padding:68px 16px}
       .hero{padding:132px 22px 74px;min-height:860px}
       .hero h1{letter-spacing:-2.2px}
       .class-card{min-width:82vw}
@@ -839,8 +845,11 @@
     <div class="hero-inner parallax">
       <div class="reveal">
         <div class="eyebrow">EVERYPT OFFICIAL BRAND</div>
-        <h1>운동을 못하는 이유는<br>
-의지가 아니라 <span>시스템입니다.</span>
+      <h1>
+  운동을 못하는 이유는<br>
+  의지가 아니라 <span>시스템입니다.</span>
+</h1>
+<p>
         <p>
           에브리피티는 단순한 헬스장이 아니라, 운동을 지속할 수 있도록 설계된
           관리형 피트니스 브랜드입니다. 무제한 PT, 소그룹 트레이닝, 심박수 기반 관리로
