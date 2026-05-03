@@ -757,10 +757,62 @@
   font-size:17px;
   line-height:1.75;
 }
+    .intro-loader{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  background:#050505;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  transition:opacity .8s ease, visibility .8s ease;
+}
+
+.intro-loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.intro-logo{
+  font-family:Georgia,serif;
+  color:#f6d98d;
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:4px;
+  margin-bottom:26px;
+}
+
+.intro-line{
+  width:220px;
+  height:3px;
+  background:rgba(255,255,255,.16);
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.intro-line span{
+  display:block;
+  width:0;
+  height:100%;
+  background:linear-gradient(90deg,#d6ad5f,#f6d98d);
+  animation:introLoad 1.8s ease forwards;
+}
+
+@keyframes introLoad{
+  from{width:0}
+  to{width:100%}
+}
   </style>
 </head>
 
 <body>
+  <div class="intro-loader" id="introLoader">
+  <div class="intro-logo">EVERYPT</div>
+  <div class="intro-line">
+    <span></span>
+  </div>
+</div>
   <div class="progress" id="progress"></div>
 
   <nav class="nav" id="nav">
@@ -795,11 +847,11 @@
           당신의 운동 습관을 바꿉니다.
         </p>
         <div class="hero-actions">
-          <a href="#reserve" class="btn btn-gold">무료 체험 예약하기</a>
+          <a href="#reserve" class="btn btn-gold">지금 무료 체험 예약하기</a>
           <a href="#suyu" class="btn btn-dark">수유점 상담 신청</a>
         </div>
           <div class="hero-proof">
-  지금까지 많은 고객님들이 무료 체험 후 에브리피티에서 운동을 시작했습니다.
+ 지금까지 수많은 고객님들이 무료 체험 후 에브리피티에서 운동을 시작했습니다.
 </div>
       </div>
 
@@ -844,7 +896,7 @@
     <div class="mid-cta-box">
       <h2>운동을 시작할지 고민된다면,<br>먼저 체험해보세요.</h2>
       <p>에브리피티는 첫 방문 고객님께 무료 체험 기회를 제공합니다. 부담 없이 수업 방식과 분위기를 확인해보세요.</p>
-      <a href="#reserve" class="btn btn-gold">무료 체험 예약하기</a>
+      <a href="#reserve" class="btn btn-gold">지금 무료 체험 예약하기</a>
     </div>
   </div>
 </section>
@@ -1064,7 +1116,7 @@
 </div>
 
 <p class="cta-urgency">
-현재 무료 체험은 하루 예약 인원이 제한되어 있어 선착순으로 마감됩니다.
+현재 무료 체험은 하루 예약 인원이 제한되어 있어 빠르게 마감될 수 있습니다.
 </p>
       <p class="cta-sub">
   체험 후 등록을 강요하지 않습니다. 운동 방식이 나에게 맞는지 먼저 확인해보세요.
@@ -1304,6 +1356,12 @@ document.querySelectorAll(".everypt-faq-item").forEach(item => {
 
     item.classList.toggle("active");
   });
+});
+    window.addEventListener("load", () => {
+  const introLoader = document.getElementById("introLoader");
+  setTimeout(() => {
+    introLoader.classList.add("hide");
+  }, 1900);
 });
   </script>
 </body>
