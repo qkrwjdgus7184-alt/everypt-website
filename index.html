@@ -830,15 +830,32 @@ section{padding:80px 28px}
     .mid-cta{
   padding-top:0;
 }
-    /* WHY EVERYPT 영역 배경 통일 */
-section:nth-of-type(2){
-  background:#fff;
-}
-
 .unit{
   font-size:14px;
   opacity:.7;
   margin-left:2px;
+}
+    @media(max-width:560px){
+
+  .brand-statement .container{
+    max-width:100%;
+    padding:0 16px;
+  }
+
+  .brand-statement{
+    padding:80px 20px;
+    background:#fff;
+  }
+
+  .brand-statement h2{
+    width:100%;
+    margin:0 auto;
+    text-align:center;
+  }
+.brand-statement{
+  background:#fff;
+  width:100%;
+}
 }
   </style>
 </head>
@@ -1245,16 +1262,6 @@ section:nth-of-type(2){
       });
     }, {threshold:.5});
     document.querySelectorAll(".count").forEach(el => countObserver.observe(el));
-
-    document.querySelectorAll(".live-count").forEach(el => {
-      let value = parseFloat(el.dataset.base);
-      setInterval(() => {
-        let speed = Math.random() * 0.12;
-        if (Math.random() > 0.82) speed += Math.random() * 0.28;
-        value += speed;
-        el.textContent = Math.round(value);
-      }, 900);
-    });
 
     const orbit = document.getElementById("bodyOrbit");
     if (orbit) {
