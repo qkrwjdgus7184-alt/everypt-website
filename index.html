@@ -1793,8 +1793,8 @@ ctx.fillText(`${bpm} BPM`, 18, 34);
 
       resizeCanvas();
       window.addEventListener("resize", resizeCanvas);
-      setInterval(updateHeart, 65);
-    }
+   const heartInterval = window.innerWidth <= 560 ? 110 : 65;
+setInterval(updateHeart, heartInterval);
   
 document.querySelectorAll(".everypt-faq-item").forEach(item => {
   const btn = item.querySelector(".everypt-faq-btn");
