@@ -1224,6 +1224,281 @@
         min-width: auto;
       }
     }
+    /* =========================
+   NEW EVERYPT DETAIL SECTIONS
+========================= */
+
+.proof-section {
+  background: #fff;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 42px;
+  align-items: center;
+}
+
+.proof-image {
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.proof-image img {
+  width: 100%;
+}
+
+.proof-copy {
+  background: linear-gradient(145deg, #ffffff, #f6f7fb);
+  border: 1px solid var(--line);
+  border-radius: 36px;
+  padding: 44px;
+  box-shadow: 0 24px 70px rgba(7,24,70,0.08);
+}
+
+.proof-copy .badge {
+  display: inline-flex;
+  background: #ffe500;
+  color: #111;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 950;
+  margin-bottom: 20px;
+}
+
+.proof-copy h3 {
+  color: var(--navy);
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.22;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+.proof-copy p {
+  color: #374151;
+  font-size: 18px;
+  line-height: 1.85;
+  font-weight: 600;
+}
+
+.proof-copy strong {
+  color: #ef3333;
+}
+
+.detail-system {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(214,173,95,0.16), transparent 32%),
+    linear-gradient(180deg, #081532, #050914);
+  color: #fff;
+}
+
+.detail-system .title {
+  color: #fff;
+}
+
+.detail-system .desc {
+  color: rgba(255,255,255,0.74);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.detail-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 34px;
+  padding: 26px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 28px 80px rgba(0,0,0,0.22);
+  transition: transform 0.35s ease, background 0.35s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,0.12);
+}
+
+.detail-card img {
+  width: 100%;
+  border-radius: 24px;
+  margin-bottom: 24px;
+}
+
+.detail-card h3 {
+  color: var(--gold2);
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+.detail-card p {
+  color: rgba(255,255,255,0.78);
+  font-size: 17px;
+  line-height: 1.75;
+  font-weight: 560;
+}
+
+.service-section {
+  background: var(--cream);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.service-card {
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(7,24,70,0.08);
+  border-radius: 34px;
+  padding: 26px;
+  box-shadow: 0 24px 70px rgba(7,24,70,0.08);
+  backdrop-filter: blur(16px);
+  transition: transform 0.35s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+.service-card img {
+  width: 100%;
+  border-radius: 24px;
+  margin-bottom: 22px;
+}
+
+.service-card h3 {
+  color: var(--navy);
+  font-size: 24px;
+  margin-bottom: 12px;
+  letter-spacing: -0.8px;
+}
+
+.service-card p {
+  color: #4b5563;
+  line-height: 1.75;
+  font-weight: 600;
+}
+
+.price-section {
+  background: #fff;
+}
+
+.price-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+  align-items: stretch;
+}
+
+.price-image-card {
+  border-radius: 36px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  background: #fff;
+}
+
+.price-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.price-highlight {
+  background:
+    radial-gradient(circle at 80% 0%, rgba(214,173,95,0.22), transparent 34%),
+    linear-gradient(145deg, var(--navy), var(--navy2));
+  color: #fff;
+  border-radius: 36px;
+  padding: 44px;
+  box-shadow: 0 30px 90px rgba(7,24,70,0.22);
+}
+
+.price-highlight .label {
+  display: inline-flex;
+  background: var(--gold2);
+  color: #111;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 950;
+  margin-bottom: 22px;
+}
+
+.price-highlight h3 {
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+}
+
+.price-highlight p {
+  color: rgba(255,255,255,0.78);
+  line-height: 1.8;
+  font-weight: 600;
+  margin-bottom: 26px;
+}
+
+.price-list {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.price-list div {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 18px;
+  padding: 16px 18px;
+  font-weight: 900;
+}
+
+.price-list strong {
+  color: var(--gold2);
+}
+
+.timetable-section {
+  background: var(--gray);
+}
+
+.timetable-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.timetable-wrap img {
+  width: 100%;
+}
+
+@media (max-width: 980px) {
+  .proof-grid,
+  .detail-grid,
+  .service-grid,
+  .price-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .proof-copy,
+  .price-highlight {
+    padding: 30px;
+    border-radius: 30px;
+  }
+
+  .service-grid {
+    gap: 18px;
+  }
+}
   </style>
 </head>
 
@@ -1244,14 +1519,15 @@
         <span></span>
       </div>
 
-      <div class="menu" id="menu">
-        <a href="#brand">BRAND</a>
-        <a href="#unlimited">UNLIMITED PT</a>
-        <a href="#coach">COACH</a>
-        <a href="#result">RESULT</a>
-        <a href="#review">REVIEW</a>
-        <a href="#contact" class="reserve">무료 체험 예약</a>
-      </div>
+    <div class="menu" id="menu">
+  <a href="#brand">BRAND</a>
+  <a href="#unlimited">UNLIMITED PT</a>
+  <a href="#system-detail">SYSTEM</a>
+  <a href="#price">PRICE</a>
+  <a href="#coach">COACH</a>
+  <a href="#review">REVIEW</a>
+  <a href="#contact" class="reserve">무료 체험 예약</a>
+</div>
     </nav>
   </header>
 
@@ -1391,7 +1667,190 @@
       </div>
     </div>
   </section>
+<!-- 착한가격업소 인증 -->
+<section class="proof-section" id="good-price">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">GOVERNMENT CERTIFIED</div>
+      <h2 class="title">정부가 인증한<br>착한가격업소 피트니스센터</h2>
+      <p class="desc">
+        에브리피티는 합리적인 가격과 안정적인 운영을 바탕으로 지역에서 인정받은 센터입니다.
+      </p>
+    </div>
 
+    <div class="proof-grid">
+      <div class="proof-image reveal-left">
+        <img src="good-price.png" alt="에브리피티 착한가격업소 인증">
+      </div>
+
+      <div class="proof-copy reveal-right">
+        <div class="badge">착한가격업소 인증</div>
+        <h3>가격만 낮춘 것이 아니라<br>가치를 유지했습니다.</h3>
+        <p>
+          에브리피티는 행정안전부, 서울특별시, 강북구가 인증한
+          <strong>착한가격업소 피트니스센터</strong>입니다.
+          동일 업종 대비 최대 92.5% 수준의 혜택을 유지하며,
+          회원님들이 부담 없이 운동을 시작할 수 있도록 운영하고 있습니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 에브리피티 시스템 상세 -->
+<section class="detail-system" id="system-detail">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">SCIENTIFIC TRAINING SYSTEM</div>
+      <h2 class="title">감이 아니라<br>데이터와 구조로 운동합니다</h2>
+      <p class="desc">
+        에브리피티는 근육순환운동, 심박수 관리, 운동 진행 순서를 바탕으로 안전하고 효율적인 수업을 제공합니다.
+      </p>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card reveal">
+        <img src="circuit-intro.png" alt="근육순환운동 소개">
+        <h3>근육순환운동</h3>
+        <p>
+          지방 정리, 근력 발달, 체력 강화를 동시에 고려한 순환운동 방식으로 수업을 진행합니다.
+        </p>
+      </div>
+
+      <div class="detail-card reveal">
+        <img src="circuit-flow.png" alt="근육순환운동 진행 방식">
+        <h3>1분 운동 · 30초 휴식</h3>
+        <p>
+          각 종목을 정확한 자세로 수행하고, 짧은 회복 후 다음 종목으로 전환하여 운동 효율을 높입니다.
+        </p>
+      </div>
+
+      <div class="detail-card reveal">
+        <img src="polar-system.png" alt="폴라 심박수 시스템">
+        <h3>심박수 기반 강도 관리</h3>
+        <p>
+          폴라 심박수 시스템을 활용하여 회원님의 운동 강도를 실시간으로 확인하고 안전하게 조절합니다.
+        </p>
+      </div>
+
+      <div class="detail-card reveal">
+        <img src="heart-rate.png" alt="심박수 운동 구간">
+        <h3>70~90% 운동 구간</h3>
+        <p>
+          단순히 힘든 운동이 아니라, 목적과 컨디션에 맞는 심박수 구간을 기준으로 운동 효과를 높입니다.
+        </p>
+      </div>
+
+      <div class="detail-card reveal">
+        <img src="class-process.png" alt="운동 진행 순서">
+        <h3>운동 진행 순서</h3>
+        <p>
+          스트레칭, 본운동, 운동평가 순서로 진행되며 약 40분 동안 효율적으로 운동합니다.
+        </p>
+      </div>
+
+      <div class="detail-card reveal">
+        <img src="coach-care.png" alt="대표원장 상담 관리">
+        <h3>운동·통증·식단 상담</h3>
+        <p>
+          운동 중 궁금한 점, 통증, 식단 고민까지 대표원장이 처음부터 끝까지 정성껏 안내합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 기본 제공 서비스 -->
+<section class="service-section" id="service">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">MEMBER CARE SERVICE</div>
+      <h2 class="title">운동 외 관리까지<br>기본으로 제공합니다</h2>
+      <p class="desc">
+        에브리피티는 수업 시간뿐 아니라 회원님의 생활 속 운동과 식단까지 함께 관리합니다.
+      </p>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <img src="basic-service.png" alt="기본 제공 서비스">
+        <h3>맞춤 영상·운동 가이드</h3>
+        <p>
+          불편한 부위에 맞는 영상, 개인운동 가이드, 맞춤 식단 자료를 함께 제공합니다.
+        </p>
+      </div>
+
+      <div class="service-card reveal">
+        <img src="diet-system.png" alt="식단 관리 시스템">
+        <h3>데이터 기반 식단 관리</h3>
+        <p>
+          목표 체중, 체지방률, 예상 감량 기간을 기준으로 현실적인 식단 방향을 제안합니다.
+        </p>
+      </div>
+
+      <div class="service-card reveal">
+        <img src="product-guide.png" alt="에브리피티 상품 선택 안내">
+        <h3>목적별 상품 선택</h3>
+        <p>
+          무제한 PT, 쿠폰 상품, 1:1 전문코칭형 중 회원님에게 맞는 방식을 선택할 수 있습니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 가격 비교 및 상품 안내 -->
+<section class="price-section" id="price">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">PRICE VALUE</div>
+      <h2 class="title">1:1 PT가 부담스러웠다면<br>에브리피티가 현실적인 대안입니다</h2>
+      <p class="desc">
+        전문 코칭의 장점은 유지하고, 반복 가능한 가격 구조로 운동을 꾸준히 이어갈 수 있게 만들었습니다.
+      </p>
+    </div>
+
+    <div class="price-layout">
+      <div class="price-image-card reveal-left">
+        <img src="price-compare.png" alt="에브리피티 가격 비교">
+      </div>
+
+      <div class="price-highlight reveal-right">
+        <div class="label">BEST VALUE</div>
+        <h3>월 최소 180,000원<br>무제한 PT</h3>
+        <p>
+          주변 1:1 PT 비용이 부담스러웠던 분들에게 에브리피티의 무제한 PT는
+          꾸준한 운동을 시작할 수 있는 현실적인 선택입니다.
+        </p>
+
+        <div class="price-list">
+          <div><strong>01</strong> 정기적으로 운동하고 싶은 분께 추천</div>
+          <div><strong>02</strong> 수업 외 개인운동까지 가능</div>
+          <div><strong>03</strong> 가격 부담은 낮추고 코칭은 유지</div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary">무료 체험 예약하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 시간표 -->
+<section class="timetable-section" id="timetable">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">TIME TABLE</div>
+      <h2 class="title">운동 가능한 시간에 맞춰<br>수업과 개인운동을 이용하세요</h2>
+      <p class="desc">
+        평일과 토요일 운영 시간에 맞춰 무제한 PT 수업 및 개인운동 이용이 가능합니다.
+      </p>
+    </div>
+
+    <div class="timetable-wrap reveal">
+      <img src="timetable.png" alt="에브리피티 시간표">
+    </div>
+  </div>
+</section>
   <section class="coach" id="coach">
     <div class="container">
       <div class="coach-grid">
@@ -1567,14 +2026,15 @@
   <footer class="footer">
     <div class="footer-logo">EVERY PT</div>
 
-    <div class="footer-menu">
-      <a href="#brand">Brand</a>
-      <a href="#unlimited">Unlimited PT</a>
-      <a href="#coach">Coach</a>
-      <a href="#result">Result</a>
-      <a href="#review">Review</a>
-      <a href="#contact">Contact</a>
-    </div>
+ <div class="footer-menu">
+  <a href="#brand">Brand</a>
+  <a href="#unlimited">Unlimited PT</a>
+  <a href="#system-detail">System</a>
+  <a href="#price">Price</a>
+  <a href="#coach">Coach</a>
+  <a href="#review">Review</a>
+  <a href="#contact">Contact</a>
+</div>
 
     <div class="footer-line"></div>
 
