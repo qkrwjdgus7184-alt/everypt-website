@@ -1421,29 +1421,35 @@ section{padding:80px 28px}
     }, {threshold:.16});
     document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-    const countObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseFloat(el.dataset.target);
-        const decimal = parseInt(el.dataset.decimal || "0", 10);
-        const start = performance.now();
-        const duration = 2200;
-const eased = 1 - Math.pow(1 - p, 4);
+ const countObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
 
-        function tick(now){
-          const p = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = (target * eased).toFixed(decimal);
-          if(p < 1) requestAnimationFrame(tick);
-          else el.textContent = target.toFixed(decimal);
-        }
+    const el = entry.target;
+    const target = parseFloat(el.dataset.target);
+    const decimal = parseInt(el.dataset.decimal || "0", 10);
+    const start = performance.now();
+    const duration = 2200;
 
+    function tick(now){
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 4);
+
+      el.textContent = (target * eased).toFixed(decimal);
+
+      if(p < 1){
         requestAnimationFrame(tick);
-        countObserver.unobserve(el);
-      });
-    }, {threshold:.5});
-    document.querySelectorAll(".count").forEach(el => countObserver.observe(el));
+      } else {
+        el.textContent = target.toFixed(decimal);
+      }
+    }
+
+    requestAnimationFrame(tick);
+    countObserver.unobserve(el);
+  });
+}, {threshold:.3});
+
+document.querySelectorAll(".count").forEach(el => countObserver.observe(el));
 
     const orbit = document.getElementById("bodyOrbit");
     if (orbit) {
