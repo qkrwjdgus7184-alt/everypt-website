@@ -1140,20 +1140,23 @@ section{padding:80px 28px}
         <div class="data-card reveal">
           <h3>회원 평균 변화 데이터</h3>
           <div class="data-numbers">
-            <div class="number-box"><span>평균 근육량 증가</span><strong class="green">
+          <div class="number-box"><span>평균 근육량 증가</span><strong class="green">
   +<em class="count" data-target="1.9" data-decimal="1">0</em>
   <span class="unit">kg</span>
 </strong></div>
-            <div class="number-box"><span>평균 체지방량 감소</span><strong class="red">
+
+<div class="number-box"><span>평균 체지방량 감소</span><strong class="red">
   -<em class="count" data-target="7.8" data-decimal="1">0</em>
   <span class="unit">kg</span>
 </strong></div>
-            <div class="number-box"><span>누적 근육 증가량</span><strong class="green">
-  +<em class="live-count" data-base="128.4">128.4</em>
+
+<div class="number-box"><span>누적 근육 증가량</span><strong class="green">
+  +<em class="count" data-target="128.4" data-decimal="1">0</em>
   <span class="unit">kg</span>
 </strong></div>
-            <div class="number-box"><span>누적 체지방 감소량</span><strong class="red">
-  -<em class="live-count" data-base="527.7">936.7</em>
+
+<div class="number-box"><span>누적 체지방 감소량</span><strong class="red">
+  -<em class="count" data-target="527.3" data-decimal="1">0</em>
   <span class="unit">kg</span>
 </strong></div>
           </div>
@@ -1425,7 +1428,7 @@ section{padding:80px 28px}
         const target = parseFloat(el.dataset.target);
         const decimal = parseInt(el.dataset.decimal || "0", 10);
         const start = performance.now();
-        const duration = 1700;
+        const duration = 1100;
 
         function tick(now){
           const p = Math.min((now - start) / duration, 1);
