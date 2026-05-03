@@ -1098,6 +1098,32 @@ section{padding:80px 28px}
   margin-left:2px;
   flex:0 0 auto;  /* 밀림 방지 */
 }
+    @media(min-width:981px){
+  .data-card:first-child{
+    padding:32px 28px;
+  }
+
+  .data-numbers{
+    grid-template-columns:repeat(2, minmax(150px, 1fr));
+    gap:18px;
+  }
+
+  .number-box{
+    padding:24px 22px;
+  }
+
+  .number-box strong{
+    font-size:30px;
+    flex-wrap:nowrap;
+    white-space:nowrap;
+  }
+
+  .number-box .unit{
+    font-size:12px;
+    margin-left:3px;
+    flex:0 0 auto;
+  }
+}
   </style>
 </head>
 
