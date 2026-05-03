@@ -559,9 +559,10 @@ section{padding:80px 28px}
 
     @media(max-width:980px){
       .hamburger{display:flex}
-      .menu{
-        position:fixed;
-        top:72px;left:0;
+  .menu{
+  position:fixed;
+  top:62px;
+  left:0;
         width:100%;
         background:rgba(0,0,0,.94);
         backdrop-filter:blur(20px);
@@ -602,13 +603,13 @@ section{padding:80px 28px}
       .section-head{margin-bottom:34px}
       .footer{padding-bottom:96px}
       .brand-statement h2{letter-spacing:-2.2px}
-      .brand-statement{
-  min-height:auto;
-  padding:60px 16px 40px;
-}
+
       .cta-badge{font-size:12px;line-height:1.5}
 
-      .system-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .system-grid{
+  grid-template-columns:1fr;
+  gap:12px;
+}
       .system-card{padding:18px 16px;border-radius:22px;min-height:154px}
       .system-icon{width:40px;height:40px;border-radius:13px;font-size:18px;margin-bottom:12px}
       .system-card h3{font-size:17px;line-height:1.25;margin-bottom:8px}
@@ -746,7 +747,7 @@ section{padding:80px 28px}
   line-height:1.6;
 }
 .mid-cta{
-  padding:0 28px 90px;
+  padding:60px 28px 90px;
   background:#fff;
 }
 
@@ -814,16 +815,14 @@ section{padding:80px 28px}
   width:0;
   height:100%;
   background:linear-gradient(90deg,#d6ad5f,#f6d98d);
-  animation:introLoad 1.8s ease forwards;
+  animation:introLoad 1s ease forwards;
 }
 
 @keyframes introLoad{
   from{width:0}
   to{width:100%}
 }
-    .mid-cta{
-  padding-top:0;
-}
+ 
 .unit{
   font-size:14px;
   opacity:.7;
@@ -850,6 +849,51 @@ section{padding:80px 28px}
 .brand-statement{
   background:#fff;
   width:100%;
+}
+    /* =========================
+   최종 완성도 보정 CSS
+   ========================= */
+
+/* 1. 모바일 하단 고정 버튼이 내용 가리는 문제 해결 */
+@media(max-width:560px){
+  body{
+    padding-bottom:78px;
+  }
+}
+
+/* 2. FAQ 섹션 여백 통일 */
+.everypt-faq-section{
+  padding:80px 28px;
+  background:#fff;
+}
+
+@media(max-width:560px){
+  .everypt-faq-section{
+    padding:68px 16px;
+  }
+}
+
+/* 3. CTA 긴급 문구 스타일 */
+.cta-urgency{
+  margin:22px auto 12px;
+  color:#f6d98d;
+  font-size:15px;
+  line-height:1.7;
+  font-weight:900;
+}
+
+/* 4. 이미지 없을 때 깨져 보이는 것 방지 */
+.class-card,
+.map{
+  background:linear-gradient(145deg,#181818,#333);
+}
+    .cta-trigger{
+  margin:14px auto 6px;
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  line-height:1.6;
+  opacity:.9;
 }
   </style>
 </head>
@@ -888,8 +932,8 @@ section{padding:80px 28px}
       <div class="reveal">
         <div class="eyebrow">EVERYPT OFFICIAL BRAND</div>
      <h1>
-  운동을 못하는 이유,<br>
-  이제 <span>시스템으로 끝냅니다.</span>
+운동이 계속 실패하는 이유,<br>
+  <span>에브리피티는 구조로 해결합니다.</span>
 </h1>
        <p>
   에브리피티는 단순히 운동을 알려주는 곳이 아닙니다.
@@ -942,22 +986,6 @@ section{padding:80px 28px}
       </div>
     </div>
   </section>
-<section class="mid-cta">
-  <div class="container">
-    <div class="mid-cta-box">
-     <h2>
-운동을 계속 못하는 이유,<br>
-의지가 아니라 구조입니다.
-</h2>
-
-<p>
-혼자서 실패했던 운동을
-이제는 시스템으로 바꿔드립니다.
-</p>
-      <a href="#reserve" class="btn btn-gold">지금 무료 체험 예약하기</a>
-    </div>
-  </div>
-</section>
   <section class="dark" id="system">
     <div class="container">
       <div class="section-head reveal">
@@ -1015,8 +1043,9 @@ section{padding:80px 28px}
   <span class="unit">kg</span>
 </strong></div>
           </div>
-         <p class="data-note">
-* 실제 회원 변화 데이터를 기반으로 한 평균 수치이며, 개인별 결과는 운동 빈도와 생활습관에 따라 달라질 수 있습니다.
+       <p class="data-note">
+* 2024~2025 실제 회원 인바디 측정 데이터 기준 평균값
+개인별 결과는 운동 빈도 및 식습관에 따라 달라질 수 있습니다.
 </p>
         </div>
 
@@ -1037,7 +1066,20 @@ section{padding:80px 28px}
       </div>
     </div>
   </section>
-
+<section class="mid-cta">
+  <div class="container">
+    <div class="mid-cta-box">
+      <h2>
+데이터로 확인했다면,<br>
+이제 직접 경험할 차례입니다.
+</h2>
+      <p>
+지금 시작하면 가장 빠르게 변화를 확인할 수 있습니다.
+</p>
+      <a href="#reserve" class="btn btn-gold">무료 체험 바로 신청</a>
+    </div>
+  </div>
+</section>
   <section id="program">
     <div class="container">
       <div class="section-head reveal">
@@ -1081,7 +1123,7 @@ section{padding:80px 28px}
       <div class="proof-grid">
         <div class="proof-card reveal"><strong>“혼자서는 못 했는데, 예약된 수업이 있으니 계속 오게 돼요.”</strong><span>운동 습관 형성 후기</span></div>
         <div class="proof-card reveal"><strong>“심박수를 보면서 하니까 내가 제대로 운동하고 있다는 느낌이 들어요.”</strong><span>심박수 기반 수업 후기</span></div>
-        <div class="proof-card reveal"><strong>“체중보다 인바디 변화가 보여서 동기부여가 확실했어요.”</strong><span>체성분 변화 후기</span></div>
+        <div class="proof-card reveal"><strong>“2개월 만에 체지방 4kg 빠졌고,처음으로 운동이 습관이 됐어요.”</strong><span>체성분 변화 후기</span></div>
       </div>
     </div>
   </section>
@@ -1198,11 +1240,18 @@ section{padding:80px 28px}
 </div>
 
 <p class="cta-urgency">
-현재 무료 체험은 하루 5명까지만 예약 가능하며,
-조기 마감될 수 있습니다.
+원활한 상담과 수업 품질 유지를 위해
+무료 체험은 하루 제한 인원으로 운영됩니다.
+예약 상황에 따라 조기 마감될 수 있습니다.
 </p>
-      <p class="cta-sub">
-  체험 후 등록을 강요하지 않습니다. 운동 방식이 나에게 맞는지 먼저 확인해보세요.
+
+<p class="cta-trigger">
+지금 시작한 회원과 한 달 뒤 시작한 회원의 결과는 분명히 달라집니다.
+</p>
+
+<p class="cta-sub">
+체험 후 등록은 자유입니다.
+단, 지금 시작한 사람과 미룬 사람의 결과는 분명히 달라집니다.
 </p>
       </div>
     </div>
@@ -1236,14 +1285,13 @@ section{padding:80px 28px}
     const menu = document.getElementById("menu");
 
     hamburger.addEventListener("click", () => menu.classList.toggle("active"));
-    document.querySelectorAll(".menu a").forEach(a => a.addEventListener("click", () => menu.classList.remove("active")));
-
     window.addEventListener("scroll", () => {
-      const y = window.scrollY;
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = `${(y / h) * 100}%`;
-      nav.classList.toggle("scrolled", y > 40);
-    });
+  const y = window.scrollY;
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = `${(y / h) * 100}%`;
+  nav.classList.toggle("scrolled", y > 40);
+});
+    document.querySelectorAll(".menu a").forEach(a => a.addEventListener("click", () => menu.classList.remove("active")));
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach((entry, i) => {
@@ -1345,34 +1393,36 @@ section{padding:80px 28px}
           return chartBottom - normalized * chartHeight;
         }
 
-        ctx.beginPath();
-        heartData.forEach((v, i) => {
-          const x = i * step;
-          const y = getY(v);
-          if(i === 0){
-            ctx.moveTo(x, y);
-          }else{
-            const prevX = (i - 1) * step;
-            const prevY = getY(heartData[i - 1]);
-            const midX = (prevX + x) / 2;
-            const midY = (prevY + y) / 2;
-            ctx.quadraticCurveTo(prevX, prevY, midX, midY);
-          }
-        });
+ctx.beginPath();
 
-        ctx.shadowColor = "rgba(255,93,117,0.8)";
-        ctx.shadowBlur = 14;
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 4;
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-        ctx.stroke();
-        ctx.shadowBlur = 0;
+heartData.forEach((v, i) => {
+  const x = i * step;
+  const y = getY(v);
 
-        const bpm = Math.round(heartData[heartData.length - 1]);
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "700 22px -apple-system, BlinkMacSystemFont, sans-serif";
-        ctx.fillText(`${bpm} BPM`, 18, 34);
+  if(i === 0){
+    ctx.moveTo(x, y);
+  } else {
+    const prevX = (i - 1) * step;
+    const prevY = getY(heartData[i - 1]);
+    const midX = (prevX + x) / 2;
+    const midY = (prevY + y) / 2;
+    ctx.quadraticCurveTo(prevX, prevY, midX, midY);
+  }
+});
+
+ctx.shadowColor = "rgba(255,93,117,0.8)";
+ctx.shadowBlur = 14;
+ctx.strokeStyle = gradient;
+ctx.lineWidth = 4;
+ctx.lineCap = "round";
+ctx.lineJoin = "round";
+ctx.stroke();
+ctx.shadowBlur = 0;
+
+const bpm = Math.round(heartData[heartData.length - 1]);
+ctx.fillStyle = "#ffffff";
+ctx.font = "700 22px -apple-system, BlinkMacSystemFont, sans-serif";
+ctx.fillText(`${bpm} BPM`, 18, 34);
       }
 
       function updateHeart(){
@@ -1410,15 +1460,7 @@ section{padding:80px 28px}
       window.addEventListener("resize", resizeCanvas);
       setInterval(updateHeart, 90);
     }
-
-    window.addEventListener("scroll", () => {
-      const scrolled = window.scrollY;
-      document.querySelectorAll(".parallax").forEach((el, index) => {
-        if(window.innerWidth <= 980) return;
-        const speed = 0.08 + index * 0.035;
-        el.style.transform = `translateY(${scrolled * speed}px)`;
-      });
-    });
+  
 document.querySelectorAll(".everypt-faq-item").forEach(item => {
   const btn = item.querySelector(".everypt-faq-btn");
 
@@ -1432,9 +1474,9 @@ document.querySelectorAll(".everypt-faq-item").forEach(item => {
 });
     window.addEventListener("load", () => {
   const introLoader = document.getElementById("introLoader");
-  setTimeout(() => {
-    introLoader.classList.add("hide");
-  }, 1900);
+setTimeout(() => {
+  introLoader.classList.add("hide");
+}, 650);
 });
   </script>
 </body>
