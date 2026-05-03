@@ -418,7 +418,14 @@
     .proof-card span{color:var(--muted);font-weight:800}
 
     .branch{background:var(--gray)}
+    .branch-cta{background:linear-gradient(180deg,var(--gray),#e9eaee)}
     .branch-wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:28px;align-items:center}
+    .branch-cta-box{
+      margin-top:32px;
+      background:
+        radial-gradient(circle at 50% 0%,rgba(214,173,95,.24),transparent 38%),
+        linear-gradient(180deg,#181713,#050505);
+    }
     .branch-card{
       border-radius:36px;
       background:#fff;
@@ -533,207 +540,113 @@
       .btn{width:100%}
       .floating{left:12px;right:12px;bottom:12px;flex-direction:row}
       .floating a{flex:1;padding:0 12px;font-size:14px}
-      .title{letter-spacing:-1.8px}
+      .title{font-size:32px;line-height:1.15;letter-spacing:-1.8px}
+      .desc{font-size:15px;line-height:1.65}
+      section{padding:68px 16px}
+      .section-head{margin-bottom:34px}
       .footer{padding-bottom:96px}
       .brand-statement h2{letter-spacing:-2.2px}
       .cta-badge{font-size:12px;line-height:1.5}
+
+      .system-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+      }
+      .system-card{
+        padding:18px 16px;
+        border-radius:22px;
+        min-height:154px;
+      }
+      .system-icon{
+        width:40px;
+        height:40px;
+        border-radius:13px;
+        font-size:18px;
+        margin-bottom:12px;
+      }
+      .system-card h3{
+        font-size:17px;
+        line-height:1.25;
+        margin-bottom:8px;
+      }
+      .system-card p{
+        font-size:12px;
+        line-height:1.45;
+      }
+
+      .program-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+      .program-card{
+        padding:20px 22px;
+        border-radius:24px;
+        min-height:auto;
+      }
+      .program-card .tag{
+        padding:6px 10px;
+        font-size:11px;
+        margin-bottom:10px;
+      }
+      .program-card h3{
+        font-size:20px;
+        margin-bottom:8px;
+      }
+      .program-card p{
+        font-size:13px;
+        line-height:1.55;
+      }
+      .program-card strong{
+        font-size:22px;
+        margin-top:14px;
+      }
+
+      .worry-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+      }
+      .worry-grid .card{
+        padding:18px 16px;
+        border-radius:22px;
+        min-height:104px;
+        display:flex;
+        align-items:center;
+      }
+      .worry-grid .card h3{
+        font-size:16px;
+        line-height:1.35;
+        margin-bottom:0;
+      }
+      .worry-grid .card p{
+        display:none;
+      }
+
+      .data-card{
+        padding:22px;
+        border-radius:26px;
+      }
+      .data-numbers{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+      }
+      .number-box{
+        padding:18px 14px;
+        border-radius:20px;
+      }
+      .number-box span{font-size:12px}
+      .number-box strong{font-size:30px;letter-spacing:-1px}
+      .body-orbit{width:250px;height:250px}
+      .body-core{width:86px;height:140px}
+      #heartChart{height:180px}
+
+      .branch{padding-bottom:68px}
+      .branch-card{padding:24px;border-radius:26px}
+      .branch-card h3{font-size:28px}
+      .branch-info div{font-size:14px;line-height:1.5}
+      .branch-cta-box{margin-top:18px;padding:34px 22px;border-radius:28px}
+      .branch-cta-box h2{font-size:30px;letter-spacing:-1.5px}
+      .branch-cta-box p{font-size:14px;line-height:1.7}
     }
-    /* 모바일 전용 압축 레이아웃 */
-@media(max-width:560px){
-
-  section{
-    padding:64px 14px;
-  }
-
-  .section-head{
-    margin-bottom:34px;
-  }
-
-  .title{
-    font-size:32px;
-    line-height:1.15;
-    letter-spacing:-1.6px;
-  }
-
-  .desc{
-    font-size:15px;
-    line-height:1.65;
-  }
-
-  .why-grid,
-  .system-grid,
-  .program-grid,
-  .worry-grid,
-  .proof-grid{
-    grid-template-columns:1fr;
-    gap:14px;
-  }
-
-  .card,
-  .system-card,
-  .program-card,
-  .proof-card{
-    border-radius:24px;
-    padding:22px;
-    min-height:auto;
-  }
-
-  .card-number{
-    width:38px;
-    height:38px;
-    font-size:13px;
-    margin-bottom:16px;
-  }
-
-  .system-icon{
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    font-size:20px;
-    margin-bottom:16px;
-  }
-
-  .card h3,
-  .system-card h3,
-  .program-card h3{
-    font-size:21px;
-    margin-bottom:10px;
-  }
-
-  .card p,
-  .system-card p,
-  .program-card p{
-    font-size:14px;
-    line-height:1.6;
-  }
-
-  .program-card strong{
-    font-size:24px;
-    margin-top:20px;
-  }
-
-  .program-card{
-    min-height:auto;
-  }
-
-  .data-board{
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-
-  .data-card{
-    min-height:auto;
-    border-radius:26px;
-    padding:22px;
-  }
-
-  .data-numbers{
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
-
-  .number-box{
-    border-radius:20px;
-    padding:18px 14px;
-  }
-
-  .number-box span{
-    font-size:12px;
-    margin-bottom:8px;
-  }
-
-  .number-box strong{
-    font-size:30px;
-    letter-spacing:-1px;
-  }
-
-  .data-note{
-    font-size:11px;
-    margin-top:14px;
-  }
-
-  .body-orbit{
-    width:250px;
-    height:250px;
-  }
-
-  .body-core{
-    width:86px;
-    height:140px;
-  }
-
-  .heart-card p{
-    font-size:14px;
-    line-height:1.6;
-  }
-
-  .heart-canvas-wrap{
-    border-radius:20px;
-    padding:10px;
-  }
-
-  #heartChart{
-    height:180px;
-  }
-
-  .class-card{
-    min-width:76vw;
-    height:360px;
-  }
-
-  .class-caption{
-    padding:16px;
-    border-radius:18px;
-  }
-
-  .class-caption h3{
-    font-size:19px;
-  }
-
-  .class-caption p{
-    font-size:13px;
-  }
-
-  .worry-grid .card{
-    padding:24px 22px;
-  }
-
-  .worry-grid .card h3{
-    font-size:21px;
-  }
-
-  .worry-grid .card p{
-    font-size:14px;
-  }
-
-  .proof-card strong{
-    font-size:19px;
-    line-height:1.5;
-  }
-
-  .branch-card{
-    padding:24px;
-    border-radius:26px;
-  }
-
-  .branch-card h3{
-    font-size:28px;
-  }
-
-  .cta-box{
-    padding:36px 22px;
-    border-radius:28px;
-  }
-
-  .cta-box h2{
-    font-size:32px;
-    letter-spacing:-1.6px;
-  }
-
-  .cta-box p{
-    font-size:15px;
-  }
-}
   </style>
 </head>
 
@@ -997,7 +910,7 @@
     </div>
   </section>
 
-  <section class="branch" id="suyu">
+  <section class="branch branch-cta" id="suyu">
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow">CURRENT BRANCH</div>
@@ -1023,12 +936,8 @@
           <img src="map.png" alt="에브리피티 수유점 지도" loading="lazy">
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="cta-final" id="reserve">
-    <div class="container">
-      <div class="cta-box reveal">
+      <div class="cta-box branch-cta-box reveal" id="reserve">
         <div class="cta-badge">첫 방문 고객 무료 체험 가능 · 상담 후 등록 여부 자유 결정</div>
         <h2>운동을 다시 시작해야겠다고<br>느낀 순간이 가장 좋은 타이밍입니다.</h2>
         <p>
@@ -1165,7 +1074,7 @@
     const canvas = document.getElementById("heartChart");
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      let heartData = Array(50).fill(100);
+      let heartData = Array(72).fill(105);
       let phase = 0;
       let phaseTime = 0;
 
@@ -1207,21 +1116,40 @@
         gradient.addColorStop(0.5, "#f6d98d");
         gradient.addColorStop(1, "#37d99e");
 
-        const scale = height / 190;
+        const chartTop = 58;
+        const chartBottom = height - 28;
+        const chartHeight = chartBottom - chartTop;
         const step = width / (heartData.length - 1);
+        const minBpm = 72;
+        const maxBpm = 182;
+
+        function getY(value){
+          const normalized = (value - minBpm) / (maxBpm - minBpm);
+          return chartBottom - normalized * chartHeight;
+        }
 
         ctx.beginPath();
         heartData.forEach((v, i) => {
           const x = i * step;
-          const y = height - (v * scale);
-          if (i === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
+          const y = getY(v);
+
+          if (i === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            const prevX = (i - 1) * step;
+            const prevY = getY(heartData[i - 1]);
+            const midX = (prevX + x) / 2;
+            const midY = (prevY + y) / 2;
+            ctx.quadraticCurveTo(prevX, prevY, midX, midY);
+          }
         });
 
         ctx.shadowColor = "rgba(255,93,117,0.8)";
         ctx.shadowBlur = 14;
         ctx.strokeStyle = gradient;
         ctx.lineWidth = 4;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
         ctx.stroke();
         ctx.shadowBlur = 0;
 
@@ -1231,35 +1159,43 @@
         ctx.fillText(`${bpm} BPM`, 18, 34);
       }
 
-      function updateHeart() {
-        phaseTime++;
-        if (phaseTime > 80) {
-          phase = (phase + 1) % 4;
-          phaseTime = 0;
-        }
+    function updateHeart() {
+  phaseTime++;
+  if (phaseTime > 80) {
+    phase = (phase + 1) % 4;
+    phaseTime = 0;
+  }
 
-        let base = 100;
-        if (phase === 0) base = 105;
-        if (phase === 1) base = 130;
-        if (phase === 2) base = 150;
-        if (phase === 3) base = 118;
+  let base = 100;
+  if (phase === 0) base = 105;
+  if (phase === 1) base = 130;
+  if (phase === 2) base = 150;
+  if (phase === 3) base = 118;
 
-        const rhythm = Math.sin(Date.now() / 300) * 10;
-        const breathing = Math.sin(Date.now() / 650) * 6;
-        const spike = phase === 2 && Math.random() > 0.94 ? 24 : 0;
-        const noise = (Math.random() - 0.5) * 6;
+  const rhythm = Math.sin(Date.now() / 300) * 10;
+  const breathing = Math.sin(Date.now() / 650) * 6;
+  const spike = phase === 2 && Math.random() > 0.94 ? 24 : 0;
+  const noise = (Math.random() - 0.5) * 6;
 
-        let next = base + rhythm + breathing + spike + noise;
-        next = Math.max(78, Math.min(178, next));
+  let next = base + rhythm + breathing + spike + noise;
+  next = Math.max(78, Math.min(178, next));
 
-        heartData.push(next);
-        heartData.shift();
-        drawChart();
+  const prev = heartData[heartData.length - 1] || next;
+  const smoothNext = prev + (next - prev) * 0.18;
+
+  heartData.push(smoothNext);
+
+  if (heartData.length > 120) {
+    heartData.splice(0, heartData.length - 120);
+  }
+
+  drawChart();
+}
       }
 
       resizeCanvas();
       window.addEventListener("resize", resizeCanvas);
-      setInterval(updateHeart, 120);
+      setInterval(updateHeart, 90);
     }
 
     window.addEventListener("scroll", () => {
