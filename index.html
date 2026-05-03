@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVERY PT</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    /* 영상 배경 */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      background: #facc15;
+      color: black;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* 섹션 */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .profile {
+      max-width: 400px;
+      border-radius: 20px;
+    }
+
+    .image {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- 메인 영상 -->
+<div class="hero">
+  <video autoplay muted loop>
+    <source src="lesson.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>운동이 어려운 사람도<br>꾸준히 바뀔 수 있도록</h1>
+    <a href="#" class="btn">무료 체험 신청</a>
+  </div>
+</div>
+
+<!-- 대표원장 -->
+<section>
+  <h2>대표원장 박정현</h2>
+  <img src="profile.png" class="profile">
+  <p>운동생리학 기반 맞춤 트레이닝</p>
+</section>
+
+<!-- 변화 -->
+<section>
+  <h2>실제 변화</h2>
+  <img src="inbody.png" class="image">
+</section>
+
+<!-- 후기 -->
+<section>
+  <h2>회원 후기</h2>
+  <img src="review.png" class="image">
+</section>
+
+<!-- 시설 -->
+<section>
+  <h2>센터 시설</h2>
+  <img src="center.jpg" class="image">
+  <img src="equipment.jpg" class="image">
+</section>
+
+<!-- 위치 -->
+<section>
+  <h2>오시는 길</h2>
+  <img src="map.png" class="image">
+</section>
+
+</body>
+</html>
