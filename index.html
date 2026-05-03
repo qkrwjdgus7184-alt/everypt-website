@@ -1428,7 +1428,8 @@ section{padding:80px 28px}
         const target = parseFloat(el.dataset.target);
         const decimal = parseInt(el.dataset.decimal || "0", 10);
         const start = performance.now();
-        const duration = 2000;
+        const duration = 2200;
+const eased = 1 - Math.pow(1 - p, 4);
 
         function tick(now){
           const p = Math.min((now - start) / duration, 1);
