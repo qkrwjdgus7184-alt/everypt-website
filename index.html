@@ -776,6 +776,106 @@
   font-size:13px;
   font-weight:900;
 }
+    /* FAQ 최종 레이아웃 복구 */
+.faq-grid{
+  display:grid !important;
+  grid-template-columns:repeat(3,1fr) !important;
+  gap:18px !important;
+  align-items:start !important;
+}
+
+.faq-card{
+  padding:0 !important;
+  min-height:auto !important;
+  display:block !important;
+  overflow:hidden !important;
+}
+
+.faq-question{
+  width:100% !important;
+  min-height:92px !important;
+  padding:22px 24px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:18px !important;
+  text-align:left !important;
+}
+
+.faq-title{
+  flex:1 !important;
+  display:block !important;
+  color:#1d1d1f !important;
+  font-size:18px !important;
+  font-weight:900 !important;
+  line-height:1.35 !important;
+  letter-spacing:-.5px !important;
+}
+
+.faq-click{
+  flex:0 0 auto !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:52px !important;
+  padding:7px 12px !important;
+  border-radius:999px !important;
+  background:#111 !important;
+  color:#f6d98d !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+}
+
+.faq-answer{
+  max-height:0 !important;
+  overflow:hidden !important;
+  padding:0 24px !important;
+  color:#666 !important;
+  font-size:15px !important;
+  line-height:1.7 !important;
+  font-weight:650 !important;
+  opacity:0 !important;
+  transform:translateY(-8px) !important;
+  transition:max-height .35s ease, padding .35s ease, opacity .3s ease, transform .3s ease !important;
+}
+
+.faq-card.active .faq-answer{
+  max-height:240px !important;
+  padding:0 24px 24px !important;
+  opacity:1 !important;
+  transform:translateY(0) !important;
+}
+
+.faq-card.active .faq-click{
+  background:#f6d98d !important;
+  color:#111 !important;
+}
+
+@media(max-width:560px){
+  .faq-grid{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+  }
+
+  .faq-question{
+    min-height:78px !important;
+    padding:20px !important;
+  }
+
+  .faq-title{
+    font-size:17px !important;
+  }
+
+  .faq-click{
+    min-width:48px !important;
+    font-size:12px !important;
+    padding:6px 10px !important;
+  }
+
+  .faq-card.active .faq-answer{
+    padding:0 20px 20px !important;
+  }
+}
   </style>
 </head>
 
