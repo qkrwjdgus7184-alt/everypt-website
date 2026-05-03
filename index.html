@@ -1669,7 +1669,9 @@ document.querySelectorAll(".count").forEach(el => countObserver.observe(el));
     const canvas = document.getElementById("heartChart");
     if (canvas) {
       const ctx = canvas.getContext("2d");
-      let heartData = Array(90).fill(105);
+    let heartData = Array.from({length:90}, (_, i) =>
+  96 + i * 0.45 + Math.sin(i / 3) * 4
+);
       let phase = 0;
       let phaseTime = 0;
 
@@ -1791,7 +1793,7 @@ ctx.fillText(`${bpm} BPM`, 18, 34);
 
       resizeCanvas();
       window.addEventListener("resize", resizeCanvas);
-      setInterval(updateHeart, 75);
+      setInterval(updateHeart, 65);
     }
   
 document.querySelectorAll(".everypt-faq-item").forEach(item => {
