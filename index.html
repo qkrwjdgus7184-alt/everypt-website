@@ -86,6 +86,20 @@
     .btn:hover{transform:translateY(-4px)}
     .btn-primary{background:#fff;color:#000}
     .btn-gold{background:var(--gold2);color:#111;box-shadow:0 18px 48px rgba(214,173,95,.32)}
+    .btn-gold{
+  animation:ctaPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes ctaPulse{
+  0%,100%{
+    box-shadow:0 18px 48px rgba(214,173,95,.32);
+    transform:translateY(0) scale(1);
+  }
+  50%{
+    box-shadow:0 24px 70px rgba(246,217,141,.48);
+    transform:translateY(-2px) scale(1.025);
+  }
+}
     .btn-dark{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line);backdrop-filter:blur(18px)}
     .btn::after{
       content:"";position:absolute;inset:0;
@@ -122,8 +136,21 @@
     .dark{background:var(--black);color:#fff}
     .dark .desc{color:rgba(255,255,255,.7)}
 
-    .reveal{opacity:0;transform:translateY(54px) scale(.985);transition:opacity .9s ease,transform .9s ease}
-    .reveal.show{opacity:1;transform:none}
+ .reveal{
+  opacity:0;
+  transform:translateY(64px) scale(.96);
+  filter:blur(10px);
+  transition:
+    opacity 1s cubic-bezier(.22,1,.36,1),
+    transform 1s cubic-bezier(.22,1,.36,1),
+    filter 1s cubic-bezier(.22,1,.36,1);
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  filter:blur(0);
+}
 
     .hero{
       min-height:100vh;
@@ -241,11 +268,12 @@
         linear-gradient(180deg,#050505,#111827);
       color:#fff;
     }
-    .data-board{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-      align-items:stretch;
+  .data-board{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  align-items:stretch;
+
     }
     .data-card{
       border-radius:34px;
@@ -484,6 +512,38 @@
       .title{letter-spacing:-1.8px}
       .footer{padding-bottom:96px}
     }
+    .heart-card p{
+  color:rgba(255,255,255,.68);
+  line-height:1.7;
+  font-weight:600;
+  margin-bottom:22px;
+}
+
+.heart-label{
+  display:inline-flex;
+  padding:7px 11px;
+  border-radius:999px;
+  background:rgba(255,93,117,.14);
+  color:#ff8da0;
+  font-size:12px;
+  font-weight:950;
+  letter-spacing:1.8px;
+  margin-bottom:14px;
+}
+
+.heart-canvas-wrap{
+  border-radius:24px;
+  overflow:hidden;
+  background:rgba(0,0,0,.28);
+  border:1px solid rgba(255,255,255,.12);
+  padding:12px;
+}
+
+#heartChart{
+  width:100%;
+  height:220px;
+  display:block;
+}
   </style>
 </head>
 
@@ -511,7 +571,7 @@
       <source src="lesson.mp4" type="video/mp4" />
     </video>
 
-    <div class="hero-inner">
+    <div class="hero-inner parallax">
       <div class="reveal">
         <div class="eyebrow">EVERYPT OFFICIAL BRAND</div>
         <h1>
@@ -541,8 +601,8 @@
     </div>
   </header>
 
-  <section class="brand-statement" id="brand">
-    <div class="container reveal">
+<section class="brand-statement parallax" id="brand">
+  <div class="container reveal">
       <h2>
         혼자서 실패했던 운동,<br>
         이제는 <span>시스템</span>으로 바꿉니다.
@@ -603,6 +663,7 @@
   </section>
 
   <section class="data" id="data">
+  
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow">BODY CHANGE DATA</div>
@@ -612,27 +673,52 @@
         </p>
       </div>
 
-      <div class="data-board">
-        <div class="data-card reveal">
-          <h3>회원 평균 변화 데이터</h3>
-          <div class="data-numbers">
-            <div class="number-box">
-              <span>평균 근육량 증가</span>
-              <strong class="green">+<em class="count" data-target="0.6" data-decimal="1">0</em>kg</strong>
-            </div>
-            <div class="number-box">
-              <span>평균 체지방량 감소</span>
-              <strong class="red">-<em class="count" data-target="7.8" data-decimal="1">0</em>kg</strong>
-            </div>
-            <div class="number-box">
-              <span>누적 근육 증가량</span>
-              <strong class="green">+<em class="live-count" data-base="128.4" data-direction="up">128.4</em>kg</strong>
-            </div>
-            <div class="number-box">
-              <span>누적 체지방 감소량</span>
-              <strong class="red">-<em class="live-count" data-base="936.7" data-direction="up">936.7</em>kg</strong>
-            </div>
-          </div>
+    <div class="data-board">
+
+  <div class="data-card reveal">
+    <h3>회원 평균 변화 데이터</h3>
+    <div class="data-numbers">
+      <div class="number-box">
+        <span>평균 근육량 증가</span>
+        <strong class="green">+<em class="count" data-target="0.6" data-decimal="1">0</em>kg</strong>
+      </div>
+
+      <div class="number-box">
+        <span>평균 체지방량 감소</span>
+        <strong class="red">-<em class="count" data-target="7.8" data-decimal="1">0</em>kg</strong>
+      </div>
+
+      <div class="number-box">
+        <span>누적 근육 증가량</span>
+        <strong class="green">+<em class="live-count" data-base="128.4" data-direction="up">128.4</em>kg</strong>
+      </div>
+
+      <div class="number-box">
+        <span>누적 체지방 감소량</span>
+        <strong class="red">-<em class="live-count" data-base="936.7" data-direction="up">936.7</em>kg</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-card live-visual reveal">
+    <div class="body-orbit" id="bodyOrbit">
+      <div class="body-core"></div>
+    </div>
+  </div>
+
+<div class="data-card heart-card reveal">
+  <div class="heart-label">LIVE HEART RATE</div>
+  <h3>실시간 심박수 트레이닝</h3>
+  <p>
+    운동 강도를 감으로 판단하지 않고, 심박수 흐름을 보며
+    고객에게 맞는 강도로 조절합니다.
+  </p>
+  <div class="heart-canvas-wrap">
+    <canvas id="heartChart"></canvas>
+  </div>
+</div>
+
+</div>
         </div>
 
         <div class="data-card live-visual reveal">
@@ -766,15 +852,21 @@
   <section class="cta-final" id="reserve">
     <div class="container">
       <div class="cta-box reveal">
-        <h2>지금 시작하면<br>운동은 더 쉬워집니다.</h2>
-        <p>
-          망설이는 시간이 길어질수록 운동은 더 어려워집니다.
-          체험 수업으로 에브리피티의 관리 방식과 수업 분위기를 먼저 확인해보세요.
-        </p>
+ <h2>
+  운동을 다시 시작해야겠다고<br>
+  느낀 순간이 가장 좋은 타이밍입니다.
+</h2>
+
+<p>
+  처음부터 잘할 필요는 없습니다.
+  에브리피티는 운동을 어려워하는 분들도 부담 없이 시작할 수 있도록
+  체력, 목적, 컨디션에 맞춰 수업 강도를 조절합니다.
+  먼저 무료 체험으로 나에게 맞는 운동인지 확인해보세요.
+</p>
         <div class="cta-actions">
-          <a href="#" class="btn btn-gold">네이버 예약</a>
-          <a href="#" class="btn btn-dark">카카오톡 상담</a>
-          <a href="#" class="btn btn-primary">무료 체험 신청</a>
+   <a href="#" class="btn btn-gold">무료 체험 예약하기</a>
+<a href="#" class="btn btn-dark">카카오톡으로 상담하기</a>
+<a href="#" class="btn btn-primary">수유점 프로그램 보기</a>
         </div>
       </div>
     </div>
@@ -861,37 +953,141 @@
 
     document.querySelectorAll(".count").forEach(el => countObserver.observe(el));
 
-    document.querySelectorAll(".live-count").forEach(el => {
-      let value = parseFloat(el.dataset.base);
-      setInterval(() => {
-        value += Math.random() * 0.05;
-        el.textContent = value.toFixed(1);
-      }, 1300);
-    });
+document.querySelectorAll(".live-count").forEach(el => {
+  let value = parseFloat(el.dataset.base);
 
-    const orbit = document.getElementById("bodyOrbit");
-    if(orbit){
-      for(let i=0;i<18;i++){
-        const dot = document.createElement("span");
-        dot.className = i % 2 === 0 ? "muscle" : "fat";
-        dot.style.left = `${25 + Math.random()*50}%`;
-        dot.style.top = `${25 + Math.random()*50}%`;
-        dot.style.animationDelay = `${Math.random()*2.8}s`;
-        orbit.appendChild(dot);
-      }
+  setInterval(() => {
+    let speed = Math.random() * 0.12;
+
+    if (Math.random() > 0.82) {
+      speed += Math.random() * 0.28;
     }
 
-    document.querySelectorAll(".card,.data-card,.branch-card,.cta-box").forEach(card => {
-      card.addEventListener("mousemove", e => {
-        const r = card.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width / 2;
-        const y = e.clientY - r.top - r.height / 2;
-        card.style.transform = `perspective(900px) rotateX(${y / -80}deg) rotateY(${x / 80}deg) translateY(-6px)`;
-      });
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "";
-      });
-    });
+    value += speed;
+    el.textContent = value.toFixed(1);
+  }, 900);
+});
+
+const orbit = document.getElementById("bodyOrbit");
+
+if (orbit) {
+  setInterval(() => {
+    const dot = document.createElement("span");
+    dot.className = Math.random() > 0.5 ? "muscle" : "fat";
+
+    dot.style.left = `${30 + Math.random() * 40}%`;
+    dot.style.top = `${30 + Math.random() * 40}%`;
+
+    orbit.appendChild(dot);
+
+    setTimeout(() => dot.remove(), 3000);
+  }, 300);
+}
+
+document.querySelectorAll(".card,.data-card,.branch-card,.cta-box").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width / 2;
+    const y = e.clientY - r.top - r.height / 2;
+
+    card.style.transform =
+      `perspective(900px) rotateX(${y / -80}deg) rotateY(${x / 80}deg) translateY(-6px)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "";
+  });
+});
+
+const canvas = document.getElementById("heartChart");
+
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = 400;
+  canvas.height = 200;
+
+  let heartData = Array(50).fill(80);
+
+ function drawChart() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "rgba(255,255,255,0.03)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.strokeStyle = "rgba(255,255,255,0.08)";
+  ctx.lineWidth = 1;
+
+  for (let x = 0; x < canvas.width; x += 40) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
+  }
+
+  for (let y = 0; y < canvas.height; y += 40) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y);
+    ctx.stroke();
+  }
+
+  const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+  gradient.addColorStop(0, "#ff5d75");
+  gradient.addColorStop(0.5, "#f6d98d");
+  gradient.addColorStop(1, "#37d99e");
+
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height - heartData[0]);
+
+  heartData.forEach((v, i) => {
+    ctx.lineTo(i * 8, canvas.height - v);
+  });
+
+  ctx.shadowColor = "rgba(255,93,117,0.8)";
+  ctx.shadowBlur = 14;
+  ctx.strokeStyle = gradient;
+  ctx.lineWidth = 4;
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  const bpm = Math.round(heartData[heartData.length - 1]);
+
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "700 22px -apple-system, BlinkMacSystemFont, sans-serif";
+  ctx.fillText(`${bpm} BPM`, 18, 34);
+}
+
+function updateHeart() {
+  const time = Date.now() / 500;
+
+  const warmUp = 115;
+  const rhythm = Math.sin(time) * 18;
+  const breathing = Math.sin(time * 0.45) * 8;
+  const spike = Math.random() > 0.96 ? 32 : 0;
+  const noise = (Math.random() - 0.5) * 6;
+
+  let next = warmUp + rhythm + breathing + spike + noise;
+
+  next = Math.max(78, Math.min(178, next));
+
+  heartData.push(next);
+  heartData.shift();
+
+  drawChart();
+}
+
+  setInterval(updateHeart, 120);
+}
+
+window.addEventListener("scroll", () => {
+  const scrolled = window.scrollY;
+
+  document.querySelectorAll(".parallax").forEach((el, index) => {
+    const speed = 0.1 + index * 0.05;
+    el.style.transform = `translateY(${scrolled * speed}px)`;
+  });
+});
   </script>
 </body>
 </html>
