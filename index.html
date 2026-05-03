@@ -347,18 +347,21 @@ section{padding:80px 28px}
       background:linear-gradient(90deg,var(--gold),transparent);
       opacity:.7;
     }
-    .number-box span{display:block;color:rgba(255,255,255,.68);font-weight:800;margin-bottom:10px}
-  .number-box strong{
-  font-size:clamp(26px,3vw,40px);
-  letter-spacing:-1px;
+.number-box span{display:block;color:rgba(255,255,255,.68);font-weight:800;margin-bottom:10px}
+
+.number-box strong{
+  font-size:clamp(22px,4vw,34px);
+  letter-spacing:-0.5px;
+  line-height:1.2;
   font-style:normal;
-  white-space:nowrap;
-  overflow:hidden;
-  display:block;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:4px;
+  font-variant-numeric:tabular-nums;
 }
-    
-    ;letter-spacing:-2px;font-style:normal}
-    .number-box em{font-style:normal}
+
+.number-box em{font-style:normal}
     .green{color:var(--green)}
     .red{color:var(--red)}
     .data-note{
@@ -630,7 +633,15 @@ section{padding:80px 28px}
       .data-numbers{grid-template-columns:repeat(2,1fr);gap:12px}
       .number-box{padding:18px 14px;border-radius:20px}
       .number-box span{font-size:12px}
-      .number-box strong{font-size:30px;letter-spacing:-1px}
+      .number-box strong{
+  font-size:26px;
+  letter-spacing:-0.5px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:3px;
+        font-variant-numeric:tabular-nums;
+}
       .body-orbit{width:250px;height:250px}
       .body-core{width:86px;height:140px}
       #heartChart{height:180px}
@@ -823,6 +834,12 @@ section{padding:80px 28px}
 section:nth-of-type(2){
   background:#fff;
 }
+
+.unit{
+  font-size:14px;
+  opacity:.7;
+  margin-left:2px;
+}
   </style>
 </head>
 
@@ -956,10 +973,22 @@ section:nth-of-type(2){
         <div class="data-card reveal">
           <h3>회원 평균 변화 데이터</h3>
           <div class="data-numbers">
-            <div class="number-box"><span>평균 근육량 증가</span><strong class="green">+<em class="count" data-target="0.6" data-decimal="1">0</em>kg</strong></div>
-            <div class="number-box"><span>평균 체지방량 감소</span><strong class="red">-<em class="count" data-target="7.8" data-decimal="1">0</em>kg</strong></div>
-            <div class="number-box"><span>누적 근육 증가량</span><strong class="green">+<em class="live-count" data-base="128.4">128.4</em>kg</strong></div>
-            <div class="number-box"><span>누적 체지방 감소량</span><strong class="red">-<em class="live-count" data-base="936.7">936.7</em>kg</strong></div>
+            <div class="number-box"><span>평균 근육량 증가</span><strong class="green">
+  +<em class="count" data-target="0.6" data-decimal="1">0</em>
+  <span class="unit">kg</span>
+</strong></div>
+            <div class="number-box"><span>평균 체지방량 감소</span><strong class="red">
+  -<em class="count" data-target="7.8" data-decimal="1">0</em>
+  <span class="unit">kg</span>
+</strong></div>
+            <div class="number-box"><span>누적 근육 증가량</span><strong class="green">
+  +<em class="live-count" data-base="128.4">128.4</em>
+  <span class="unit">kg</span>
+</strong></div>
+            <div class="number-box"><span>누적 체지방 감소량</span><strong class="red">
+  -<em class="live-count" data-base="936.7">936.7</em>
+  <span class="unit">kg</span>
+</strong></div>
           </div>
          <p class="data-note">
 * 실제 회원 변화 데이터를 기반으로 한 평균 수치이며, 개인별 결과는 운동 빈도와 생활습관에 따라 달라질 수 있습니다.
@@ -1223,7 +1252,7 @@ section:nth-of-type(2){
         let speed = Math.random() * 0.12;
         if (Math.random() > 0.82) speed += Math.random() * 0.28;
         value += speed;
-        el.textContent = value.toFixed(1);
+        el.textContent = Math.round(value);
       }, 900);
     });
 
