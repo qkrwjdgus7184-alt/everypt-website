@@ -1774,7 +1774,7 @@ ctx.fillText(`${bpm} BPM`, 18, 34);
   target = Math.max(82, Math.min(158, target));
 
   const prev = heartData[heartData.length - 1] || target;
-  const smoothNext = prev + (target - prev) * 0.08;
+  const smoothNext = prev + (target - prev) * 0.28;
 
   heartData.push(smoothNext);
 
@@ -1787,7 +1787,7 @@ ctx.fillText(`${bpm} BPM`, 18, 34);
 
       resizeCanvas();
       window.addEventListener("resize", resizeCanvas);
-      setInterval(updateHeart, 120);
+      setInterval(updateHeart, 70);
     }
   
 document.querySelectorAll(".everypt-faq-item").forEach(item => {
