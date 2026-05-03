@@ -1753,36 +1753,37 @@ ctx.font = "700 22px -apple-system, BlinkMacSystemFont, sans-serif";
 ctx.fillText(`${bpm} BPM`, 18, 34);
       }
 
-      function updateHeart(){
-        phaseTime++;
-        if(phaseTime > 80){
-          phase = (phase + 1) % 4;
-          phaseTime = 0;
-        }
+   function updateHeart(){
+  phaseTime++;
 
-        let base = 105;
-        if(phase === 1) base = 130;
-        if(phase === 2) base = 150;
-        if(phase === 3) base = 118;
+  if(phaseTime > 120){
+    phase = (phase + 1) % 4;
+    phaseTime = 0;
+  }
 
-        const rhythm = Math.sin(Date.now() / 300) * 10;
-        const breathing = Math.sin(Date.now() / 650) * 6;
-        const spike = phase === 2 && Math.random() > 0.94 ? 24 : 0;
-        const noise = (Math.random() - 0.5) * 6;
+  let base = 105;
+  if(phase === 1) base = 118;
+  if(phase === 2) base = 132;
+  if(phase === 3) base = 124;
 
-        let target = base + rhythm + breathing + spike + noise;
-        target = Math.max(78, Math.min(178, target));
+  const rhythm = Math.sin(Date.now() / 900) * 8;
+  const breathing = Math.sin(Date.now() / 1600) * 5;
+  const smallWave = Math.sin(Date.now() / 420) * 2;
 
-        const prev = heartData[heartData.length - 1] || target;
-        const smoothNext = prev + (target - prev) * 0.18;
+  let target = base + rhythm + breathing + smallWave;
+  target = Math.max(82, Math.min(158, target));
 
-        heartData.push(smoothNext);
-        if(heartData.length > 120){
-          heartData.splice(0, heartData.length - 120);
-        }
+  const prev = heartData[heartData.length - 1] || target;
+  const smoothNext = prev + (target - prev) * 0.08;
 
-        drawChart();
-      }
+  heartData.push(smoothNext);
+
+  if(heartData.length > 120){
+    heartData.splice(0, heartData.length - 120);
+  }
+
+  drawChart();
+}
 
       resizeCanvas();
       window.addEventListener("resize", resizeCanvas);
