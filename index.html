@@ -1050,6 +1050,33 @@ section{padding:80px 28px}
   transform:translateY(-2px);
   flex:0 0 auto;
 }
+    .number-box strong{
+  display:grid;
+  grid-template-columns:auto auto;
+  align-items:end;
+  justify-content:start;
+  column-gap:4px;
+  white-space:nowrap;
+  line-height:1;
+}
+
+.number-box strong em{
+  display:inline-block;
+  font-size:clamp(24px,2.6vw,30px);
+  line-height:1;
+  min-width:0;
+}
+
+.number-box .unit{
+  display:inline-block;
+  position:static;
+  flex:none;
+  font-size:11px;
+  line-height:1;
+  opacity:.7;
+  margin:0;
+  transform:none;
+}
   </style>
 </head>
 
