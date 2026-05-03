@@ -635,7 +635,7 @@ section{padding:80px 28px}
   font-size:26px;
   letter-spacing:-0.5px;
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
   align-items:baseline;
   gap:3px;
         font-variant-numeric:tabular-nums;
@@ -1076,6 +1076,27 @@ section{padding:80px 28px}
   opacity:.7;
   margin:0;
   transform:none;
+}
+    .number-box strong{
+  display:flex;
+  align-items:baseline;
+  justify-content:flex-start;
+  flex-wrap:nowrap;   /* 이게 핵심 */
+  gap:4px;
+  white-space:nowrap;
+}
+
+.number-box strong em{
+  display:inline-block;
+  line-height:1;
+}
+
+.number-box .unit{
+  display:inline-block;
+  font-size:13px;
+  opacity:.7;
+  margin-left:2px;
+  flex:0 0 auto;  /* 밀림 방지 */
 }
   </style>
 </head>
