@@ -691,24 +691,15 @@
   line-height:1.7;
   font-weight:650;
   opacity:0;
-  transition:.35s ease;
-}
-
-.everypt-faq-content{
-  overflow:hidden;
-  padding:0 24px;
-  opacity:0;
-  transition:.4s ease;
+  word-break:keep-all;
+  white-space:normal;
+  transition:max-height .4s ease, padding .3s ease, opacity .3s ease;
 }
 
 .everypt-faq-item.active .everypt-faq-content{
   max-height:500px;
   padding:0 24px 24px;
   opacity:1;
-}
-.everypt-faq-content{
-  word-break:keep-all;
-  white-space:normal;
 }
 .everypt-faq-item.active .everypt-faq-btn em{
   background:#f6d98d;
@@ -729,7 +720,43 @@
     font-size:18px;
   }
 }
+.hero-proof{
+  margin-top:24px;
+  color:rgba(255,255,255,.82);
+  font-size:15px;
+  font-weight:800;
+  line-height:1.6;
+}
+    .mid-cta{
+  padding:90px 28px;
+  background:#fff;
+}
 
+.mid-cta-box{
+  max-width:900px;
+  margin:0 auto;
+  padding:46px 32px;
+  border-radius:34px;
+  text-align:center;
+  background:linear-gradient(180deg,#111,#050505);
+  color:#fff;
+  box-shadow:0 34px 100px rgba(0,0,0,.16);
+}
+
+.mid-cta-box h2{
+  font-size:clamp(32px,4vw,58px);
+  line-height:1.15;
+  letter-spacing:-2px;
+  margin-bottom:18px;
+}
+
+.mid-cta-box p{
+  max-width:620px;
+  margin:0 auto 26px;
+  color:rgba(255,255,255,.72);
+  font-size:17px;
+  line-height:1.75;
+}
   </style>
 </head>
 
@@ -760,7 +787,8 @@
     <div class="hero-inner parallax">
       <div class="reveal">
         <div class="eyebrow">EVERYPT OFFICIAL BRAND</div>
-        <h1>운동은 더 쉽게,<br>관리는 더 <span>정교하게.</span></h1>
+        <h1>운동을 못하는 이유는<br>
+의지가 아니라 <span>시스템입니다.</span>
         <p>
           에브리피티는 단순한 헬스장이 아니라, 운동을 지속할 수 있도록 설계된
           관리형 피트니스 브랜드입니다. 무제한 PT, 소그룹 트레이닝, 심박수 기반 관리로
@@ -770,6 +798,9 @@
           <a href="#reserve" class="btn btn-gold">무료 체험 예약하기</a>
           <a href="#suyu" class="btn btn-dark">수유점 상담 신청</a>
         </div>
+          <div class="hero-proof">
+  지금까지 많은 고객님들이 무료 체험 후 에브리피티에서 운동을 시작했습니다.
+</div>
       </div>
 
       <div class="hero-panel reveal">
@@ -808,7 +839,15 @@
       </div>
     </div>
   </section>
-
+<section class="mid-cta">
+  <div class="container">
+    <div class="mid-cta-box">
+      <h2>운동을 시작할지 고민된다면,<br>먼저 체험해보세요.</h2>
+      <p>에브리피티는 첫 방문 고객님께 무료 체험 기회를 제공합니다. 부담 없이 수업 방식과 분위기를 확인해보세요.</p>
+      <a href="#reserve" class="btn btn-gold">무료 체험 예약하기</a>
+    </div>
+  </div>
+</section>
   <section class="dark" id="system">
     <div class="container">
       <div class="section-head reveal">
@@ -848,7 +887,9 @@
             <div class="number-box"><span>누적 근육 증가량</span><strong class="green">+<em class="live-count" data-base="128.4">128.4</em>kg</strong></div>
             <div class="number-box"><span>누적 체지방 감소량</span><strong class="red">-<em class="live-count" data-base="936.7">936.7</em>kg</strong></div>
           </div>
-          <p class="data-note">* 수치는 실제 운영 데이터 입력 전까지 예시 기준으로 표시되며, 향후 지점별 누적 데이터로 업데이트할 수 있습니다.</p>
+         <p class="data-note">
+* 실제 회원 변화 데이터를 기반으로 한 평균 수치이며, 개인별 결과는 운동 빈도와 생활습관에 따라 달라질 수 있습니다.
+</p>
         </div>
 
         <div class="data-card live-visual reveal">
@@ -931,7 +972,7 @@
       <div class="everypt-faq-item">
         <button class="everypt-faq-btn" type="button">
           <span>운동을 처음 해도 괜찮을까?</span>
-          <em>클릭</em>
+         <em>확인</em>
         </button>
         <div class="everypt-faq-content">
           에브리피티는 초보자를 기준으로 강도를 조절합니다. 처음부터 무리하지 않고 체력과 컨디션에 맞춰 단계적으로 진행합니다.
@@ -941,7 +982,7 @@
       <div class="everypt-faq-item">
         <button class="everypt-faq-btn" type="button">
           <span>혼자 하면 오래 못할까?</span>
-          <em>클릭</em>
+         <em>확인</em>
         </button>
         <div class="everypt-faq-content">
           예약 기반 수업과 루틴 관리로 자연스럽게 운동이 지속됩니다. 혼자 의지로 하는 구조가 아닙니다.
@@ -951,7 +992,7 @@
       <div class="everypt-faq-item">
         <button class="everypt-faq-btn" type="button">
           <span>체력이 부족해도 가능할까?</span>
-          <em>클릭</em>
+       <em>확인</em>
         </button>
         <div class="everypt-faq-content">
           심박수 기반으로 강도를 조절하기 때문에 체력이 부족해도 안전하게 시작할 수 있습니다.
@@ -961,7 +1002,7 @@
       <div class="everypt-faq-item">
         <button class="everypt-faq-btn" type="button">
           <span>PT는 부담스럽지 않을까?</span>
-          <em>클릭</em>
+         <em>확인</em>
         </button>
         <div class="everypt-faq-content">
           소그룹 기반으로 1:1급 코칭은 유지하면서 비용 부담은 낮춘 구조입니다.
@@ -971,7 +1012,7 @@
       <div class="everypt-faq-item">
         <button class="everypt-faq-btn" type="button">
           <span>식단도 같이 봐줄까?</span>
-          <em>클릭</em>
+         <em>확인</em>
         </button>
         <div class="everypt-faq-content">
           인바디 기준으로 현실적인 식단 방향을 안내하며, 무리하지 않는 방법으로 조정합니다.
@@ -981,7 +1022,7 @@
       <div class="everypt-faq-item">
         <button class="everypt-faq-btn" type="button">
           <span>개인운동도 가능할까?</span>
-          <em>클릭</em>
+        <em>확인</em>
         </button>
         <div class="everypt-faq-content">
           상품에 따라 수업 외 개인운동도 가능하며, 습관 형성에 큰 도움이 됩니다.
@@ -1014,14 +1055,20 @@
 
       <div class="cta-box reveal" id="reserve">
         <div class="cta-badge">첫 방문 고객 무료 체험 가능 · 상담 후 등록 여부 자유 결정</div>
-        <h2>운동을 다시 시작해야겠다고<br>느낀 순간이 가장 좋은 타이밍입니다.</h2>
-        <p>처음부터 잘할 필요는 없습니다. 에브리피티는 운동을 어려워하는 분들도 부담 없이 시작할 수 있도록 체력, 목적, 컨디션에 맞춰 수업 강도를 조절합니다.</p>
-        <div class="cta-actions">
-          <a href="#" class="btn btn-gold">무료 체험 예약하기</a>
-          <a href="#" class="btn btn-dark">카카오톡으로 상담하기</a>
-          <a href="#program" class="btn btn-primary">프로그램 보기</a>
-        </div>
-        <p class="cta-sub">무료 체험 후 등록 여부는 자유롭게 결정하실 수 있으며, 상담은 부담 없이 진행됩니다.</p>
+       <h2>혼자 고민하는 시간을 줄이고,<br>먼저 몸으로 확인해보세요.</h2>
+       <p>무료 체험은 등록을 강요하기 위한 과정이 아닙니다. 수업 방식, 운동 강도, 센터 분위기를 직접 확인하고 회원님에게 맞는지 판단하실 수 있도록 준비된 첫 단계입니다.</p>
+     <div class="cta-actions">
+  <a href="https://booking.naver.com/booking/6/bizes/1143622" class="btn btn-gold">지금 무료 체험 신청하기</a>
+  <a href="http://pf.kakao.com/_QERxeG/chat" class="btn btn-dark">상담 먼저 받아보기</a>
+  <a href="#program" class="btn btn-primary">프로그램 보기</a>
+</div>
+
+<p class="cta-urgency">
+현재 무료 체험은 하루 예약 인원이 제한되어 있어 선착순으로 마감됩니다.
+</p>
+      <p class="cta-sub">
+  체험 후 등록을 강요하지 않습니다. 운동 방식이 나에게 맞는지 먼저 확인해보세요.
+</p>
       </div>
     </div>
   </section>
@@ -1116,18 +1163,6 @@
         orbit.appendChild(dot);
         setTimeout(() => dot.remove(), 3000);
       }, 300);
-    }
-
-    if (window.innerWidth > 980) {
-      document.querySelectorAll(".card,.data-card,.branch-card,.cta-box,.proof-card").forEach(card => {
-        card.addEventListener("mousemove", e => {
-          const r = card.getBoundingClientRect();
-          const x = e.clientX - r.left - r.width / 2;
-          const y = e.clientY - r.top - r.height / 2;
-          card.style.transform = `perspective(900px) rotateX(${y / -80}deg) rotateY(${x / 80}deg) translateY(-6px)`;
-        });
-        card.addEventListener("mouseleave", () => card.style.transform = "");
-      });
     }
 
     const canvas = document.getElementById("heartChart");
