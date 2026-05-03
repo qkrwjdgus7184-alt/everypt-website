@@ -835,23 +835,24 @@ section{padding:80px 28px}
   opacity:.7;
   margin-left:2px;
 }
-    @media(max-width:560px){
-
-  .brand-statement .container{
-    max-width:100%;
-    padding:0 16px;
-  }
+   @media(max-width:560px){
 
   .brand-statement{
-    padding:80px 20px;
-    background:#fff;
+    padding:60px 20px;   /* 위 아래 동일 */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .brand-statement .container{
+    padding:0;
   }
 
   .brand-statement h2{
-    width:100%;
-    margin:0 auto;
-    text-align:center;
+    margin:0;
   }
+
+}
 .brand-statement{
   background:#fff;
   width:100%;
