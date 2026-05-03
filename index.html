@@ -695,7 +695,6 @@
 }
 
 .everypt-faq-content{
-  height:0;
   overflow:hidden;
   padding:0 24px;
   opacity:0;
@@ -703,11 +702,14 @@
 }
 
 .everypt-faq-item.active .everypt-faq-content{
-  height:auto;
+  max-height:500px;
   padding:0 24px 24px;
   opacity:1;
 }
-
+.everypt-faq-content{
+  word-break:keep-all;
+  white-space:normal;
+}
 .everypt-faq-item.active .everypt-faq-btn em{
   background:#f6d98d;
   color:#111;
