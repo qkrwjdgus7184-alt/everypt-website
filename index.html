@@ -1396,6 +1396,179 @@ section{padding:80px 28px}
     min-height:300px;
   }
 }
+    .hero-price-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 18px;
+  margin:0 0 24px;
+  border-radius:999px;
+  background:rgba(246,217,141,.14);
+  border:1px solid rgba(246,217,141,.34);
+  color:#fff;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
+}
+
+.hero-price-badge span{
+  color:rgba(255,255,255,.72);
+  font-size:14px;
+  font-weight:800;
+}
+
+.hero-price-badge strong{
+  color:#f6d98d;
+  font-size:28px;
+  font-weight:950;
+  letter-spacing:-1px;
+}
+
+.hero-price-badge em{
+  font-style:normal;
+  color:rgba(255,255,255,.9);
+  font-size:14px;
+  font-weight:900;
+}
+
+@media(max-width:560px){
+  .hero-price-badge{
+    width:100%;
+    justify-content:center;
+    flex-wrap:wrap;
+    border-radius:22px;
+    padding:16px 14px;
+    gap:8px;
+  }
+
+  .hero-price-badge strong{
+    font-size:26px;
+  }
+}.suyu-service{
+  margin:46px 0 0;
+  padding:42px 34px;
+  border-radius:36px;
+  background:#fff;
+  border:1px solid var(--line-dark);
+  box-shadow:var(--shadow);
+}
+
+.suyu-service-head{
+  margin-bottom:34px;
+}
+
+.suyu-service-head .title{
+  font-size:clamp(30px,4vw,48px);
+  letter-spacing:-2px;
+}
+
+.suyu-service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.suyu-service-item{
+  min-height:170px;
+  border-radius:26px;
+  background:linear-gradient(180deg,#f8f8fa,#fff);
+  border:1px solid rgba(0,0,0,.06);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px 18px;
+}
+
+.suyu-service-icon{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  background:#111;
+  color:#f6d98d;
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  font-weight:950;
+  margin-bottom:16px;
+}
+
+.suyu-service-item strong{
+  font-size:18px;
+  font-weight:950;
+  letter-spacing:-.5px;
+  margin-bottom:8px;
+}
+
+.suyu-service-item span{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+  line-height:1.55;
+}
+
+.suyu-service-note{
+  margin-top:26px;
+  text-align:center;
+  color:#111;
+  font-size:15px;
+  line-height:1.7;
+  font-weight:850;
+}
+
+@media(max-width:980px){
+  .suyu-service-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:560px){
+  .suyu-service{
+    margin-top:28px;
+    padding:28px 18px;
+    border-radius:28px;
+  }
+
+  .suyu-service-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .suyu-service-item{
+    min-height:auto;
+    padding:20px 16px;
+    border-radius:22px;
+    display:grid;
+    grid-template-columns:54px 1fr;
+    grid-template-areas:
+      "icon title"
+      "icon text";
+    column-gap:14px;
+    text-align:left;
+    align-items:center;
+  }
+
+  .suyu-service-icon{
+    grid-area:icon;
+    margin:0;
+  }
+
+  .suyu-service-item strong{
+    grid-area:title;
+    margin:0 0 4px;
+    font-size:17px;
+  }
+
+  .suyu-service-item span{
+    grid-area:text;
+    font-size:13px;
+  }
+
+  .suyu-service-note{
+    font-size:13px;
+  }
+}
   </style>
 </head>
 
@@ -1435,7 +1608,22 @@ section{padding:80px 28px}
      <h1>
 운동이 계속 실패하는 이유,<br>
   <span>에브리피티는 구조로 해결합니다.</span>
-</h1>
+</h1><p>
+  에브리피티는 단순히 운동을 알려주는 곳이 아닙니다.
+  운동을 시작하고, 지속하고, 변화까지 확인할 수 있도록 설계된
+  관리형 피트니스 브랜드입니다.
+</p>
+
+<div class="hero-price-badge">
+  <span>월 최소</span>
+  <strong>180,000원</strong>
+  <em>관리형 PT 시작</em>
+</div>
+
+<div class="hero-actions">
+  <a href="#reserve" class="btn btn-gold">지금 무료 체험 예약하기</a>
+  <a href="#suyu" class="btn btn-dark">수유점 상담 신청</a>
+</div>
        <p>
   에브리피티는 단순히 운동을 알려주는 곳이 아닙니다.
   운동을 시작하고, 지속하고, 변화까지 확인할 수 있도록 설계된
@@ -1796,7 +1984,57 @@ section{padding:80px 28px}
   </div>
 
 </div>
+<div class="suyu-service reveal">
+  <div class="section-head suyu-service-head">
+    <div class="eyebrow">SUYU SERVICE</div>
+    <h2 class="title">수유점에서 제공하는 관리 서비스</h2>
+    <p class="desc">
+      에브리피티 수유점은 운동 수업뿐 아니라 고객이 꾸준히 운동할 수 있는 환경까지 함께 제공합니다.
+    </p>
+  </div>
 
+  <div class="suyu-service-grid">
+    <div class="suyu-service-item">
+      <div class="suyu-service-icon">⚙</div>
+      <strong>과학 기반 맞춤운동</strong>
+      <span>목적과 체력에 맞춘 단계별 코칭</span>
+    </div>
+
+    <div class="suyu-service-item">
+      <div class="suyu-service-icon">◎</div>
+      <strong>70평대 넓은 시설</strong>
+      <span>쾌적하게 운동할 수 있는 공간</span>
+    </div>
+
+    <div class="suyu-service-item">
+      <div class="suyu-service-icon">↔</div>
+      <strong>내방역 5분 거리</strong>
+      <span>접근성이 좋은 운동 환경</span>
+    </div>
+
+    <div class="suyu-service-item">
+      <div class="suyu-service-icon">Ⓟ</div>
+      <strong>무료 주차 가능</strong>
+      <span>방문 부담을 줄인 편의성</span>
+    </div>
+
+    <div class="suyu-service-item">
+      <div class="suyu-service-icon">🎓</div>
+      <strong>전문 자격 보유</strong>
+      <span>국가·국제 공인 자격 기반 지도</span>
+    </div>
+
+    <div class="suyu-service-item">
+      <div class="suyu-service-icon">PT</div>
+      <strong>개인운동 가능</strong>
+      <span>수업 외 시간에도 운동 루틴 유지</span>
+    </div>
+  </div>
+
+  <p class="suyu-service-note">
+    PT 등록 시, 수업 시간 외 예약제로 개인운동 이용이 가능합니다.
+  </p>
+</div>
       <div class="cta-box reveal" id="reserve">
         <div class="cta-badge">첫 방문 고객 무료 체험 가능 · 상담 후 등록 여부 자유 결정</div>
       <h2>
