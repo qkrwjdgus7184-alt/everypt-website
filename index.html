@@ -1569,6 +1569,127 @@ section{padding:80px 28px}
     font-size:13px;
   }
 }
+    .photo-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:9998;
+  background:rgba(0,0,0,.86);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:.35s ease;
+}
+
+.photo-lightbox.active{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+.photo-lightbox img{
+  max-width:min(92vw,980px);
+  max-height:82vh;
+  object-fit:contain;
+  border-radius:26px;
+  box-shadow:0 40px 120px rgba(0,0,0,.55);
+  transform:scale(.96);
+  transition:.35s ease;
+}
+
+.photo-lightbox.active img{
+  transform:scale(1);
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
+  position:absolute;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover{
+  background:rgba(246,217,141,.22);
+  color:#f6d98d;
+}
+
+.lightbox-close{
+  top:24px;
+  right:24px;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  font-size:34px;
+  line-height:1;
+}
+
+.lightbox-prev,
+.lightbox-next{
+  top:50%;
+  transform:translateY(-50%);
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  font-size:48px;
+  line-height:1;
+}
+
+.lightbox-prev{
+  left:24px;
+}
+
+.lightbox-next{
+  right:24px;
+}
+
+.suyu-photo-grid img{
+  cursor:pointer;
+}
+
+@media(max-width:560px){
+  .photo-lightbox img{
+    max-width:94vw;
+    max-height:76vh;
+    border-radius:20px;
+  }
+
+  .lightbox-close{
+    top:16px;
+    right:16px;
+    width:42px;
+    height:42px;
+    font-size:30px;
+  }
+
+  .lightbox-prev,
+  .lightbox-next{
+    width:44px;
+    height:44px;
+    font-size:38px;
+  }
+
+  .lightbox-prev{
+    left:10px;
+  }
+
+  .lightbox-next{
+    right:10px;
+  }
+}
   </style>
 </head>
 
@@ -2307,6 +2428,68 @@ setTimeout(() => {
     introLoader.classList.add("hide");
   }
 }, 900);
+    const suyuPhotos = Array.from(document.querySelectorAll(".suyu-photo-grid img"));
+const lightbox = document.getElementById("photoLightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const lightboxClose = document.querySelector(".lightbox-close");
+const lightboxPrev = document.querySelector(".lightbox-prev");
+const lightboxNext = document.querySelector(".lightbox-next");
+
+let currentPhotoIndex = 0;
+
+function openLightbox(index){
+  currentPhotoIndex = index;
+  lightboxImage.src = suyuPhotos[currentPhotoIndex].src;
+  lightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox(){
+  lightbox.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function showPhoto(index){
+  currentPhotoIndex = (index + suyuPhotos.length) % suyuPhotos.length;
+  lightboxImage.style.opacity = "0";
+  lightboxImage.style.transform = "scale(.96)";
+
+  setTimeout(() => {
+    lightboxImage.src = suyuPhotos[currentPhotoIndex].src;
+    lightboxImage.style.opacity = "1";
+    lightboxImage.style.transform = "scale(1)";
+  }, 140);
+}
+
+suyuPhotos.forEach((img, index) => {
+  img.addEventListener("click", () => openLightbox(index));
+});
+
+lightboxClose.addEventListener("click", closeLightbox);
+lightboxPrev.addEventListener("click", () => showPhoto(currentPhotoIndex - 1));
+lightboxNext.addEventListener("click", () => showPhoto(currentPhotoIndex + 1));
+
+lightbox.addEventListener("click", (e) => {
+  if(e.target === lightbox){
+    closeLightbox();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if(!lightbox.classList.contains("active")) return;
+
+  if(e.key === "Escape") closeLightbox();
+  if(e.key === "ArrowLeft") showPhoto(currentPhotoIndex - 1);
+  if(e.key === "ArrowRight") showPhoto(currentPhotoIndex + 1);
+});
   </script>
+  <div class="photo-lightbox" id="photoLightbox">
+  <button class="lightbox-close" type="button" aria-label="닫기">×</button>
+  <button class="lightbox-prev" type="button" aria-label="이전 사진">‹</button>
+
+  <img id="lightboxImage" src="" alt="에브리피티 수유점 사진 크게 보기">
+
+  <button class="lightbox-next" type="button" aria-label="다음 사진">›</button>
+</div>
 </body>
 </html>
