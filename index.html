@@ -1292,7 +1292,110 @@ section{padding:80px 28px}
   font-size:14px;
   letter-spacing:.5px;
 }
-  
+  .branch-wrap-upgraded{
+  align-items:stretch;
+}
+
+.suyu-photo-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:10px;
+  margin:26px 0;
+}
+
+.suyu-photo-grid img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:18px;
+  background:#eee;
+}
+
+.suyu-photo-grid img:nth-child(1){
+  grid-column:span 3;
+  height:180px;
+}
+
+.suyu-photo-grid img:nth-child(2){
+  grid-column:span 3;
+  height:180px;
+}
+
+.suyu-photo-grid img:nth-child(n+3){
+  grid-column:span 2;
+}
+
+.branch-map-card{
+  border-radius:36px;
+  background:#fff;
+  border:1px solid var(--line-dark);
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+
+.branch-map-title{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:16px;
+}
+
+.branch-map-title strong{
+  font-size:24px;
+  letter-spacing:-.8px;
+}
+
+.branch-map-title span{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+}
+
+.branch-map-card .map{
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:none;
+}
+
+.branch-map-card .map img{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  object-fit:cover;
+}
+
+@media(max-width:980px){
+  .suyu-photo-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .suyu-photo-grid img,
+  .suyu-photo-grid img:nth-child(1),
+  .suyu-photo-grid img:nth-child(2),
+  .suyu-photo-grid img:nth-child(n+3){
+    grid-column:auto;
+    height:130px;
+  }
+
+  .suyu-photo-grid img:nth-child(1){
+    grid-column:1 / -1;
+    height:220px;
+  }
+
+  .branch-map-title{
+    display:block;
+  }
+
+  .branch-map-title span{
+    display:block;
+    margin-top:6px;
+  }
+
+  .branch-map-card .map img{
+    min-height:300px;
+  }
+}
   </style>
 </head>
 
@@ -1657,18 +1760,42 @@ section{padding:80px 28px}
         <p class="desc">현재 운영 중인 에브리피티 지점입니다. 수유역 근처에서 관리형 피트니스 프로그램을 경험할 수 있습니다.</p>
       </div>
 
-      <div class="branch-wrap">
-        <div class="branch-card reveal">
-          <h3>EVERYPT SUYU</h3>
-          <p>에브리피티 수유점은 예약제로 운영되는 프리미엄 관리형 피트니스 센터입니다. 무제한 PT, 소그룹 트레이닝, 인바디 관리, 개인운동 이용을 함께 제공합니다.</p>
-          <div class="branch-info">
-            <div>위치: 서울특별시 강북구 도봉로87길 26, 지하 1층</div>
-            <div>운영: 예약제 기반 수업 운영</div>
-            <div>상담: 무료 체험 및 카카오톡 상담 가능</div>
-          </div>
-        </div>
-        <div class="map reveal"><img src="map.png" alt="에브리피티 수유점 지도" loading="lazy"></div>
-      </div>
+   <div class="branch-wrap branch-wrap-upgraded">
+
+  <div class="branch-card reveal">
+    <h3>EVERYPT SUYU</h3>
+    <p>
+      에브리피티 수유점은 예약제로 운영되는 프리미엄 관리형 피트니스 센터입니다.
+      무제한 PT, 소그룹 트레이닝, 인바디 관리, 개인운동 이용을 함께 제공합니다.
+    </p>
+
+    <div class="suyu-photo-grid">
+      <img src="suyu-1.jpg" alt="에브리피티 수유점 내부 사진 1" loading="lazy">
+      <img src="suyu-2.jpg" alt="에브리피티 수유점 내부 사진 2" loading="lazy">
+      <img src="suyu-3.jpg" alt="에브리피티 수유점 내부 사진 3" loading="lazy">
+      <img src="suyu-4.jpg" alt="에브리피티 수유점 내부 사진 4" loading="lazy">
+      <img src="suyu-5.jpg" alt="에브리피티 수유점 내부 사진 5" loading="lazy">
+    </div>
+
+    <div class="branch-info">
+      <div>위치: 서울특별시 강북구 도봉로87길 26, 지하 1층</div>
+      <div>운영: 예약제 기반 수업 운영</div>
+      <div>상담: 무료 체험 및 카카오톡 상담 가능</div>
+    </div>
+  </div>
+
+  <div class="branch-map-card reveal">
+    <div class="branch-map-title">
+      <strong>찾아오시는 길</strong>
+      <span>수유역 근처 · 도보 이동 가능</span>
+    </div>
+
+    <div class="map">
+      <img src="map.png" alt="에브리피티 수유점 지도" loading="lazy">
+    </div>
+  </div>
+
+</div>
 
       <div class="cta-box reveal" id="reserve">
         <div class="cta-badge">첫 방문 고객 무료 체험 가능 · 상담 후 등록 여부 자유 결정</div>
