@@ -1869,6 +1869,26 @@ section{padding:80px 28px}
   color:#d6ad5f;
   border:1px solid rgba(214,173,95,.35);
 }
+    .summary-box{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:140px;
+}
+
+.summary-box strong{
+  font-size:28px;
+  gap:10px;
+}
+
+.summary-box em{
+  display:block;
+  margin-top:8px;
+  font-size:13px;
+  color:rgba(255,255,255,.6);
+  font-style:normal;
+  font-weight:600;
+}
   </style>
 </head>
 
@@ -2014,27 +2034,29 @@ section{padding:80px 28px}
         </div>
           <div class="data-card reveal">
           <h3>회원 평균 변화 데이터</h3>
-          <div class="data-numbers">
-          <div class="number-box"><span>평균 근육량 증가</span><strong class="green">
-  +<em class="count" data-target="1.9" data-decimal="1">0</em>
-  <span class="unit">kg</span>
-</strong></div>
+       <div class="data-numbers">
 
-<div class="number-box"><span>평균 체지방량 감소</span><strong class="red">
-  -<em class="count" data-target="7.8" data-decimal="1">0</em>
-  <span class="unit">kg</span>
-</strong></div>
+  <!-- 평균 -->
+  <div class="number-box summary-box">
+    <span>평균 변화</span>
+    <strong>
+      <span class="green">+1.9kg</span> /
+      <span class="red">-7.8kg</span>
+    </strong>
+    <em>근육 증가 / 체지방 감소</em>
+  </div>
 
-<div class="number-box"><span>누적 근육 증가량</span><strong class="green">
-  +<em class="count" data-target="128.4" data-decimal="1">0</em>
-  <span class="unit">kg</span>
-</strong></div>
+  <!-- 누적 -->
+  <div class="number-box summary-box">
+    <span>누적 변화</span>
+    <strong>
+      <span class="green">+128.4kg</span> /
+      <span class="red">-527.3kg</span>
+    </strong>
+    <em>총 회원 데이터 기준</em>
+  </div>
 
-<div class="number-box"><span>누적 체지방 감소량</span><strong class="red">
-  -<em class="count" data-target="527.3" data-decimal="1">0</em>
-  <span class="unit">kg</span>
-</strong></div>
-          </div>
+</div>
        <p class="data-note">
 * 2024년 오픈 이후 누적된 실제 회원 약 500명 이상의 체성분검사기반 평균값입니다.
 지금까지도 회원들의 변화가 꾸준히 이어지고 있습니다.
