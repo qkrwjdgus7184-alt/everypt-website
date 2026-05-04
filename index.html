@@ -1705,11 +1705,11 @@ section{padding:80px 28px}
   font-weight:700;
 }
 .cta-loss{
-  margin:6px auto 10px;
-  font-size:12px; /* ↓ 더 줄임 */
-  color:rgba(255,255,255,.48); /* ↓ 살짝 더 연하게 */
-  font-weight:600; /* ↓ 힘 빼기 */
-  line-height:1.7; /* ↓ 대신 가독성 확보 */
+  margin:4px auto 8px;
+  font-size:11.5px; /* ← 더 줄임 (핵심) */
+  color:rgba(255,255,255,.42); /* ← 더 흐리게 */
+  font-weight:500; /* ← 힘 완전히 뺌 */
+  line-height:1.75;
 }
     .program-compact{
   grid-template-columns:repeat(4,1fr);
@@ -1928,6 +1928,16 @@ section{padding:80px 28px}
   box-shadow:0 28px 80px rgba(0,0,0,.28);
 }.mid-cta .btn-gold{
   margin-bottom:30px;
+}.mid-cta{
+  animation:ctaFloat 6s ease-in-out infinite;
+}
+
+@keyframes ctaFloat{
+  0%{ transform:translateY(0px); }
+  50%{ transform:translateY(-6px); }
+  100%{ transform:translateY(0px); }
+}.mid-cta{
+  animation:ctaFloat 7.5s ease-in-out infinite;
 }
   </style>
 </head>
