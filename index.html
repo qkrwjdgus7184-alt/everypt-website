@@ -1909,16 +1909,25 @@ section{padding:80px 28px}
 }
 
 .summary-item{
-  margin-top:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:14px;
 }
 
 .summary-item span{
-  margin-bottom:8px;
+  margin:0; /* ← 이게 핵심 */
   color:rgba(255,255,255,.65);
   font-size:13px;
   font-weight:900;
+  line-height:1.3; /* ← 줄 간격 정리 */
 }
-
+.summary-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:12px; /* ← 기존보다 살짝 줄임 */
+}
 .summary-item strong{
   display:flex;
   align-items:baseline;
@@ -1926,6 +1935,8 @@ section{padding:80px 28px}
   font-size:clamp(24px,2.2vw,30px);
   line-height:1.05;
   white-space:nowrap;
+    margin-left:auto;   /* ← 이거 추가 */
+  text-align:right;   /* ← 이거 추가 */
 }
   </style>
 </head>
@@ -2075,8 +2086,6 @@ section{padding:80px 28px}
      <div class="data-numbers data-summary">
 
   <div class="number-box summary-box">
-    <span>평균 변화</span>
-
     <div class="summary-item">
       <span>평균 근육량 증가</span>
       <strong class="green">+ 1.9 <span class="unit">kg</span></strong>
@@ -2089,7 +2098,6 @@ section{padding:80px 28px}
   </div>
 
   <div class="number-box summary-box">
-    <span>누적 변화</span>
 
     <div class="summary-item">
       <span>누적 근육 증가량</span>
