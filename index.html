@@ -1830,6 +1830,23 @@ section{padding:80px 28px}
     border-radius:24px;
   }
 }
+    .highlight{
+  color:#d6ad5f; /* 골드 강조 */
+  font-weight:900;
+  position:relative;
+}
+
+.highlight::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:2px;
+  width:100%;
+  height:10px;
+  background:rgba(214,173,95,.25);
+  z-index:-1;
+  border-radius:4px;
+}
   </style>
 </head>
 
@@ -1910,10 +1927,10 @@ section{padding:80px 28px}
         <div class="eyebrow">WHY EVERYPT</div>
         <h2 class="title">왜 에브리피티인가?</h2>
         <p class="desc">
-       대부분의 사람은 운동을 의지로 시작합니다.<br>
+      대부분의 사람은 운동을 <span class="highlight">의지로 시작합니다.</span><br>
           그래서 실패하기에 방법부터 다르게 설계합니다.<br><br>
 관리·코칭·루틴을 하나의 시스템으로 묶어<br>
-하기 싫어서 미루던 운동이 당연한 일상이 됩니다.<span class="why-sub">
+하기 싫어서 미루던 운동이 <span class="highlight">당연한 일상이 됩니다.</span><span class="why-sub">
   
 <br>에브리피티는 정부 인증 ‘착한가격업소’로 지정된 센터로,<br>
 가격과 서비스 기준을 동시에 검증받은 구조입니다.
