@@ -1937,6 +1937,40 @@ section{padding:80px 28px}
   white-space:nowrap;
     margin-left:auto;   /* ← 이거 추가 */
   text-align:right;   /* ← 이거 추가 */
+}.data-summary{
+  grid-template-columns:1fr;
+  gap:20px;
+}
+
+.data-merge-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:18px;
+  min-height:160px;
+  padding:28px 30px;
+}
+
+.data-merge-item span{
+  display:block;
+  color:rgba(255,255,255,.65);
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.data-merge-item strong{
+  display:flex;
+  align-items:baseline;
+  gap:4px;
+  font-size:clamp(24px,2.2vw,30px);
+  line-height:1.05;
+  white-space:nowrap;
+}
+
+.data-merge-item .unit{
+  font-size:11px;
+  opacity:.7;
 }
   </style>
 </head>
@@ -2083,30 +2117,29 @@ section{padding:80px 28px}
         </div>
           <div class="data-card reveal">
           <h3>회원 평균 변화 데이터</h3>
-     <div class="data-numbers data-summary">
+   <div class="data-numbers data-summary">
 
-  <div class="number-box summary-box">
-    <div class="summary-item">
+  <div class="number-box data-merge-box">
+    <div class="data-merge-item">
       <span>평균 근육량 증가</span>
-      <strong class="green">+ 1.9 <span class="unit">kg</span></strong>
+      <strong class="green">+1.9 <span class="unit">kg</span></strong>
     </div>
 
-    <div class="summary-item">
+    <div class="data-merge-item">
       <span>평균 체지방량 감소</span>
-      <strong class="red">- 7.8 <span class="unit">kg</span></strong>
+      <strong class="red">-7.8 <span class="unit">kg</span></strong>
     </div>
   </div>
 
-  <div class="number-box summary-box">
-
-    <div class="summary-item">
+  <div class="number-box data-merge-box">
+    <div class="data-merge-item">
       <span>누적 근육 증가량</span>
-      <strong class="green">+ 128.4 <span class="unit">kg</span></strong>
+      <strong class="green">+128.4 <span class="unit">kg</span></strong>
     </div>
 
-    <div class="summary-item">
+    <div class="data-merge-item">
       <span>누적 체지방 감소량</span>
-      <strong class="red">- 527.3 <span class="unit">kg</span></strong>
+      <strong class="red">-527.3 <span class="unit">kg</span></strong>
     </div>
   </div>
 
