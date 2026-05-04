@@ -1570,7 +1570,14 @@ section{padding:80px 28px}
   grid-template-columns:repeat(2,1fr);
   gap:10px;
 }
+  .system-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
 
+  .system-card{
+    min-width:0;
+    width:100%;
+  }
 .process-card{
   min-height:168px;
   padding:18px 14px;
