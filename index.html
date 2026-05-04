@@ -1892,6 +1892,41 @@ section{padding:80px 28px}
   font-style:normal;
   font-weight:600;
 }
+    .data-summary{
+  grid-template-columns:1fr;
+  gap:18px;
+}
+
+.summary-box{
+  min-height:220px;
+  padding:28px 26px;
+}
+
+.summary-box > span{
+  margin-bottom:18px;
+  color:rgba(255,255,255,.7);
+  font-weight:900;
+}
+
+.summary-item{
+  margin-top:16px;
+}
+
+.summary-item span{
+  margin-bottom:8px;
+  color:rgba(255,255,255,.65);
+  font-size:13px;
+  font-weight:900;
+}
+
+.summary-item strong{
+  display:flex;
+  align-items:baseline;
+  gap:4px;
+  font-size:clamp(24px,2.2vw,30px);
+  line-height:1.05;
+  white-space:nowrap;
+}
   </style>
 </head>
 
@@ -2037,28 +2072,36 @@ section{padding:80px 28px}
         </div>
           <div class="data-card reveal">
           <h3>회원 평균 변화 데이터</h3>
-       <div class="data-numbers">
+     <div class="data-numbers data-summary">
 
-  <!-- 평균 -->
-<div class="number-box summary-box">
-  <span>평균 변화</span>
+  <div class="number-box summary-box">
+    <span>평균 변화</span>
 
-  <strong class="green">+ 1.9 <span class="unit">kg</span></strong>
-  <em>평균 근육량 증가</em>
+    <div class="summary-item">
+      <span>평균 근육량 증가</span>
+      <strong class="green">+ 1.9 <span class="unit">kg</span></strong>
+    </div>
 
-  <strong class="red">- 7.8 <span class="unit">kg</span></strong>
-  <em>평균 체지방 감소</em>
-</div>
+    <div class="summary-item">
+      <span>평균 체지방량 감소</span>
+      <strong class="red">- 7.8 <span class="unit">kg</span></strong>
+    </div>
+  </div>
 
-  <!-- 누적 -->
-<div class="number-box summary-box">
-  <span>누적 변화</span>
+  <div class="number-box summary-box">
+    <span>누적 변화</span>
 
-  <strong class="green">+ 128.4 <span class="unit">kg</span></strong>
-  <em>누적 근육 증가량</em>
+    <div class="summary-item">
+      <span>누적 근육 증가량</span>
+      <strong class="green">+ 128.4 <span class="unit">kg</span></strong>
+    </div>
 
-  <strong class="red">- 527.3 <span class="unit">kg</span></strong>
-  <em>누적 체지방 감소량</em>
+    <div class="summary-item">
+      <span>누적 체지방 감소량</span>
+      <strong class="red">- 527.3 <span class="unit">kg</span></strong>
+    </div>
+  </div>
+
 </div>
 
 </div>
