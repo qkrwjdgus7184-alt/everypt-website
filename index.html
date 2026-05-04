@@ -307,7 +307,7 @@ section{padding:80px 28px}
     }
     .data-board{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(2,1fr);
       gap:24px;
       align-items:stretch;
     }
@@ -355,37 +355,6 @@ section{padding:80px 28px}
       line-height:1.6;
       font-weight:600;
     }
-
-    .live-visual{display:grid;place-items:center}
-    .body-orbit{
-      position:relative;
-      width:min(360px,82vw);
-      height:min(360px,82vw);
-      border-radius:50%;
-      border:1px solid rgba(255,255,255,.16);
-      background:radial-gradient(circle,rgba(55,217,158,.16),transparent 58%);
-      box-shadow:0 0 80px rgba(55,217,158,.16);
-    }
-    .body-core{
-      position:absolute;
-      left:50%;top:50%;
-      width:118px;height:190px;
-      transform:translate(-50%,-42%);
-      border-radius:70px 70px 46px 46px;
-      background:linear-gradient(180deg,var(--green),var(--blue));
-      box-shadow:0 0 70px rgba(55,217,158,.4);
-      animation:grow 2.8s ease-in-out infinite;
-    }
-    .fat,.muscle{position:absolute;border-radius:50%;pointer-events:none}
-    .fat{width:16px;height:16px;background:var(--red);animation:fatOut 2.8s ease-in-out infinite}
-    .muscle{width:14px;height:14px;background:var(--green);box-shadow:0 0 20px rgba(55,217,158,.8);animation:muscleIn 2.8s ease-in-out infinite}
-   @keyframes grow{
-  0%,100%{transform:translate(-50%,-42%) scale(.96)}
-  50%{transform:translate(-50%,-42%) scale(1.08)}
-}
-    @keyframes fatOut{0%{opacity:.9;transform:scale(1)}80%{opacity:.15;transform:translateY(-48px) scale(.25)}100%{opacity:0;transform:translateY(-70px) scale(0)}}
-    @keyframes muscleIn{0%{opacity:.2;transform:scale(.4)}60%{opacity:1;transform:scale(1.45)}100%{opacity:.82;transform:scale(1)}}
-
     .heart-card{display:flex;flex-direction:column}
     .heart-card p{color:rgba(255,255,255,.68);line-height:1.7;font-weight:600;margin-bottom:22px}
     .heart-label{
@@ -577,7 +546,17 @@ section{padding:80px 28px}
       .menu a{padding:12px 0;width:100%}
       .hero-inner,.data-board,.branch-wrap,.footer-inner,.proof-grid{grid-template-columns:1fr}
       .hero-panel{display:none}
-      .why-grid,.system-grid,.program-grid,.worry-grid,.data-numbers{grid-template-columns:1fr}
+    .why-grid,
+.program-grid,
+.worry-grid,
+.data-numbers{
+  grid-template-columns:1fr;
+}
+
+.system-grid{
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
       section{padding:68px 16px}
       .hero{padding:132px 22px 74px;min-height:860px}
       .hero h1{letter-spacing:-2.2px}
@@ -1596,9 +1575,9 @@ section{padding:80px 28px}
   font-weight:650;
 }
 
-@media(max-width:980px){
-  .process-grid{
-    grid-template-columns:1fr 1fr;
+@media(max-width:560px){
+  .system-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
@@ -1656,7 +1635,7 @@ section{padding:80px 28px}
 @media(max-width:560px){
   .system-grid{
     display:grid;
-    grid-template-columns:1fr;
+grid-template-columns:repeat(2,1fr);
     gap:10px;
   }
 
@@ -1704,10 +1683,9 @@ section{padding:80px 28px}
 .class-card{
   background:linear-gradient(145deg,#181818,#333);
 }
-    @media(min-width:981px){
+  @media(min-width:981px){
   .data-board{
-    grid-template-columns:1fr 1fr 1fr;
-    gap:24px;
+    grid-template-columns:1fr 1fr;
   }
 
   .data-card:first-child{
@@ -1784,11 +1762,8 @@ section{padding:80px 28px}
 운동이 계속 실패하는 이유,<br>
   <span>에브리피티는 구조로 해결합니다.</span>
 </h1><p>
-  에브리피티는 단순히 운동을 알려주는 곳이 아닙니다.
-  운동을 시작하고, 지속하고, 변화까지 확인할 수 있도록 설계된
-  관리형 피트니스 브랜드입니다.
+운동을 시작하고, 지속하고, 변화까지 확인하는 관리형 피트니스입니다.
 </p>
-
 <div class="hero-price-badge">
   <span>월 최소</span>
   <strong>180,000원</strong>
@@ -1797,11 +1772,9 @@ section{padding:80px 28px}
 
 <div class="hero-actions">
 <a href="#reserve" class="btn btn-gold">오늘 체험 가능 여부 확인하기</a>
-  <a href="#suyu" class="btn btn-dark">수유점 상담 신청</a>
 </div>
     
-       <div class="hero-proof">
- 무료 체험 후 운동을 시작한 이유는 단순합니다.
+     <div class="hero-proof">
 혼자보다 오래 지속되기 때문입니다.
 </div>
         <p class="hero-bridge">
@@ -1914,12 +1887,6 @@ section{padding:80px 28px}
 * 2024~2025 실제 회원 300명 이상 인바디 데이터 기반 평균값입니다.
 개인별 결과는 운동 빈도 및 식습관에 따라 달라질 수 있습니다.
 </p>
-        </div>
-
-        <div class="data-card live-visual reveal">
-          <div class="body-orbit" id="bodyOrbit">
-            <div class="body-core"></div>
-          </div>
         </div>
 
         <div class="data-card heart-card reveal">
