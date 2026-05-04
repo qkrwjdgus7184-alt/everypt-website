@@ -1938,6 +1938,25 @@ section{padding:80px 28px}
   100%{ transform:translateY(0px); }
 }.mid-cta{
   animation:ctaFloat 7.5s ease-in-out infinite;
+}/* CTA 하단 안내문 최종 강제 적용 */
+.mid-cta .cta-loss{
+  margin:2px auto 6px !important;
+  font-size:10.5px !important;
+  color:rgba(255,255,255,.38) !important;
+  font-weight:500 !important;
+  line-height:1.65 !important;
+  max-width:260px !important;
+}
+
+/* CTA 전체 미세 모션 */
+.mid-cta-box{
+  animation:ctaBoxFloat 7.5s ease-in-out infinite;
+}
+
+@keyframes ctaBoxFloat{
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-5px); }
+  100%{ transform:translateY(0); }
 }
   </style>
 </head>
