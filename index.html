@@ -2109,10 +2109,11 @@ section{padding:80px 28px}
   margin-bottom:18px;
 }
 
-.trust-row span{
+.trust-row > span{
   font-size:16px;
   line-height:1.6;
   letter-spacing:0.3px;
+}
 }
 
 .trust-row{
@@ -2132,6 +2133,24 @@ section{padding:80px 28px}
   display:flex;
   align-items:baseline;
   gap:4px;
+}.trust-row strong{
+  display:flex;
+  align-items:baseline;
+  gap:4px;
+  font-size:56px !important;
+  line-height:1.1;
+  font-weight:950;
+}
+
+.trust-row strong .trust-count{
+  font-size:56px !important;
+  font-weight:950 !important;
+  line-height:1.1;
+  letter-spacing:-0.5px;
+}
+
+.trust-row strong::after{
+  font-size:18px !important;
 }
   </style>
 </head>
