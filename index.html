@@ -3882,99 +3882,40 @@ window.addEventListener('load', () => {
   setPosition();
 });
 </script>
-  <script>
-const coachSlider = document.querySelector('.coach-slider');
-const coachTrack = document.querySelector('.coach-track');
-
-let coachCards = [];
-let coachIndex = 0;
-let coachGap = 24;
-let coachCardWidth = 320;
-let coachTimer = null;
-
-function setupCoachInfinite(){
-  if(!coachSlider || !coachTrack) return;
-
-  const originalCards = Array.from(coachTrack.querySelectorAll('.coach-card'))
-    .filter(card => !card.classList.contains('clone'));
-
-  coachTrack.innerHTML = '';
-
-  const beforeClones = originalCards.map(card => {
-    const clone = card.cloneNode(true);
-    clone.classList.add('clone');
-    return clone;
-  });
-
-  const afterClones = originalCards.map(card => {
-    const clone = card.cloneNode(true);
-    clone.classList.add('clone');
-    return clone;
-  });
-
-  beforeClones.forEach(card => coachTrack.appendChild(card));
-  originalCards.forEach(card => coachTrack.appendChild(card));
-  afterClones.forEach(card => coachTrack.appendChild(card));
-
-  coachCards = Array.from(coachTrack.querySelectorAll('.coach-card'));
-  coachIndex = originalCards.length;
-
-  moveCoach(false);
-}
-
-function getCoachMoveValue(){
-  const card = coachCards[0];
-  if(!card) return 0;
-
-  const style = window.getComputedStyle(coachTrack);
-  coachGap = parseFloat(style.gap) || 24;
-  coachCardWidth = card.offsetWidth;
-
-  const sliderCenter = coachSlider.offsetWidth / 2;
-  const cardCenter = coachCardWidth / 2;
-
-  return -(coachIndex * (coachCardWidth + coachGap)) + sliderCenter - cardCenter;
-}
-
-function moveCoach(animate = true){
-  coachTrack.style.transition = animate
-    ? 'transform .75s cubic-bezier(.22,1,.36,1)'
-    : 'none';
-
-  coachTrack.style.transform = `translateX(${getCoachMoveValue()}px)`;
-}
-
-function nextCoach(){
-  coachIndex++;
-  moveCoach(true);
-}
-
-coachTrack.addEventListener('transitionend', () => {
-  const originalCount = coachCards.length / 3;
-
-  if(coachIndex >= originalCount * 2){
-    coachIndex = originalCount;
-    moveCoach(false);
-  }
-
-  if(coachIndex < originalCount){
-    coachIndex = originalCount * 2 - 1;
-    moveCoach(false);
-  }
-});
-
-function startCoachAuto(){
-  clearInterval(coachTimer);
-  coachTimer = setInterval(nextCoach, 3600);
-}
-
+<script>
 window.addEventListener('load', () => {
-  setupCoachInfinite();
-  startCoachAuto();
-});
+  const slider = document.querySelector('.coach-slider');
+  const track = document.querySelector('.coach-track');
+  const cards = document.querySelectorAll('.coach-card');
 
-window.addEventListener('resize', () => {
-  moveCoach(false);
+  if (!slider || !track || cards.length === 0) return;
+
+  let index = 0;
+  let timer = null;
+
+  function moveCoach() {
+    const gap = parseFloat(getComputedStyle(track).gap) || 24;
+    const cardWidth = cards[0].offsetWidth;
+
+    const sliderCenter = slider.offsetWidth / 2;
+    const cardCenter = cardWidth / 2;
+
+    const x = -(index * (cardWidth + gap)) + sliderCenter - cardCenter;
+
+    track.style.transition = 'transform .85s cubic-bezier(.22,1,.36,1)';
+    track.style.transform = `translateX(${x}px)`;
+  }
+
+  function nextCoach() {
+    index = index === 0 ? 1 : 0; 
+    moveCoach();
+  }
+
+  moveCoach();
+
+  timer = setInterval(nextCoach, 2800);
+
+  window.addEventListener('resize', moveCoach);
 });
 </script>
 </body>
