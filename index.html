@@ -2178,6 +2178,206 @@ section{padding:80px 28px}
     opacity:1;
     filter:blur(0);
   }
+}.coach{
+  background:#020814;
+  color:#fff;
+}
+
+.coach-grid{
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  padding:10px 0 34px;
+  scroll-snap-type:x mandatory;
+}
+
+.coach-card{
+  min-width:320px;
+  border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  border-radius:0;
+  padding:22px;
+  cursor:pointer;
+  scroll-snap-align:center;
+  transition:.45s cubic-bezier(.16,1,.3,1);
+}
+
+.coach-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 90px rgba(0,0,0,.35);
+}
+
+.coach-photo-wrap{
+  background:#b8b8b8;
+  padding:24px 24px 0;
+  margin-bottom:22px;
+}
+
+.coach-photo-wrap img{
+  width:100%;
+  height:310px;
+  object-fit:cover;
+  object-position:top center;
+}
+
+.coach-name{
+  text-align:center;
+}
+
+.coach-name strong{
+  display:block;
+  font-size:22px;
+  font-weight:950;
+  margin-bottom:8px;
+}
+
+.coach-name span{
+  color:rgba(255,255,255,.62);
+  font-size:14px;
+  font-weight:750;
+}
+
+.coach-bottom-copy{
+  text-align:center;
+  margin-top:18px;
+}
+
+.coach-bottom-copy p{
+  color:#fff;
+  font-size:21px;
+  line-height:1.6;
+  font-weight:850;
+  margin-bottom:26px;
+}
+
+.coach-bottom-copy strong{
+  color:#6fa6ff;
+}
+
+.coach-detail-btn{
+  width:100%;
+  max-width:300px;
+  height:58px;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:6px;
+  color:#fff;
+  font-weight:900;
+  font-size:15px;
+}.profile-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:#fff;
+  overflow-y:auto;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:.35s ease;
+}
+
+.profile-modal.active{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+.profile-page{
+  min-height:100vh;
+  background:#fff;
+  color:#111;
+}
+
+.profile-close{
+  position:fixed;
+  top:18px;
+  right:18px;
+  z-index:2;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-size:28px;
+}
+
+.profile-hero{
+  position:relative;
+  background:#b8b8b8;
+  min-height:720px;
+  padding:54px 22px 0;
+  overflow:hidden;
+}
+
+.profile-hero h2{
+  font-size:44px;
+  line-height:1.05;
+  letter-spacing:-2px;
+  font-weight:950;
+  margin-bottom:24px;
+}
+
+.profile-hero p{
+  font-size:18px;
+  line-height:1.6;
+  font-weight:700;
+}
+
+.profile-hero img{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:78%;
+  max-width:420px;
+}
+
+.profile-name{
+  position:absolute;
+  right:24px;
+  top:260px;
+}
+
+.profile-name strong{
+  display:block;
+  font-size:28px;
+  font-weight:950;
+}
+
+.profile-name span{
+  font-size:14px;
+  font-weight:800;
+}
+
+.profile-career{
+  padding:48px 22px 80px;
+}
+
+.profile-career h3{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  font-size:22px;
+  margin-bottom:26px;
+}
+
+.profile-career h3::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#111;
+}
+
+.profile-career ul{
+  padding-left:18px;
+  display:grid;
+  gap:12px;
+}
+
+.profile-career li{
+  font-size:16px;
+  line-height:1.6;
+  font-weight:650;
+  color:#333;
 }
   </style>
 </head>
@@ -2518,23 +2718,40 @@ section{padding:80px 28px}
 </div>
 </div>
 
-    <div class="coach-grid">
-      
-      <div class="coach-card reveal">
-        <img src="coach-care.png" alt="코치 프로필">
-        <div class="coach-overlay">
-        <h3>대표원장 박정현</h3>
-<p>운동생리학 기반으로 체계적인 변화를 설계합니다.</p>
-        </div>
-      </div>
+ <div class="coach-grid">
 
-      <div class="coach-card reveal">
-        <img src="coach-care.png" alt="코치 프로필">
-        <div class="coach-overlay">
-    <h3>전문 코치진</h3>
-<p>초보자도 무리 없이 따라올 수 있도록 단계별로 관리합니다.</p>
-        </div>
-      </div>
+  <div class="coach-card profile-open" data-profile="director">
+    <div class="coach-photo-wrap">
+      <img src="coach-care.png" alt="대표원장 박정현 프로필">
+    </div>
+    <div class="coach-name">
+      <strong>박정현 대표원장</strong>
+      <span>운동생리학 기반 전문 코칭</span>
+    </div>
+  </div>
+
+  <div class="coach-card profile-open" data-profile="coach">
+    <div class="coach-photo-wrap">
+      <img src="coach-care.png" alt="전문 코치진 프로필">
+    </div>
+    <div class="coach-name">
+      <strong>전문 코치진</strong>
+      <span>초보자 맞춤 관리 코칭</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="coach-bottom-copy">
+  <p>
+    운동을 맡길 수 있는 사람들,<br>
+    <strong>경험과 데이터로 관리하는 에브리피티의 전문성</strong>
+  </p>
+
+  <button class="profile-open coach-detail-btn" data-profile="director">
+    대표원장 프로필 보기 →
+  </button>
+</div>
 
     </div>
   </div>
@@ -3189,6 +3406,52 @@ setTimeout(() => {
   }, { threshold: 0.4 });
 
   counters.forEach(counter => observer.observe(counter));
+});
+</script><div class="profile-modal" id="profileModal">
+  <div class="profile-page">
+    <button class="profile-close" id="profileClose">×</button>
+
+    <section class="profile-hero">
+      <div>
+        <h2>EVERYPT<br>PROFESSIONAL</h2>
+        <p>운동의 지속을 생각한다면,<br>정답은 관리입니다.</p>
+      </div>
+
+      <img src="coach-care.png" alt="대표원장 박정현">
+      <div class="profile-name">
+        <strong>박정현</strong>
+        <span>에브리피티 대표원장</span>
+      </div>
+    </section>
+
+    <section class="profile-career">
+      <h3>경력</h3>
+      <ul>
+        <li>에브리피티 수유 대표원장</li>
+        <li>운동생리학 기반 코칭</li>
+        <li>회원 체성분 데이터 기반 관리</li>
+        <li>심박수 기반 운동강도 조절 시스템 운영</li>
+        <li>초보자 맞춤 소그룹 트레이닝 전문</li>
+      </ul>
+    </section>
+  </div>
+</div><script>
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("profileModal");
+  const closeBtn = document.getElementById("profileClose");
+  const openBtns = document.querySelectorAll(".profile-open");
+
+  openBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  });
 });
 </script>
 </body>
