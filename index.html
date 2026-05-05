@@ -3484,61 +3484,83 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-  <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const slider = document.querySelector(".coach-slider");
   const track = document.querySelector(".coach-track");
 
   if (!slider || !track) return;
 
-  const cards = Array.from(track.querySelectorAll(".coach-card"));
-  if (cards.length < 2) return;
+  const originals = Array.from(track.querySelectorAll(".coach-card"));
+  if (originals.length < 2) return;
 
-  let index = 0;
-  let startX = 0;
+  let cards = [];
+  let index = originals.length;
   let currentX = 0;
+  let startX = 0;
+  let dragX = 0;
   let isDragging = false;
   let autoTimer = null;
 
-  const gap = 24;
   const stayTime = 4800;
   const moveSpeed = 900;
 
-  function cardWidth() {
-    return cards[0].offsetWidth + gap;
+  function buildInfinite() {
+    track.innerHTML = "";
+
+    const before = originals.map(card => card.cloneNode(true));
+    const center = originals.map(card => card.cloneNode(true));
+    const after = originals.map(card => card.cloneNode(true));
+
+    [...before, ...center, ...after].forEach(card => {
+      track.appendChild(card);
+    });
+
+    cards = Array.from(track.querySelectorAll(".coach-card"));
+    index = originals.length;
   }
 
-  function centerCard(animate = true) {
+  function getMoveX(i) {
+    const card = cards[i];
+    if (!card) return 0;
+
     const sliderCenter = slider.offsetWidth / 2;
-    const cardCenter = cards[index].offsetLeft + cards[index].offsetWidth / 2;
-    const moveX = sliderCenter - cardCenter;
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+
+    return Math.round(sliderCenter - cardCenter);
+  }
+
+  function moveTo(i, animate = true) {
+    index = i;
 
     track.style.transition = animate
       ? `transform ${moveSpeed}ms cubic-bezier(.25,.8,.25,1)`
       : "none";
 
-    track.style.transform = `translate3d(${moveX}px,0,0)`;
-    currentX = moveX;
+    currentX = getMoveX(index);
+    track.style.transform = `translate3d(${currentX}px,0,0)`;
+  }
+
+  function normalize() {
+    const count = originals.length;
+
+    if (index >= count * 2) {
+      index = count;
+      moveTo(index, false);
+    }
+
+    if (index < count) {
+      index = count * 2 - 1;
+      moveTo(index, false);
+    }
   }
 
   function nextCard() {
-    index++;
-
-    if (index >= cards.length) {
-      index = 0;
-    }
-
-    centerCard(true);
+    moveTo(index + 1, true);
   }
 
   function prevCard() {
-    index--;
-
-    if (index < 0) {
-      index = cards.length - 1;
-    }
-
-    centerCard(true);
+    moveTo(index - 1, true);
   }
 
   function startAuto() {
@@ -3550,52 +3572,58 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(autoTimer);
   }
 
-  slider.addEventListener("pointerdown", e => {
+  function dragStart(x) {
     isDragging = true;
-    startX = e.clientX;
+    startX = x;
+    dragX = 0;
     stopAuto();
-
     track.style.transition = "none";
-    slider.setPointerCapture(e.pointerId);
-  });
+  }
 
-  slider.addEventListener("pointermove", e => {
+  function dragMove(x) {
     if (!isDragging) return;
+    dragX = x - startX;
+    track.style.transform = `translate3d(${currentX + dragX}px,0,0)`;
+  }
 
-    const dragAmount = e.clientX - startX;
-    track.style.transform = `translate3d(${currentX + dragAmount}px,0,0)`;
-  });
-
-  slider.addEventListener("pointerup", e => {
+  function dragEnd() {
     if (!isDragging) return;
 
     isDragging = false;
 
-    const dragAmount = e.clientX - startX;
-    const threshold = cards[0].offsetWidth * 0.22;
+    const threshold = cards[index].offsetWidth * 0.2;
 
-    if (dragAmount < -threshold) {
+    if (dragX < -threshold) {
       nextCard();
-    } else if (dragAmount > threshold) {
+    } else if (dragX > threshold) {
       prevCard();
     } else {
-      centerCard(true);
+      moveTo(index, true);
     }
 
     startAuto();
+  }
+
+  track.addEventListener("transitionend", normalize);
+
+  slider.addEventListener("pointerdown", e => {
+    e.preventDefault();
+    dragStart(e.clientX);
   });
 
-  slider.addEventListener("pointercancel", () => {
-    isDragging = false;
-    centerCard(true);
-    startAuto();
+  window.addEventListener("pointermove", e => {
+    dragMove(e.clientX);
   });
+
+  window.addEventListener("pointerup", dragEnd);
+  window.addEventListener("pointercancel", dragEnd);
 
   window.addEventListener("resize", () => {
-    centerCard(false);
+    moveTo(index, false);
   });
 
-  centerCard(false);
+  buildInfinite();
+  moveTo(index, false);
   startAuto();
 });
 </script>
