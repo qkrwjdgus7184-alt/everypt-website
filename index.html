@@ -2401,6 +2401,9 @@ section{padding:80px 28px}
 
 .coach-card{
   user-select:none;
+}.coach-slider{
+  cursor:grab;
+  touch-action:none;
 }
   </style>
 </head>
@@ -3683,31 +3686,26 @@ function stopCoachAuto(){
 
 coachTrack?.addEventListener('transitionend', normalizeCoachLoop);
 
-coachSlider?.addEventListener('pointerdown', e => {
+function dragStart(x){
   isDragging = true;
-  startX = e.clientX;
+  startX = x;
   dragX = 0;
-
   stopCoachAuto();
-
   coachTrack.style.transition = 'none';
-  coachSlider.setPointerCapture(e.pointerId);
-});
+}
 
-coachSlider?.addEventListener('pointermove', e => {
+function dragMove(x){
   if(!isDragging) return;
-
-  dragX = e.clientX - startX;
+  dragX = x - startX;
   coachTrack.style.transform = `translate3d(${baseX + dragX}px,0,0)`;
-});
+}
 
-coachSlider?.addEventListener('pointerup', () => {
+function dragEnd(){
   if(!isDragging) return;
-
   isDragging = false;
 
   const cardWidth = coachCards[coachIndex].offsetWidth;
-  const threshold = cardWidth * 0.22;
+  const threshold = cardWidth * 0.18;
 
   if(dragX < -threshold){
     coachIndex++;
@@ -3717,13 +3715,30 @@ coachSlider?.addEventListener('pointerup', () => {
 
   moveCoachSlide(true);
   startCoachAuto();
+}
+
+/* 마우스 */
+coachSlider.addEventListener('mousedown', e => {
+  dragStart(e.clientX);
 });
 
-coachSlider?.addEventListener('pointercancel', () => {
-  isDragging = false;
-  moveCoachSlide(true);
-  startCoachAuto();
+window.addEventListener('mousemove', e => {
+  dragMove(e.clientX);
 });
+
+window.addEventListener('mouseup', dragEnd);
+
+/* 터치 */
+coachSlider.addEventListener('touchstart', e => {
+  dragStart(e.touches[0].clientX);
+}, { passive:false });
+
+coachSlider.addEventListener('touchmove', e => {
+  e.preventDefault();
+  dragMove(e.touches[0].clientX);
+}, { passive:false });
+
+coachSlider.addEventListener('touchend', dragEnd);
 
 window.addEventListener('load', () => {
   setupInfiniteCoach();
