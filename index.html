@@ -2515,6 +2515,105 @@ section{padding:80px 28px}
 
 .coach-bottom-copy p{
   margin-bottom:28px;
+}.coach-card{
+  cursor:pointer;
+}
+
+.detail-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s ease;
+}
+
+.detail-modal.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.detail-modal-bg{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+}
+
+.detail-modal-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.8);
+  backdrop-filter:blur(18px);
+}
+
+.detail-modal-box{
+  position:relative;
+  width:min(900px, calc(100% - 32px));
+  background:rgba(255,255,255,.9);
+  border-radius:28px;
+  box-shadow:0 30px 80px rgba(0,0,0,.2);
+  overflow:hidden;
+  transform:translateY(20px) scale(.95);
+  transition:.35s;
+}
+
+.detail-modal.active .detail-modal-box{
+  transform:translateY(0) scale(1);
+}
+
+.detail-close{
+  position:absolute;
+  top:20px;
+  right:20px;
+  width:40px;
+  height:40px;
+  border:none;
+  border-radius:50%;
+  background:#eee;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.detail-modal-content{
+  display:grid;
+  grid-template-columns:360px 1fr;
+  gap:30px;
+  padding:40px;
+}
+
+.detail-modal-image img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius:20px;
+}
+
+.detail-modal-text h3{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.detail-modal-text p{
+  color:#555;
+  line-height:1.7;
+}
+
+.detail-line{
+  width:40px;
+  height:2px;
+  background:#111;
+  margin:20px 0;
+}
+
+@media(max-width:768px){
+  .detail-modal-content{
+    grid-template-columns:1fr;
+  }
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -2841,7 +2940,6 @@ section{padding:80px 28px}
 <section class="coach">
   <div class="container">
 
-    <!-- 헤드라인 -->
     <div class="section-head reveal coach-head">
       <div class="eyebrow">COACH</div>
       <h2 class="title">함께 하고 싶은 강사진</h2>
@@ -2849,55 +2947,84 @@ section{padding:80px 28px}
       <p class="coach-highlight">성장의 한계를 뛰어넘을 수 있었던 지속성입니다.</p>
     </div>
 
-    <!-- 슬라이더 -->
     <div class="coach-slider swiper">
       <div class="swiper-wrapper">
 
-        <!-- 카드 1 -->
-        <div class="swiper-slide coach-card">
-          <div class="coach-photo-wrap">
-            <img src="coach1.png" alt="">
-          </div>
-          <div class="coach-name">
-            <strong>EVERYPT COACH</strong>
-            <span>전문 트레이너</span>
-          </div>
-        </div>
+  <!-- 1 -->
+  <div class="swiper-slide coach-card"
+    onclick="openDetailModal(
+      'coach1.png',
+      'EVERYPT COACH',
+      '전문 트레이너',
+      '회원님의 목표와 체력 수준에 맞춰 운동 강도와 자세를 세밀하게 조정합니다. 지속 가능한 변화를 만드는 것이 핵심입니다.'
+    )">
 
-        <!-- 카드 2 -->
-        <div class="swiper-slide coach-card">
-          <div class="coach-photo-wrap">
-            <img src="coach2.png" alt="">
-          </div>
-          <div class="coach-name">
-            <strong>EVERYPT COACH</strong>
-            <span>전문 트레이너</span>
-          </div>
-        </div>
+    <div class="coach-photo-wrap">
+      <img src="coach1.png">
+    </div>
 
-        <!-- 카드 3 -->
-        <div class="swiper-slide coach-card">
-          <div class="coach-photo-wrap">
-            <img src="coach3.png" alt="">
-          </div>
-          <div class="coach-name">
-            <strong>EVERYPT COACH</strong>
-            <span>전문 트레이너</span>
-          </div>
-        </div>
+    <div class="coach-name">
+      <strong>EVERYPT COACH</strong>
+      <span>전문 트레이너</span>
+    </div>
+  </div>
 
-        <!-- 카드 4 -->
-        <div class="swiper-slide coach-card">
-          <div class="coach-photo-wrap">
-            <img src="coach4.png" alt="">
-          </div>
-          <div class="coach-name">
-            <strong>EVERYPT COACH</strong>
-            <span>전문 트레이너</span>
-          </div>
-        </div>
+  <!-- 2 -->
+  <div class="swiper-slide coach-card"
+    onclick="openDetailModal(
+      'coach2.png',
+      'EVERYPT COACH',
+      '전문 트레이너',
+      '초보자도 부담 없이 시작할 수 있도록 단계별로 지도하며, 운동에 대한 자신감을 만들어드립니다.'
+    )">
 
-      </div>
+    <div class="coach-photo-wrap">
+      <img src="coach2.png">
+    </div>
+
+    <div class="coach-name">
+      <strong>EVERYPT COACH</strong>
+      <span>전문 트레이너</span>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="swiper-slide coach-card"
+    onclick="openDetailModal(
+      'coach3.png',
+      'EVERYPT COACH',
+      '전문 트레이너',
+      '다이어트, 체력, 근력 향상 등 목적에 맞춘 프로그램으로 효율적인 결과를 만들어냅니다.'
+    )">
+
+    <div class="coach-photo-wrap">
+      <img src="coach3.png">
+    </div>
+
+    <div class="coach-name">
+      <strong>EVERYPT COACH</strong>
+      <span>전문 트레이너</span>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="swiper-slide coach-card"
+    onclick="openDetailModal(
+      'coach4.png',
+      'EVERYPT COACH',
+      '전문 트레이너',
+      '심박수 기반 운동 강도 조절로 안전하고 효율적인 트레이닝을 제공합니다.'
+    )">
+
+    <div class="coach-photo-wrap">
+      <img src="coach4.png">
+    </div>
+
+    <div class="coach-name">
+      <strong>EVERYPT COACH</strong>
+      <span>전문 트레이너</span>
+    </div>
+  </div>
     </div>
 
     <!-- ✅ 슬라이더 밖 / 섹션 하단 CTA -->
@@ -3566,6 +3693,53 @@ autoplay: {
   coachSwiper.autoplay.start();
 });
 </script>
+<div class="detail-modal" id="detailModal">
+  <div class="detail-modal-bg" id="detailModalBg"></div>
 
+  <div class="detail-modal-box">
+    <button class="detail-close" onclick="closeDetailModal()">×</button>
+
+    <div class="detail-modal-content">
+
+      <div class="detail-modal-image">
+        <img id="detailModalImg" src="">
+      </div>
+
+      <div class="detail-modal-text">
+        <p class="detail-eyebrow">EVERYPT DETAIL</p>
+        <h3 id="detailModalTitle"></h3>
+        <p id="detailModalSub"></p>
+        <div class="detail-line"></div>
+        <p id="detailModalDesc"></p>
+      </div>
+
+    </div>
+  </div>
+</div><script>
+function openDetailModal(img, title, sub, desc){
+  const modal = document.getElementById('detailModal');
+
+  document.getElementById('detailModalImg').src = img;
+  document.getElementById('detailModalTitle').textContent = title;
+  document.getElementById('detailModalSub').textContent = sub;
+  document.getElementById('detailModalDesc').textContent = desc;
+
+  document.getElementById('detailModalBg').style.backgroundImage = `url('${img}')`;
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetailModal(){
+  document.getElementById('detailModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('detailModal').addEventListener('click', function(e){
+  if(e.target.id === 'detailModal' || e.target.id === 'detailModalBg'){
+    closeDetailModal();
+  }
+});
+</script>
 </body>
 </html>
