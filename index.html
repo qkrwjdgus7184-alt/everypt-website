@@ -2272,22 +2272,22 @@ section{padding:80px 28px}
 
 <div class="trust-editorial-list">
   <div class="trust-row right">
-    <strong>785+</strong>
+    <strong><span class="trust-count" data-target="785">0</span>+</strong>
     <span>누적 관리 회원</span>
   </div>
 
   <div class="trust-row left">
-    <strong>329+</strong>
+    <strong><span class="trust-count" data-target="329">0</span>+</strong>
     <span>다이어트 성공 회원</span>
   </div>
 
   <div class="trust-row right">
-    <strong>152+</strong>
+    <strong><span class="trust-count" data-target="152">0</span>+</strong>
     <span>근육 증가 달성 회원</span>
   </div>
 
   <div class="trust-row left">
-    <strong>92%</strong>
+    <strong><span class="trust-count" data-target="92">0</span>%</strong>
     <span>목표 달성 후 유지율</span>
   </div>
 </div>
@@ -3086,6 +3086,45 @@ document.addEventListener("keydown", (e) => {
   <img id="lightboxImage" src="" alt="에브리피티 수유점 사진 크게 보기">
 
   <button class="lightbox-next" type="button" aria-label="다음 사진">›</button>
-</div>
+</div><script>
+document.addEventListener("DOMContentLoaded", () => {
+  const counters = document.querySelectorAll(".trust-count");
+
+  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+  const runCounter = (el) => {
+    const target = Number(el.dataset.target);
+    const duration = 1800;
+    const startTime = performance.now();
+
+    const animate = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = easeOutCubic(progress);
+      const value = Math.floor(eased * target);
+
+      el.textContent = value.toLocaleString();
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        el.textContent = target.toLocaleString();
+      }
+    };
+
+    requestAnimationFrame(animate);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains("counted")) {
+        entry.target.classList.add("counted");
+        runCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  counters.forEach(counter => observer.observe(counter));
+});
+</script>
 </body>
 </html>
