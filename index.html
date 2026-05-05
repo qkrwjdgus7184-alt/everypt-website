@@ -2395,6 +2395,25 @@ section{padding:80px 28px}
 .coach-slider::after{
   right:0;
   background:linear-gradient(to left,#020814,transparent);
+}.coach-slider{
+  display:flex;
+  justify-content:center;
+  overflow:hidden;
+  width:100%;
+  position:relative;
+}
+
+.coach-track{
+  display:flex;
+  gap:24px;
+  width:max-content;
+  align-items:center;
+  transition:transform .75s cubic-bezier(.22,1,.36,1);
+}
+
+.coach-card{
+  flex:0 0 320px;
+  max-width:320px;
 }
   </style>
 </head>
@@ -3515,7 +3534,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function moveSlide() {
     index++;
 
-    track.style.transition = "transform .35s cubic-bezier(.2,1.4,.3,1)";
+  track.style.transition = "transform .75s cubic-bezier(.22,1,.36,1)";
     track.style.transform = `translateX(-${getCardWidth() * index}px)`;
 
     const total = cards.length / 2;
@@ -3528,14 +3547,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         requestAnimationFrame(() => {
           track.offsetHeight;
-          track.style.transition = "transform .35s cubic-bezier(.2,1.4,.3,1)";
+        track.style.transition = "transform .75s cubic-bezier(.22,1,.36,1)";
         });
-      }, 380);
+      }, 780);
     }
   }
 
   function startSlide() {
-    timer = setInterval(moveSlide, 2400);
+    timer = setInterval(moveSlide, 3600);
   }
 
   function stopSlide() {
