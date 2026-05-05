@@ -3740,6 +3740,49 @@ document.getElementById('detailModal').addEventListener('click', function(e){
     closeDetailModal();
   }
 });
+</script><script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================
+     기존 count + trust-count 통합
+  ========================= */
+
+  const elements = document.querySelectorAll(".count, .trust-count");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      const el = entry.target;
+      const target = Number(el.dataset.target || 0);
+
+      const duration = 1800;
+      const start = performance.now();
+
+      function animate(now){
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+
+        el.textContent = Math.floor(target * eased);
+
+        if(progress < 1){
+          requestAnimationFrame(animate);
+        }else{
+          el.textContent = target;
+
+          const strong = el.closest("strong");
+          if(strong) strong.classList.add("pop");
+        }
+      }
+
+      requestAnimationFrame(animate);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.35 });
+
+  elements.forEach(el => observer.observe(el));
+
+});
 </script>
 </body>
 </html>
