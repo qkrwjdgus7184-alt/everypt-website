@@ -2421,6 +2421,26 @@ section{padding:80px 28px}
 .coach-card{
   flex:0 0 320px;
   width:320px;
+}.coach-slider{
+  overflow:hidden;
+  width:100%;
+  position:relative;
+}
+
+.coach-track{
+  display:flex;
+  gap:24px;
+  width:max-content;
+  align-items:center;
+  will-change:transform;
+  transform:translateX(calc(50vw - 160px));
+}
+
+.coach-card{
+  flex:0 0 320px;
+  width:320px;
+  min-width:320px;
+  max-width:320px;
 }
   </style>
 </head>
@@ -3571,6 +3591,21 @@ document.addEventListener("DOMContentLoaded", () => {
     goTo(index, false);
   });
 });
-</script>
+</script>function centerCoachCard(){
+  const slider = document.querySelector('.coach-slider');
+  const track = document.querySelector('.coach-track');
+  const firstCard = document.querySelector('.coach-card');
+
+  if(!slider || !track || !firstCard) return;
+
+  const sliderWidth = slider.offsetWidth;
+  const cardWidth = firstCard.offsetWidth;
+  const centerX = (sliderWidth / 2) - (cardWidth / 2);
+
+  track.style.transform = `translateX(${centerX}px)`;
+}
+
+window.addEventListener('load', centerCoachCard);
+window.addEventListener('resize', centerCoachCard);
 </body>
 </html>
