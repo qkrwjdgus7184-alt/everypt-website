@@ -2349,42 +2349,30 @@ section{padding:80px 28px}
 
 .coach .desc + p{
   margin-top:-2px;   /* 살짝 겹치듯 붙임 */
-}.coach-slider{
+}
+    
+    
+    .coach-slider{
   width:100%;
   overflow:hidden;
-  position:relative;
   cursor:grab;
-  touch-action:pan-y;
 }
 
 .coach-slider:active{
   cursor:grabbing;
 }
 
-.coach-track{
-  display:flex;
-  gap:24px;
-  will-change:transform;
-  user-select:none;
+.swiper-wrapper{
+  align-items:center;
 }
 
 .coach-card{
+  width:320px !important;
   flex:0 0 320px;
-  width:320px;
-  min-width:320px;
-  max-width:320px;
   user-select:none;
 }
-
-@media(max-width:560px){
-  .coach-card{
-    flex:0 0 320px;
-    width:320px;
-    min-width:320px;
-    max-width:320px;
-  }
-}
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
 
 <body>
@@ -2707,92 +2695,59 @@ section{padding:80px 28px}
 </section>
 <section class="coach">
   <div class="container">
-  <div class="section-head reveal">
-  <div class="eyebrow">COACH</div>
+    
+    <div class="section-head reveal">
+      <div class="eyebrow">EVERYPT COACH</div>
+      <h2 class="title">함께 하는 강사진</h2>
+      <p class="desc">전문성과 경험을 갖춘 코치진이 함께합니다.</p>
+    </div>
 
-  <h2 class="title">
-    함께 하고 싶은 강사진
-  </h2>
+    <div class="coach-slider swiper">
+      <div class="swiper-wrapper">
 
-  <p class="desc">
-    에브리피티 강사진들의 비결은
-  </p>
-    <div class="coach-proof">
-  성장의 한계를 뛰어넘을 수 있었던 지속성입니다.
-</div>
-</div>
+        <div class="swiper-slide coach-card">
+          <div class="coach-photo-wrap">
+            <img src="coach1.png">
+          </div>
+          <div class="coach-name">
+            <strong>EVERYPT COACH</strong>
+            <span>전문 트레이너</span>
+          </div>
+        </div>
 
-<div class="coach-slider reveal">
+        <div class="swiper-slide coach-card">
+          <div class="coach-photo-wrap">
+            <img src="coach2.png">
+          </div>
+          <div class="coach-name">
+            <strong>EVERYPT COACH</strong>
+            <span>전문 트레이너</span>
+          </div>
+        </div>
 
-  <div class="coach-track">
+        <div class="swiper-slide coach-card">
+          <div class="coach-photo-wrap">
+            <img src="coach3.png">
+          </div>
+          <div class="coach-name">
+            <strong>EVERYPT COACH</strong>
+            <span>전문 트레이너</span>
+          </div>
+        </div>
 
-    <!-- 기존 카드 1 -->
-    <div class="coach-card profile-open" data-profile="director">
-      <div class="coach-photo-wrap">
-        <img src="coach-care.png">
-      </div>
-      <div class="coach-name">
-        <strong>박정현 대표원장</strong>
-        <span>운동생리학 기반 코칭</span>
+        <div class="swiper-slide coach-card">
+          <div class="coach-photo-wrap">
+            <img src="coach4.png">
+          </div>
+          <div class="coach-name">
+            <strong>EVERYPT COACH</strong>
+            <span>전문 트레이너</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- 기존 카드 2 -->
-    <div class="coach-card profile-open" data-profile="coach">
-      <div class="coach-photo-wrap">
-        <img src="coach-care.png">
-      </div>
-      <div class="coach-name">
-        <strong>전문 코치진</strong>
-        <span>초보자 맞춤 관리</span>
-      </div>
-    </div>
-<div class="coach-card">
-  <div class="coach-photo-wrap">
-    <img src="coach4.png" alt="에브리피티 코치 프로필">
-  </div>
-
-  <div class="coach-name">
-    <strong>EVERYPT COACH</strong>
-    <span>전문 트레이너</span>
-  </div>
-</div>
-    <!-- 🔥 중요: 똑같은 카드 복붙 (무한 루프용) -->
-    <div class="coach-card profile-open" data-profile="director">
-      <div class="coach-photo-wrap">
-        <img src="coach-care.png">
-      </div>
-      <div class="coach-name">
-        <strong>박정현 대표원장</strong>
-        <span>운동생리학 기반 코칭</span>
-      </div>
-    </div>
-
-    <div class="coach-card profile-open" data-profile="coach">
-      <div class="coach-photo-wrap">
-        <img src="coach-care.png">
-      </div>
-      <div class="coach-name">
-        <strong>전문 코치진</strong>
-        <span>초보자 맞춤 관리</span>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-<div class="coach-bottom-copy">
-  <p>
-    운동을 맡길 수 있는 기준,<br>
-    <strong>평균 10년 이상 경력 코치진 보유</strong>
-  </p>
-
-  <button class="profile-open coach-detail-btn" data-profile="director">
-    대표원장 프로필 보기 →
-  </button>
-</div>
-
-    </div>
   </div>
 </section>
   <section class="special-process">
@@ -3390,53 +3345,9 @@ document.addEventListener("keydown", (e) => {
   <img id="lightboxImage" src="" alt="에브리피티 수유점 사진 크게 보기">
 
   <button class="lightbox-next" type="button" aria-label="다음 사진">›</button>
-</div><script>
-document.addEventListener("DOMContentLoaded", () => {
-  const counters = document.querySelectorAll(".trust-count");
-
-  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-
-  const runCounter = (el) => {
-    const target = Number(el.dataset.target);
-    const duration = 1800;
-    const startTime = performance.now();
-
-    const animate = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = easeOutCubic(progress);
-      const value = Math.floor(eased * target);
-
-      el.textContent = value.toLocaleString();
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        el.textContent = target.toLocaleString();
-      }
-    };
-
-    requestAnimationFrame(animate);
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains("counted")) {
-        entry.target.classList.add("counted");
-       const numberBox = entry.target.closest("strong");
-numberBox.classList.add("pop");
-
-runCounter(entry.target);
-
-setTimeout(() => {
-  numberBox.classList.remove("pop");
-}, 650);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  counters.forEach(counter => observer.observe(counter));
-});
-</script><div class="profile-modal" id="profileModal">
+</div>
+  
+  <div class="profile-modal" id="profileModal">
   <div class="profile-page">
     <button class="profile-close" id="profileClose">×</button>
 
@@ -3464,169 +3375,8 @@ setTimeout(() => {
       </ul>
     </section>
   </div>
-</div><script>
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("profileModal");
-  const closeBtn = document.getElementById("profileClose");
-  const openBtns = document.querySelectorAll(".profile-open");
+</div>
 
-  openBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
-    });
-  });
 
-  closeBtn.addEventListener("click", () => {
-    modal.classList.remove("active");
-    document.body.style.overflow = "";
-  });
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const slider = document.querySelector(".coach-slider");
-  const track = document.querySelector(".coach-track");
-
-  if (!slider || !track) return;
-
-  const originals = Array.from(track.querySelectorAll(".coach-card"));
-  if (originals.length < 2) return;
-
-  let cards = [];
-  let index = originals.length;
-  let currentX = 0;
-  let startX = 0;
-  let dragX = 0;
-  let isDragging = false;
-  let autoTimer = null;
-
-  const stayTime = 4800;
-  const moveSpeed = 900;
-
-  function buildInfinite() {
-    track.innerHTML = "";
-
-    const before = originals.map(card => card.cloneNode(true));
-    const center = originals.map(card => card.cloneNode(true));
-    const after = originals.map(card => card.cloneNode(true));
-
-    [...before, ...center, ...after].forEach(card => {
-      track.appendChild(card);
-    });
-
-    cards = Array.from(track.querySelectorAll(".coach-card"));
-    index = originals.length;
-  }
-
-  function getMoveX(i) {
-    const card = cards[i];
-    if (!card) return 0;
-
-    const sliderCenter = slider.offsetWidth / 2;
-    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-
-    return Math.round(sliderCenter - cardCenter);
-  }
-
-  function moveTo(i, animate = true) {
-    index = i;
-
-    track.style.transition = animate
-      ? `transform ${moveSpeed}ms cubic-bezier(.25,.8,.25,1)`
-      : "none";
-
-    currentX = getMoveX(index);
-    track.style.transform = `translate3d(${currentX}px,0,0)`;
-  }
-
-  function normalize() {
-    const count = originals.length;
-
-    if (index >= count * 2) {
-      index = count;
-      moveTo(index, false);
-    }
-
-    if (index < count) {
-      index = count * 2 - 1;
-      moveTo(index, false);
-    }
-  }
-
-  function nextCard() {
-    moveTo(index + 1, true);
-  }
-
-  function prevCard() {
-    moveTo(index - 1, true);
-  }
-
-  function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(nextCard, stayTime);
-  }
-
-  function stopAuto() {
-    clearInterval(autoTimer);
-  }
-
-  function dragStart(x) {
-    isDragging = true;
-    startX = x;
-    dragX = 0;
-    stopAuto();
-    track.style.transition = "none";
-  }
-
-  function dragMove(x) {
-    if (!isDragging) return;
-    dragX = x - startX;
-    track.style.transform = `translate3d(${currentX + dragX}px,0,0)`;
-  }
-
-  function dragEnd() {
-    if (!isDragging) return;
-
-    isDragging = false;
-
-    const threshold = cards[index].offsetWidth * 0.2;
-
-    if (dragX < -threshold) {
-      nextCard();
-    } else if (dragX > threshold) {
-      prevCard();
-    } else {
-      moveTo(index, true);
-    }
-
-    startAuto();
-  }
-
-  track.addEventListener("transitionend", normalize);
-
-  slider.addEventListener("pointerdown", e => {
-    e.preventDefault();
-    dragStart(e.clientX);
-  });
-
-  window.addEventListener("pointermove", e => {
-    dragMove(e.clientX);
-  });
-
-  window.addEventListener("pointerup", dragEnd);
-  window.addEventListener("pointercancel", dragEnd);
-
-  window.addEventListener("resize", () => {
-    moveTo(index, false);
-  });
-
-  buildInfinite();
-  moveTo(index, false);
-  startAuto();
-});
-</script>
-  
 </body>
 </html>
