@@ -2373,6 +2373,7 @@ section{padding:80px 28px}
   gap:24px;
   width:max-content;
   will-change:transform;
+  transition:transform .35s cubic-bezier(.2,1.4,.3,1);
 }
 
 .coach-slider::before,
@@ -3499,70 +3500,52 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const slider = document.querySelector(".coach-slider");
   const track = document.querySelector(".coach-track");
+  const cards = document.querySelectorAll(".coach-card");
 
-  if (!slider || !track) return;
+  if (!slider || !track || cards.length === 0) return;
 
-  let x = 0;
-  let speed = 0.45;
-  let targetSpeed = 0.45;
-  let isDragging = false;
-  let lastX = 0;
-  let dragVelocity = 0;
+  let index = 0;
+  let timer = null;
+  const gap = 24;
 
-  const halfWidth = () => track.scrollWidth / 2;
-
-  function animate() {
-    if (!isDragging) {
-      speed += (targetSpeed - speed) * 0.03;
-      x -= speed;
-    } else {
-      x += dragVelocity;
-      dragVelocity *= 0.88;
-    }
-
-    if (Math.abs(x) >= halfWidth()) x = 0;
-    if (x > 0) x = -halfWidth();
-
-    track.style.transform = `translateX(${x}px)`;
-    requestAnimationFrame(animate);
+  function getCardWidth() {
+    return cards[0].offsetWidth + gap;
   }
 
-  slider.addEventListener("mouseenter", () => {
-    targetSpeed = 0.12;
-  });
+  function moveSlide() {
+    index++;
 
-  slider.addEventListener("mouseleave", () => {
-    targetSpeed = 0.45;
-    isDragging = false;
-  });
+    track.style.transition = "transform .35s cubic-bezier(.2,1.4,.3,1)";
+    track.style.transform = `translateX(-${getCardWidth() * index}px)`;
 
-  slider.addEventListener("pointerdown", (e) => {
-    isDragging = true;
-    targetSpeed = 0;
-    lastX = e.clientX;
-    dragVelocity = 0;
-    slider.setPointerCapture(e.pointerId);
-  });
+    const total = cards.length / 2;
 
-  slider.addEventListener("pointermove", (e) => {
-    if (!isDragging) return;
-    const delta = e.clientX - lastX;
-    x += delta;
-    dragVelocity = delta;
-    lastX = e.clientX;
-  });
+    if (index >= total) {
+      setTimeout(() => {
+        track.style.transition = "none";
+        track.style.transform = "translateX(0px)";
+        index = 0;
 
-  slider.addEventListener("pointerup", () => {
-    isDragging = false;
-    targetSpeed = 0.45;
-  });
+        requestAnimationFrame(() => {
+          track.offsetHeight;
+          track.style.transition = "transform .35s cubic-bezier(.2,1.4,.3,1)";
+        });
+      }, 380);
+    }
+  }
 
-  slider.addEventListener("pointercancel", () => {
-    isDragging = false;
-    targetSpeed = 0.45;
-  });
+  function startSlide() {
+    timer = setInterval(moveSlide, 2400);
+  }
 
-  animate();
+  function stopSlide() {
+    clearInterval(timer);
+  }
+
+  slider.addEventListener("mouseenter", stopSlide);
+  slider.addEventListener("mouseleave", startSlide);
+
+  startSlide();
 });
 </script>
 </body>
