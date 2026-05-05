@@ -3748,6 +3748,48 @@ window.addEventListener('load', () => {
 window.addEventListener('resize', () => {
   moveCoachSlide(false);
 });
+</script><script>
+const slider = document.querySelector('.coach-slider');
+const track = document.querySelector('.coach-track');
+
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = track.style.transform ? 
+    parseInt(track.style.transform.replace(/[^0-9\-.,]/g, '').split(',')[4] || 0) : 0;
+});
+
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+});
+
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if(!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = (x - startX);
+  track.style.transform = `translateX(${scrollLeft + walk}px)`;
+});
+
+/* 모바일 터치 */
+slider.addEventListener('touchstart', (e)=>{
+  startX = e.touches[0].pageX;
+});
+
+slider.addEventListener('touchmove', (e)=>{
+  const x = e.touches[0].pageX;
+  const walk = x - startX;
+  track.style.transform = `translateX(${walk}px)`;
+});
 </script>
 </body>
 </html>
