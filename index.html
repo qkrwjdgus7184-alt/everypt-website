@@ -3590,8 +3590,28 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     goTo(index, false);
   });
+function centerCoachCard(){
+  const slider = document.querySelector('.coach-slider');
+  const track = document.querySelector('.coach-track');
+  const firstCard = document.querySelector('.coach-card');
+
+  if(!slider || !track || !firstCard) return;
+
+  const sliderWidth = slider.offsetWidth;
+  const cardWidth = firstCard.offsetWidth;
+
+  const centerX = (sliderWidth - cardWidth) / 2;
+
+  track.style.transform = `translateX(${centerX}px)`;
+}
+
+window.addEventListener('load', () => {
+  centerCoachCard();
+  setTimeout(centerCoachCard, 50);
 });
-</script>function centerCoachCard(){
+</script>
+  
+  function centerCoachCard(){
   const slider = document.querySelector('.coach-slider');
   const track = document.querySelector('.coach-track');
   const firstCard = document.querySelector('.coach-card');
