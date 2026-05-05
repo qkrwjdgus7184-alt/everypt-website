@@ -2386,6 +2386,21 @@ section{padding:80px 28px}
   margin-top:-2px;   /* 살짝 겹치듯 붙임 */
 }.coach-slider{
   margin-top:-40px; /* 위로 당기기 */
+}.coach-slider{
+  cursor:grab;
+  touch-action:pan-y;
+}
+
+.coach-slider:active{
+  cursor:grabbing;
+}
+
+.coach-track{
+  user-select:none;
+}
+
+.coach-card{
+  user-select:none;
 }
   </style>
 </head>
@@ -3572,56 +3587,151 @@ window.addEventListener('resize', () => {
 <script>
 const coachSlider = document.querySelector('.coach-slider');
 const coachTrack = document.querySelector('.coach-track');
-let coachCards = document.querySelectorAll('.coach-card');
 
+let originalCards = [];
+let coachCards = [];
+let originalCount = 0;
 let coachIndex = 0;
-const coachGap = 24;
-const stayTime = 3500; // 머무르는 시간 3.5초
+let coachTimer = null;
 
-// 첫 번째 카드를 복제해서 맨 뒤에 붙임
-if(coachTrack && coachCards.length > 0){
-  const firstClone = coachCards[0].cloneNode(true);
-  coachTrack.appendChild(firstClone);
-  coachCards = document.querySelectorAll('.coach-card');
+const coachGap = 24;
+const stayTime = 3500;
+const moveSpeed = 650;
+
+let isDragging = false;
+let startX = 0;
+let dragX = 0;
+let baseX = 0;
+
+function setupInfiniteCoach(){
+  if(!coachSlider || !coachTrack) return;
+
+  originalCards = Array.from(coachTrack.querySelectorAll('.coach-card'));
+  originalCount = originalCards.length;
+
+  if(originalCount === 0) return;
+
+  const beforeClones = originalCards.map(card => card.cloneNode(true));
+  const afterClones = originalCards.map(card => card.cloneNode(true));
+
+  beforeClones.reverse().forEach(card => {
+    coachTrack.prepend(card);
+  });
+
+  afterClones.forEach(card => {
+    coachTrack.appendChild(card);
+  });
+
+  coachCards = Array.from(coachTrack.querySelectorAll('.coach-card'));
+  coachIndex = originalCount;
+
+  moveCoachSlide(false);
+}
+
+function getMoveX(index){
+  const sliderWidth = coachSlider.clientWidth;
+  const cardWidth = coachCards[index].offsetWidth;
+
+  return Math.round(
+    (sliderWidth / 2) -
+    (cardWidth / 2) -
+    (index * (cardWidth + coachGap))
+  );
 }
 
 function moveCoachSlide(animate = true){
   if(!coachSlider || !coachTrack || coachCards.length === 0) return;
 
-  const sliderWidth = coachSlider.clientWidth;
-  const cardWidth = coachCards[coachIndex].offsetWidth;
-
-  const moveX =
-    (sliderWidth / 2) -
-    (cardWidth / 2) -
-    (coachIndex * (cardWidth + coachGap));
+  const moveX = getMoveX(coachIndex);
+  baseX = moveX;
 
   coachTrack.style.transition = animate
-    ? 'transform .65s cubic-bezier(.22,1,.36,1)'
+    ? `transform ${moveSpeed}ms cubic-bezier(.22,1,.36,1)`
     : 'none';
 
-  coachTrack.style.transform = `translate3d(${Math.round(moveX)}px,0,0)`;
+  coachTrack.style.transform = `translate3d(${moveX}px,0,0)`;
+}
+
+function normalizeCoachLoop(){
+  if(coachIndex >= originalCount * 2){
+    coachIndex = coachIndex - originalCount;
+    moveCoachSlide(false);
+  }
+
+  if(coachIndex < originalCount){
+    coachIndex = coachIndex + originalCount;
+    moveCoachSlide(false);
+  }
 }
 
 function nextCoachSlide(){
   coachIndex++;
   moveCoachSlide(true);
+}
 
-  // 복제된 첫 번째 카드까지 이동한 뒤, 진짜 첫 번째 카드로 순간 리셋
-  if(coachIndex === coachCards.length - 1){
-    setTimeout(() => {
-      coachIndex = 0;
-      moveCoachSlide(false);
-    }, 700);
+function startCoachAuto(){
+  stopCoachAuto();
+  coachTimer = setInterval(nextCoachSlide, stayTime);
+}
+
+function stopCoachAuto(){
+  if(coachTimer){
+    clearInterval(coachTimer);
+    coachTimer = null;
   }
 }
 
+coachTrack?.addEventListener('transitionend', normalizeCoachLoop);
+
+coachSlider?.addEventListener('pointerdown', e => {
+  isDragging = true;
+  startX = e.clientX;
+  dragX = 0;
+
+  stopCoachAuto();
+
+  coachTrack.style.transition = 'none';
+  coachSlider.setPointerCapture(e.pointerId);
+});
+
+coachSlider?.addEventListener('pointermove', e => {
+  if(!isDragging) return;
+
+  dragX = e.clientX - startX;
+  coachTrack.style.transform = `translate3d(${baseX + dragX}px,0,0)`;
+});
+
+coachSlider?.addEventListener('pointerup', () => {
+  if(!isDragging) return;
+
+  isDragging = false;
+
+  const cardWidth = coachCards[coachIndex].offsetWidth;
+  const threshold = cardWidth * 0.22;
+
+  if(dragX < -threshold){
+    coachIndex++;
+  }else if(dragX > threshold){
+    coachIndex--;
+  }
+
+  moveCoachSlide(true);
+  startCoachAuto();
+});
+
+coachSlider?.addEventListener('pointercancel', () => {
+  isDragging = false;
+  moveCoachSlide(true);
+  startCoachAuto();
+});
+
 window.addEventListener('load', () => {
-  moveCoachSlide(false);
+  setupInfiniteCoach();
+
   setTimeout(() => moveCoachSlide(false), 100);
   setTimeout(() => moveCoachSlide(false), 300);
 
-  setInterval(nextCoachSlide, stayTime);
+  startCoachAuto();
 });
 
 window.addEventListener('resize', () => {
