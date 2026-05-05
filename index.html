@@ -2154,6 +2154,30 @@ section{padding:80px 28px}
 }.trust-row strong,
 .trust-row strong .trust-count{
   color:#ffffff !important;
+}.trust-row strong{
+  transform-origin:left center;
+}
+
+.trust-row strong.pop{
+  animation:numberPop .55s cubic-bezier(.2, 1.4, .4, 1);
+}
+
+@keyframes numberPop{
+  0%{
+    transform:translateY(18px) scale(.82);
+    opacity:.35;
+    filter:blur(6px);
+  }
+  55%{
+    transform:translateY(-8px) scale(1.08);
+    opacity:1;
+    filter:blur(0);
+  }
+  100%{
+    transform:translateY(0) scale(1);
+    opacity:1;
+    filter:blur(0);
+  }
 }
   </style>
 </head>
@@ -2374,10 +2398,7 @@ section{padding:80px 28px}
 
 </div>
        <p class="data-note">
-* 2024년 오픈 이후 누적된 실제 회원 약 500명 이상의 체성분검사기반 평균값입니다.
-지금까지도 회원님들의 변화가 꾸준히 이어지고 있습니다.
-       
-       </p>
+* 2024년 오픈 이후 누적된 실제 회원의 체성분검사기반 평균값입니다.</p>
         </div>
       </div>
     </div>
@@ -3155,7 +3176,14 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !entry.target.classList.contains("counted")) {
         entry.target.classList.add("counted");
-        runCounter(entry.target);
+       const numberBox = entry.target.closest("strong");
+numberBox.classList.add("pop");
+
+runCounter(entry.target);
+
+setTimeout(() => {
+  numberBox.classList.remove("pop");
+}, 650);
       }
     });
   }, { threshold: 0.4 });
