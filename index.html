@@ -3376,7 +3376,31 @@ document.addEventListener("keydown", (e) => {
     </section>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+<script>
+window.addEventListener("load", () => {
+  const coachSwiper = new Swiper(".coach-slider", {
+    loop: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    spaceBetween: 24,
+    speed: 1000,
+
+    autoplay: {
+      delay: 2800,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,
+    },
+
+    grabCursor: true,
+    observer: true,
+    observeParents: true,
+  });
+
+  coachSwiper.autoplay.start();
+});
+</script>
 
 </body>
 </html>
