@@ -1958,74 +1958,109 @@ section{padding:80px 28px}
   50%{ transform:translateY(-5px); }
   100%{ transform:translateY(0); }
 }
-    .everypt-trust-mini{
-  margin-top:26px;
-  padding-top:24px;
+.everypt-trust-editorial{
+  margin-top:28px;
+  padding-top:28px;
   border-top:1px solid rgba(255,255,255,.14);
 }
 
-.everypt-trust-mini p{
+.everypt-trust-editorial h3{
   color:#fff;
-  font-size:22px;
-  line-height:1.45;
+  font-size:28px;
+  line-height:1.28;
   font-weight:950;
-  letter-spacing:-.8px;
-  margin-bottom:20px;
+  letter-spacing:-1.4px;
+  margin-bottom:18px;
 }
 
-.everypt-trust-mini p strong{
+.everypt-trust-editorial h3 strong{
   color:#f6d98d;
 }
 
-.trust-mini-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.trust-mini-grid div{
-  padding:18px 16px;
-  border-radius:20px;
-  background:rgba(255,255,255,.075);
-  border:1px solid rgba(255,255,255,.12);
-}
-
-.trust-mini-grid strong{
-  display:block;
-  color:#f6d98d;
-  font-size:26px;
-  font-weight:950;
-  letter-spacing:-1px;
-  margin-bottom:6px;
-}
-
-.trust-mini-grid span{
+.everypt-trust-editorial p{
   color:rgba(255,255,255,.62);
-  font-size:13px;
-  font-weight:800;
+  font-size:14px;
+  line-height:1.65;
+  font-weight:750;
+  margin-bottom:34px;
+}
+
+.trust-editorial-list{
+  display:grid;
+  gap:28px;
+}
+
+.trust-row{
+  width:74%;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.22);
+}
+
+.trust-row.right{
+  margin-left:auto;
+}
+
+.trust-row.left{
+  margin-right:auto;
+}
+
+.trust-row strong{
+  display:block;
+  color:#fff;
+  font-size:44px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-2px;
+  margin-bottom:10px;
+}
+
+.trust-row span{
+  display:block;
+  color:rgba(255,255,255,.58);
+  font-size:14px;
+  font-weight:850;
+}
+
+.trust-row strong::after{
+  content:"건";
+  color:#fff;
+  font-size:18px;
+  margin-left:3px;
+  letter-spacing:-.5px;
+}
+
+.trust-row:nth-child(1) strong::after{
+  content:"명";
+}
+
+.trust-row:nth-child(2) strong::after{
+  content:"";
+}
+
+.trust-row:nth-child(3) strong::after,
+.trust-row:nth-child(4) strong::after{
+  content:"";
 }
 
 @media(max-width:560px){
-  .everypt-trust-mini p{
-    font-size:20px;
+  .everypt-trust-editorial h3{
+    font-size:24px;
   }
 
-  .trust-mini-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
+  .trust-editorial-list{
+    gap:26px;
   }
 
-  .trust-mini-grid div{
-    padding:16px 12px;
-    border-radius:18px;
+  .trust-row{
+    width:78%;
   }
 
-  .trust-mini-grid strong{
-    font-size:22px;
+  .trust-row strong{
+    font-size:38px;
   }
 
-  .trust-mini-grid span{
-    font-size:12px;
+  .trust-row span{
+    font-size:13px;
   }
 }
   </style>
@@ -2174,26 +2209,32 @@ section{padding:80px 28px}
   <canvas id="heartChart"></canvas>
 </div>
 
-<div class="everypt-trust-mini">
-  <p>
-    이 모든 관리를 지키기까지<br>
-    에브리피티가 쌓아온 시간, <strong>단 7년.</strong>
-  </p>
+<div class="everypt-trust-editorial">
+  <h3>
+    이 모든 관리를<br>
+    지키기까지<br>
+    걸린 시간, <strong>단 7년.</strong>
+  </h3>
 
-  <div class="trust-mini-grid">
-    <div>
+  <p>에브리피티의 관리 경험은 고객님의 변화를 위해 활용됩니다.</p>
+
+  <div class="trust-editorial-list">
+    <div class="trust-row right">
       <strong>500+</strong>
       <span>누적 관리 회원</span>
     </div>
-    <div>
+
+    <div class="trust-row left">
       <strong>10년+</strong>
       <span>대표원장 경력</span>
     </div>
-    <div>
+
+    <div class="trust-row right">
       <strong>석사</strong>
       <span>운동생리학 기반</span>
     </div>
-    <div>
+
+    <div class="trust-row left">
       <strong>정부 인증</strong>
       <span>착한가격업소</span>
     </div>
