@@ -3544,39 +3544,61 @@ window.addEventListener('load', () => {
 window.addEventListener('resize', () => {
   moveCoachSlide(false);
 });
-</script><script>
+</script>
+  
+<script>
 const coachSlider = document.querySelector('.coach-slider');
 const coachTrack = document.querySelector('.coach-track');
-const coachCards = document.querySelectorAll('.coach-card');
+let coachCards = document.querySelectorAll('.coach-card');
 
 let coachIndex = 0;
+const coachGap = 24;
+const stayTime = 3500; // 머무르는 시간 3.5초
+
+// 첫 번째 카드를 복제해서 맨 뒤에 붙임
+if(coachTrack && coachCards.length > 0){
+  const firstClone = coachCards[0].cloneNode(true);
+  coachTrack.appendChild(firstClone);
+  coachCards = document.querySelectorAll('.coach-card');
+}
 
 function moveCoachSlide(animate = true){
   if(!coachSlider || !coachTrack || coachCards.length === 0) return;
 
   const sliderWidth = coachSlider.clientWidth;
   const cardWidth = coachCards[coachIndex].offsetWidth;
-  const gap = 24;
 
-  const moveX = (sliderWidth / 2) - (cardWidth / 2) - (coachIndex * (cardWidth + gap));
+  const moveX =
+    (sliderWidth / 2) -
+    (cardWidth / 2) -
+    (coachIndex * (cardWidth + coachGap));
 
   coachTrack.style.transition = animate
-    ? 'transform .75s cubic-bezier(.22,1,.36,1)'
+    ? 'transform .65s cubic-bezier(.22,1,.36,1)'
     : 'none';
 
   coachTrack.style.transform = `translate3d(${Math.round(moveX)}px,0,0)`;
 }
 
 function nextCoachSlide(){
-  coachIndex = (coachIndex + 1) % coachCards.length;
+  coachIndex++;
   moveCoachSlide(true);
+
+  // 복제된 첫 번째 카드까지 이동한 뒤, 진짜 첫 번째 카드로 순간 리셋
+  if(coachIndex === coachCards.length - 1){
+    setTimeout(() => {
+      coachIndex = 0;
+      moveCoachSlide(false);
+    }, 700);
+  }
 }
 
 window.addEventListener('load', () => {
   moveCoachSlide(false);
   setTimeout(() => moveCoachSlide(false), 100);
   setTimeout(() => moveCoachSlide(false), 300);
-  setInterval(nextCoachSlide, 5200);
+
+  setInterval(nextCoachSlide, stayTime);
 });
 
 window.addEventListener('resize', () => {
