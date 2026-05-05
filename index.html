@@ -3597,35 +3597,20 @@ function centerCoachCard(){
 
   if(!slider || !track || !firstCard) return;
 
-  const sliderWidth = slider.offsetWidth;
+  const sliderWidth = slider.clientWidth;
   const cardWidth = firstCard.offsetWidth;
 
-  const centerX = (sliderWidth - cardWidth) / 2;
+  const centerX = Math.round((sliderWidth - cardWidth) / 2);
 
-  track.style.transform = `translateX(${centerX}px)`;
+  track.style.transform = `translate3d(${centerX}px,0,0)`;
 }
-
 window.addEventListener('load', () => {
   centerCoachCard();
-  setTimeout(centerCoachCard, 50);
+  setTimeout(centerCoachCard, 100);
+  setTimeout(centerCoachCard, 300);
 });
-</script>
-  
-  function centerCoachCard(){
-  const slider = document.querySelector('.coach-slider');
-  const track = document.querySelector('.coach-track');
-  const firstCard = document.querySelector('.coach-card');
 
-  if(!slider || !track || !firstCard) return;
-
-  const sliderWidth = slider.offsetWidth;
-  const cardWidth = firstCard.offsetWidth;
-  const centerX = (sliderWidth / 2) - (cardWidth / 2);
-
-  track.style.transform = `translateX(${centerX}px)`;
-}
-
-window.addEventListener('load', centerCoachCard);
 window.addEventListener('resize', centerCoachCard);
+</script>
 </body>
 </html>
