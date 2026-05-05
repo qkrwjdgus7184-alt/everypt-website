@@ -2414,6 +2414,22 @@ section{padding:80px 28px}
 .coach-card{
   flex:0 0 320px;
   max-width:320px;
+}.coach-slider{
+  overflow:hidden;
+  width:100%;
+  position:relative;
+}
+
+.coach-track{
+  display:flex;
+  gap:24px;
+  width:max-content;
+  align-items:center;
+}
+
+.coach-card{
+  flex:0 0 320px;
+  width:320px;
 }
   </style>
 </head>
@@ -3515,7 +3531,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   });
 });
-</script><script>
+</script>
+  
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const slider = document.querySelector(".coach-slider");
   const track = document.querySelector(".coach-track");
@@ -3526,43 +3544,55 @@ document.addEventListener("DOMContentLoaded", () => {
   let index = 0;
   let timer = null;
   const gap = 24;
+  const total = cards.length / 2;
 
-  function getCardWidth() {
-    return cards[0].offsetWidth + gap;
+  function getMoveX(i) {
+    const cardWidth = cards[0].offsetWidth;
+    const sliderWidth = slider.offsetWidth;
+
+    // 핵심: 카드가 화면 중앙에 오도록 보정
+    return (cardWidth + gap) * i - (sliderWidth - cardWidth) / 2;
   }
 
   function moveSlide() {
     index++;
 
-  track.style.transition = "transform .75s cubic-bezier(.22,1,.36,1)";
-    track.style.transform = `translateX(-${getCardWidth() * index}px)`;
-
-    const total = cards.length / 2;
+    track.style.transition = "transform 1.05s cubic-bezier(.22,1,.36,1)";
+    track.style.transform = `translateX(-${getMoveX(index)}px)`;
 
     if (index >= total) {
       setTimeout(() => {
         track.style.transition = "none";
-        track.style.transform = "translateX(0px)";
         index = 0;
+        track.style.transform = `translateX(-${getMoveX(index)}px)`;
 
         requestAnimationFrame(() => {
           track.offsetHeight;
-        track.style.transition = "transform .75s cubic-bezier(.22,1,.36,1)";
+          track.style.transition = "transform 1.05s cubic-bezier(.22,1,.36,1)";
         });
-      }, 780);
+      }, 1100);
     }
   }
 
   function startSlide() {
-    timer = setInterval(moveSlide, 3600);
+    timer = setInterval(moveSlide, 5200);
   }
 
   function stopSlide() {
     clearInterval(timer);
   }
 
+  // 첫 카드도 처음부터 중앙 정렬
+  track.style.transition = "none";
+  track.style.transform = `translateX(-${getMoveX(0)}px)`;
+
   slider.addEventListener("mouseenter", stopSlide);
   slider.addEventListener("mouseleave", startSlide);
+
+  window.addEventListener("resize", () => {
+    track.style.transition = "none";
+    track.style.transform = `translateX(-${getMoveX(index)}px)`;
+  });
 
   startSlide();
 });
