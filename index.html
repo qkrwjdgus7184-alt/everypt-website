@@ -877,9 +877,6 @@ section{padding:80px 28px}
   font-size:14px;
   color:rgba(255,255,255,.7);
 }
-.coach-card{
-  height:360px;
-}
 
 .coach-proof{
   text-align:center;
@@ -2158,23 +2155,6 @@ section{padding:80px 28px}
   background:#020814;
   color:#fff;
 }
-
-.coach-card{
-  min-width:320px;
-  border:1px solid rgba(255,255,255,.18);
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
-  border-radius:0;
-  padding:22px;
-  cursor:pointer;
-  scroll-snap-align:center;
-  transition:.45s cubic-bezier(.16,1,.3,1);
-}
-
-.coach-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 30px 90px rgba(0,0,0,.35);
-}
-
 .coach-photo-wrap{
   background:#b8b8b8;
   padding:24px 24px 0;
@@ -2348,38 +2328,10 @@ section{padding:80px 28px}
   font-weight:650;
   color:#333;
 }
-
-.coach-slider:active{
-  cursor:grabbing;
-}
-
-.coach-track{
-  display:flex;
-  gap:24px;
-  width:max-content;
-  will-change:transform;
-  transition:transform .35s cubic-bezier(.2,1.4,.3,1);
-}
-
-.coach-slider::before,
-.coach-slider::after{
-  content:"";
-  position:absolute;
-  top:0;
-  width:70px;
-  height:100%;
-  z-index:2;
-  pointer-events:none;
-}
-
-.coach-slider::before{
-  left:0;
-  background:linear-gradient(to right,#020814,transparent);
-}
-
-.coach-slider::after{
-  right:0;
-  background:linear-gradient(to left,#020814,transparent);
+.coach-slider{
+  overflow:hidden;
+  width:100%;
+  position:relative;
 }
 
 .coach-track{
@@ -2387,53 +2339,8 @@ section{padding:80px 28px}
   gap:24px;
   width:max-content;
   align-items:center;
+  will-change:transform;
   transition:transform .75s cubic-bezier(.22,1,.36,1);
-}
-
-.coach-card{
-  flex:0 0 320px;
-  max-width:320px;
-}
-.coach-track{
-  display:flex;
-  gap:24px;
-  width:max-content;
-  align-items:center;
-}
-
-.coach-card{
-  flex:0 0 320px;
-  width:320px;
-}.coach-slider{
-  overflow:hidden;
-  width:100%;
-  position:relative;
-}
-
-.coach-track{
-  display:flex;
-  gap:24px;
-  width:max-content;
-  align-items:center;
-  will-change:transform;
-}
-
-.coach-card{
-  flex:0 0 320px;
-  width:320px;
-}.coach-slider{
-  overflow:hidden;
-  width:100%;
-  position:relative;
-}
-
-.coach-track{
-  display:flex;
-  gap:24px;
-  width:max-content;
-  align-items:center;
-  will-change:transform;
-  transform:translateX(calc(50vw - 160px));
 }
 
 .coach-card{
@@ -2441,6 +2348,10 @@ section{padding:80px 28px}
   width:320px;
   min-width:320px;
   max-width:320px;
+  border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  padding:22px;
+  cursor:pointer;
 }
   </style>
 </head>
@@ -3590,27 +3501,87 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => {
     goTo(index, false);
   });
-function centerCoachCard(){
-  const slider = document.querySelector('.coach-slider');
-  const track = document.querySelector('.coach-track');
-  const firstCard = document.querySelector('.coach-card');
 
-  if(!slider || !track || !firstCard) return;
-
-  const sliderWidth = slider.clientWidth;
-  const cardWidth = firstCard.offsetWidth;
-
-  const centerX = Math.round((sliderWidth - cardWidth) / 2);
-
-  track.style.transform = `translate3d(${centerX}px,0,0)`;
-}
-window.addEventListener('load', () => {
-  centerCoachCard();
-  setTimeout(centerCoachCard, 100);
-  setTimeout(centerCoachCard, 300);
-});
 
 window.addEventListener('resize', centerCoachCard);
+</script>
+  <script>
+const coachSlider = document.querySelector('.coach-slider');
+const coachTrack = document.querySelector('.coach-track');
+const coachCards = document.querySelectorAll('.coach-card');
+
+let coachIndex = 0;
+
+function moveCoachSlide(animate = true){
+  if(!coachSlider || !coachTrack || coachCards.length === 0) return;
+
+  const sliderWidth = coachSlider.clientWidth;
+  const cardWidth = coachCards[coachIndex].offsetWidth;
+  const gap = 24;
+
+  const moveX = (sliderWidth / 2) - (cardWidth / 2) - (coachIndex * (cardWidth + gap));
+
+  coachTrack.style.transition = animate
+    ? 'transform .75s cubic-bezier(.22,1,.36,1)'
+    : 'none';
+
+  coachTrack.style.transform = `translate3d(${Math.round(moveX)}px,0,0)`;
+}
+
+function nextCoachSlide(){
+  coachIndex = (coachIndex + 1) % coachCards.length;
+  moveCoachSlide(true);
+}
+
+window.addEventListener('load', () => {
+  moveCoachSlide(false);
+  setTimeout(() => moveCoachSlide(false), 100);
+  setTimeout(() => moveCoachSlide(false), 300);
+
+  setInterval(nextCoachSlide, 5200);
+});
+
+window.addEventListener('resize', () => {
+  moveCoachSlide(false);
+});
+</script><script>
+const coachSlider = document.querySelector('.coach-slider');
+const coachTrack = document.querySelector('.coach-track');
+const coachCards = document.querySelectorAll('.coach-card');
+
+let coachIndex = 0;
+
+function moveCoachSlide(animate = true){
+  if(!coachSlider || !coachTrack || coachCards.length === 0) return;
+
+  const sliderWidth = coachSlider.clientWidth;
+  const cardWidth = coachCards[coachIndex].offsetWidth;
+  const gap = 24;
+
+  const moveX = (sliderWidth / 2) - (cardWidth / 2) - (coachIndex * (cardWidth + gap));
+
+  coachTrack.style.transition = animate
+    ? 'transform .75s cubic-bezier(.22,1,.36,1)'
+    : 'none';
+
+  coachTrack.style.transform = `translate3d(${Math.round(moveX)}px,0,0)`;
+}
+
+function nextCoachSlide(){
+  coachIndex = (coachIndex + 1) % coachCards.length;
+  moveCoachSlide(true);
+}
+
+window.addEventListener('load', () => {
+  moveCoachSlide(false);
+  setTimeout(() => moveCoachSlide(false), 100);
+  setTimeout(() => moveCoachSlide(false), 300);
+  setInterval(nextCoachSlide, 5200);
+});
+
+window.addEventListener('resize', () => {
+  moveCoachSlide(false);
+});
 </script>
 </body>
 </html>
