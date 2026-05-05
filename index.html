@@ -846,18 +846,7 @@ section{padding:80px 28px}
   color:#fff;
 }
 
-.coach-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.7);
-  transition:1s ease;
-}
 
-.coach-card:hover img{
-  transform:scale(1.08);
-  filter:brightness(.95);
-}
 
 .coach-overlay{
   position:absolute;
@@ -2328,31 +2317,7 @@ section{padding:80px 28px}
   font-weight:650;
   color:#333;
 }
-.coach-slider{
-  overflow:hidden;
-  width:100%;
-  position:relative;
-}
-
-.coach-track{
-  display:flex;
-  gap:24px;
-  width:max-content;
-  align-items:center;
-  will-change:transform;
-  transition:transform .75s cubic-bezier(.22,1,.36,1);
-}
-
-.coach-card{
-  flex:0 0 320px;
-  width:320px;
-  min-width:320px;
-  max-width:320px;
-  border:1px solid rgba(255,255,255,.18);
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
-  padding:22px;
-  cursor:pointer;
-}/* 코치 섹션 문단 간격 줄이기 */
+/* 코치 섹션 문단 간격 줄이기 */
 .coach .desc{
   margin-top:10px;   /* 기본 22px → 10px로 축소 */
   line-height:1.5;   /* 줄간격도 살짝 줄임 */
@@ -2385,21 +2350,39 @@ section{padding:80px 28px}
 .coach .desc + p{
   margin-top:-2px;   /* 살짝 겹치듯 붙임 */
 }.coach-slider{
-  margin-top:-20px; /* 위로 당기기 */
+  width:100%;
+  overflow:hidden;
+  position:relative;
+  cursor:grab;
+  touch-action:pan-y;
 }
+
 .coach-slider:active{
   cursor:grabbing;
 }
 
 .coach-track{
+  display:flex;
+  gap:24px;
+  will-change:transform;
   user-select:none;
 }
 
 .coach-card{
+  flex:0 0 320px;
+  width:320px;
+  min-width:320px;
+  max-width:320px;
   user-select:none;
-}.coach-slider{
-  cursor:grab;
-  touch-action:pan-y;
+}
+
+@media(max-width:560px){
+  .coach-card{
+    flex:0 0 320px;
+    width:320px;
+    min-width:320px;
+    max-width:320px;
+  }
 }
   </style>
 </head>
@@ -3500,581 +3483,119 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-  
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const slider = document.querySelector(".coach-slider");
-  const track = document.querySelector(".coach-track");
-  const cards = Array.from(document.querySelectorAll(".coach-card"));
 
-  if (!slider || !track || cards.length === 0) return;
-
-  let index = 0;
-  const gap = 24;
-  const originalCount = cards.length / 2;
-
-  function getCenterX(i){
-    const card = cards[i];
-    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-    const sliderCenter = slider.offsetWidth / 2;
-    return cardCenter - sliderCenter;
-  }
-  
-  window.addEventListener("resize", () => {
-
-  });
-<script>
-const slider = document.querySelector('.coach-slider');
-const track = document.querySelector('.coach-track');
-
-const gap = 24;
-const stayTime = 3500;
-const speed = 650;
-
-window.addEventListener('resize', centerCoachCard);
-</script>
-<script>
-const slider = document.querySelector('.coach-slider');
-const track = document.querySelector('.coach-track');
-
-const gap = 24;
-const stayTime = 3500;
-const speed = 650;
-
-let originalCards = Array.from(track.querySelectorAll('.coach-card'));
-let originalCount = originalCards.length;
-let cards = [];
-let index = 0;
-let autoTimer = null;
-
-let isDragging = false;
-let startX = 0;
-let dragX = 0;
-let baseX = 0;
-
-/* 이하 전부 그대로 유지 */
-/* 기존 복제 제거 방지 */
-function resetClones(){
-  track.innerHTML = '';
-  originalCards.forEach(card => track.appendChild(card));
-}
-
-/* 앞뒤로 충분히 복제 */
-function buildInfiniteSlider(){
-  resetClones();
-
-  const before = originalCards.map(card => card.cloneNode(true));
-  const after = originalCards.map(card => card.cloneNode(true));
-
-  before.forEach(card => track.appendChild(card.cloneNode(true)));
-  originalCards.forEach(card => track.appendChild(card));
-  after.forEach(card => track.appendChild(card.cloneNode(true)));
-
-  cards = Array.from(track.querySelectorAll('.coach-card'));
-
-  /* 가운데 원본 묶음부터 시작 */
-  index = originalCount;
-}
-
-function getX(i){
-  const sliderWidth = slider.clientWidth;
-  const cardWidth = cards[i].offsetWidth;
-
-  return Math.round(
-    sliderWidth / 2 -
-    cardWidth / 2 -
-    i * (cardWidth + gap)
-  );
-}
-
-function move(i, animate = true){
-  index = i;
-
-  track.style.transition = animate
-    ? `transform ${speed}ms cubic-bezier(.16,1,.3,1)`
-    : 'none';
-
-  const x = getX(index);
-  baseX = x;
-  track.style.transform = `translate3d(${x}px,0,0)`;
-}
-
-/* 화면에 보이지 않는 순간에만 위치 보정 */
-function normalize(){
-  if(index >= originalCount * 2){
-    index = originalCount;
-    move(index, false);
-  }
-
-  if(index < originalCount){
-    index = originalCount * 2 - 1;
-    move(index, false);
-  }
-}
-
-function next(){
-  move(index + 1, true);
-}
-
-function startAuto(){
-  clearInterval(autoTimer);
-  autoTimer = setInterval(next, stayTime);
-}
-
-function stopAuto(){
-  clearInterval(autoTimer);
-}
-
-track.addEventListener('transitionend', normalize);
-
-function dragStart(x){
-  isDragging = true;
-  startX = x;
-  dragX = 0;
-  stopAuto();
-  track.style.transition = 'none';
-}
-
-function dragMove(x){
-  if(!isDragging) return;
-  dragX = x - startX;
-  track.style.transform = `translate3d(${baseX + dragX}px,0,0)`;
-}
-
-function dragEnd(){
-  if(!isDragging) return;
-  isDragging = false;
-
-  const cardWidth = cards[index].offsetWidth;
-  const threshold = cardWidth * 0.18;
-
-  if(dragX < -threshold){
-    move(index + 1, true);
-  }else if(dragX > threshold){
-    move(index - 1, true);
-  }else{
-    move(index, true);
-  }
-
-  startAuto();
-}
-
-/* PC */
-slider.addEventListener('mousedown', e => dragStart(e.clientX));
-window.addEventListener('mousemove', e => dragMove(e.clientX));
-window.addEventListener('mouseup', dragEnd);
-
-/* 모바일 */
-slider.addEventListener('touchstart', e => {
-  dragStart(e.touches[0].clientX);
-}, { passive:false });
-
-slider.addEventListener('touchmove', e => {
-  e.preventDefault();
-  dragMove(e.touches[0].clientX);
-}, { passive:false });
-
-slider.addEventListener('touchend', dragEnd);
-
-window.addEventListener('load', () => {
-  buildInfiniteSlider();
-  move(index, false);
-  startAuto();
-});
-
-window.addEventListener('resize', () => {
-  move(index, false);
-});
-</script><script>
-const slider = document.querySelector('.coach-slider');
-const track = document.querySelector('.coach-track');
-
-let cards = Array.from(track.children);
-const gap = 24;
-
-let index = 0;
-let isDragging = false;
-let startX = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
-let animationID;
-
-function cloneCards() {
-  const clonesBefore = cards.map(card => card.cloneNode(true));
-  const clonesAfter = cards.map(card => card.cloneNode(true));
-
-  clonesBefore.forEach(c => track.insertBefore(c, track.firstChild));
-  clonesAfter.forEach(c => track.appendChild(c));
-
-  cards = Array.from(track.children);
-}
-
-function getCardWidth() {
-  return cards[0].offsetWidth + gap;
-}
-
-function setPosition() {
-  const cardWidth = getCardWidth();
-  currentTranslate = -((index + cards.length / 3) * cardWidth);
-  track.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-function moveTo(idx, smooth = true) {
-  const cardWidth = getCardWidth();
-  currentTranslate = -((idx + cards.length / 3) * cardWidth);
-
-  track.style.transition = smooth
-    ? 'transform .65s cubic-bezier(.22,1,.36,1)'
-    : 'none';
-
-  track.style.transform = `translateX(${currentTranslate}px)`;
-
-  index = idx;
-
-  setTimeout(() => {
-    if (index >= cards.length / 3) {
-      index = 0;
-      setPosition();
-    }
-    if (index < 0) {
-      index = cards.length / 3 - 1;
-      setPosition();
-    }
-  }, 650);
-}
-
-function autoSlide() {
-  moveTo(index + 1);
-}
-
-let auto = setInterval(autoSlide, 3500);
-
-function touchStart(e) {
-  isDragging = true;
-  startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-  cancelAnimationFrame(animationID);
-  track.style.transition = 'none';
-}
-
-function touchMove(e) {
-  if (!isDragging) return;
-  const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-  const diff = x - startX;
-  track.style.transform = `translateX(${currentTranslate + diff}px)`;
-}
-
-function touchEnd(e) {
-  isDragging = false;
-  const x = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
-  const diff = x - startX;
-
-  if (diff < -80) moveTo(index + 1);
-  else if (diff > 80) moveTo(index - 1);
-  else moveTo(index);
-
-  clearInterval(auto);
-  auto = setInterval(autoSlide, 3500);
-}
-
-slider.addEventListener('mousedown', touchStart);
-slider.addEventListener('mousemove', touchMove);
-slider.addEventListener('mouseup', touchEnd);
-slider.addEventListener('mouseleave', touchEnd);
-
-slider.addEventListener('touchstart', touchStart);
-slider.addEventListener('touchmove', touchMove);
-slider.addEventListener('touchend', touchEnd);
-
-window.addEventListener('load', () => {
-  cloneCards();
-  setPosition();
-});
-</script><script>
-const slider = document.querySelector('.coach-slider');
-const track = document.querySelector('.coach-track');
-
-let cards = Array.from(track.children);
-const gap = 24;
-
-let index = 0;
-let isDragging = false;
-let startX = 0;
-let currentTranslate = 0;
-
-function cloneCards() {
-  const clonesBefore = cards.map(card => card.cloneNode(true));
-  const clonesAfter = cards.map(card => card.cloneNode(true));
-
-  clonesBefore.forEach(c => track.insertBefore(c, track.firstChild));
-  clonesAfter.forEach(c => track.appendChild(c));
-
-  cards = Array.from(track.children);
-}
-
-function getCardWidth() {
-  return cards[0].offsetWidth + gap;
-}
-
-function setPosition() {
-  const cardWidth = getCardWidth();
-  currentTranslate = -((index + cards.length / 3) * cardWidth);
-  track.style.transform = `translateX(${currentTranslate}px)`;
-}
-
-function moveTo(idx, smooth = true) {
-  const cardWidth = getCardWidth();
-  currentTranslate = -((idx + cards.length / 3) * cardWidth);
-
-  track.style.transition = smooth
-    ? 'transform .65s cubic-bezier(.22,1,.36,1)'
-    : 'none';
-
-  track.style.transform = `translateX(${currentTranslate}px)`;
-
-  index = idx;
-
-  setTimeout(() => {
-    if (index >= cards.length / 3) {
-      index = 0;
-      setPosition();
-    }
-    if (index < 0) {
-      index = cards.length / 3 - 1;
-      setPosition();
-    }
-  }, 650);
-}
-
-function autoSlide() {
-  moveTo(index + 1);
-}
-
-let auto = setInterval(autoSlide, 3500);
-
-function touchStart(e) {
-  isDragging = true;
-  startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-  track.style.transition = 'none';
-}
-
-function touchMove(e) {
-  if (!isDragging) return;
-  const x = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
-  const diff = x - startX;
-  track.style.transform = `translateX(${currentTranslate + diff}px)`;
-}
-
-function touchEnd(e) {
-  isDragging = false;
-  const x = e.type.includes('mouse') ? e.pageX : e.changedTouches[0].clientX;
-  const diff = x - startX;
-
-  if (diff < -80) moveTo(index + 1);
-  else if (diff > 80) moveTo(index - 1);
-  else moveTo(index);
-
-  clearInterval(auto);
-  auto = setInterval(autoSlide, 3500);
-}
-
-slider.addEventListener('mousedown', touchStart);
-slider.addEventListener('mousemove', touchMove);
-slider.addEventListener('mouseup', touchEnd);
-slider.addEventListener('mouseleave', touchEnd);
-
-slider.addEventListener('touchstart', touchStart);
-slider.addEventListener('touchmove', touchMove);
-slider.addEventListener('touchend', touchEnd);
-
-window.addEventListener('load', () => {
-  cloneCards();
-  setPosition();
-});
-</script>
-<script>
-window.addEventListener('load', () => {
-  const slider = document.querySelector('.coach-slider');
-  const track = document.querySelector('.coach-track');
-  const cards = document.querySelectorAll('.coach-card');
-
-  if (!slider || !track || cards.length === 0) return;
-
-  let index = 0;
-  let timer = null;
-
-  function moveCoach() {
-    const gap = parseFloat(getComputedStyle(track).gap) || 24;
-    const cardWidth = cards[0].offsetWidth;
-
-    const sliderCenter = slider.offsetWidth / 2;
-    const cardCenter = cardWidth / 2;
-
-    const x = -(index * (cardWidth + gap)) + sliderCenter - cardCenter;
-
-    track.style.transition = 'transform .85s cubic-bezier(.22,1,.36,1)';
-    track.style.transform = `translateX(${x}px)`;
-  }
-
-  function nextCoach() {
-    index = index === 0 ? 1 : 0; 
-    moveCoach();
-  }
-
-  moveCoach();
-
-  timer = setInterval(nextCoach, 2800);
-
-  window.addEventListener('resize', moveCoach);
-});
-</script>
-<script>
+  <script>
 document.addEventListener("DOMContentLoaded", () => {
   const slider = document.querySelector(".coach-slider");
   const track = document.querySelector(".coach-track");
 
   if (!slider || !track) return;
 
-  const originalCards = Array.from(track.querySelectorAll(".coach-card"));
-  if (originalCards.length === 0) return;
+  const cards = Array.from(track.querySelectorAll(".coach-card"));
+  if (cards.length < 2) return;
 
-  let cards = [];
-  let index = originalCards.length;
-  let baseX = 0;
+  let index = 0;
   let startX = 0;
-  let dragX = 0;
+  let currentX = 0;
   let isDragging = false;
   let autoTimer = null;
 
-const stayTime = 5200;
-const speed = 1200;
+  const gap = 24;
+  const stayTime = 4800;
+  const moveSpeed = 900;
 
-  function buildSlider() {
-    track.innerHTML = "";
-
-    const before = originalCards.map(card => card.cloneNode(true));
-    const center = originalCards.map(card => card.cloneNode(true));
-    const after = originalCards.map(card => card.cloneNode(true));
-
-    [...before, ...center, ...after].forEach(card => {
-      track.appendChild(card);
-    });
-
-    cards = Array.from(track.querySelectorAll(".coach-card"));
-    index = originalCards.length;
+  function cardWidth() {
+    return cards[0].offsetWidth + gap;
   }
 
-  function getX(i) {
-    const card = cards[i];
-    if (!card) return 0;
-
-    const sliderCenter = slider.clientWidth / 2;
-    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-
-    return Math.round(sliderCenter - cardCenter);
-  }
-
-  function move(i, animate = true) {
-    index = i;
+  function centerCard(animate = true) {
+    const sliderCenter = slider.offsetWidth / 2;
+    const cardCenter = cards[index].offsetLeft + cards[index].offsetWidth / 2;
+    const moveX = sliderCenter - cardCenter;
 
     track.style.transition = animate
-? `transform ${speed}ms cubic-bezier(.25, .8, .25, 1)`
+      ? `transform ${moveSpeed}ms cubic-bezier(.25,.8,.25,1)`
       : "none";
 
-    baseX = getX(index);
-    track.style.transform = `translate3d(${baseX}px, 0, 0)`;
+    track.style.transform = `translate3d(${moveX}px,0,0)`;
+    currentX = moveX;
   }
 
-  function normalize() {
-    const count = originalCards.length;
+  function nextCard() {
+    index++;
 
-    if (index >= count * 2) {
-      index = count;
-      move(index, false);
+    if (index >= cards.length) {
+      index = 0;
     }
 
-    if (index < count) {
-      index = count * 2 - 1;
-      move(index, false);
-    }
+    centerCard(true);
   }
 
-  function next() {
-    move(index + 1, true);
+  function prevCard() {
+    index--;
+
+    if (index < 0) {
+      index = cards.length - 1;
+    }
+
+    centerCard(true);
   }
 
   function startAuto() {
     clearInterval(autoTimer);
-    autoTimer = setInterval(next, stayTime);
+    autoTimer = setInterval(nextCard, stayTime);
   }
 
   function stopAuto() {
     clearInterval(autoTimer);
   }
 
-  function dragStart(x) {
+  slider.addEventListener("pointerdown", e => {
     isDragging = true;
-    startX = x;
-    dragX = 0;
+    startX = e.clientX;
     stopAuto();
-    track.style.transition = "none";
-  }
 
-  function dragMove(x) {
+    track.style.transition = "none";
+    slider.setPointerCapture(e.pointerId);
+  });
+
+  slider.addEventListener("pointermove", e => {
     if (!isDragging) return;
 
-    dragX = x - startX;
-    track.style.transform = `translate3d(${baseX + dragX}px, 0, 0)`;
-  }
+    const dragAmount = e.clientX - startX;
+    track.style.transform = `translate3d(${currentX + dragAmount}px,0,0)`;
+  });
 
-  function dragEnd() {
+  slider.addEventListener("pointerup", e => {
     if (!isDragging) return;
 
     isDragging = false;
 
-    const card = cards[index];
-    const threshold = card ? card.offsetWidth * 0.18 : 70;
+    const dragAmount = e.clientX - startX;
+    const threshold = cards[0].offsetWidth * 0.22;
 
-    if (dragX < -threshold) {
-      move(index + 1, true);
-    } else if (dragX > threshold) {
-      move(index - 1, true);
+    if (dragAmount < -threshold) {
+      nextCard();
+    } else if (dragAmount > threshold) {
+      prevCard();
     } else {
-      move(index, true);
+      centerCard(true);
     }
 
     startAuto();
-  }
-
-  track.addEventListener("transitionend", normalize);
-
-  slider.addEventListener("mousedown", e => {
-    e.preventDefault();
-    dragStart(e.clientX);
   });
 
-  window.addEventListener("mousemove", e => {
-    dragMove(e.clientX);
+  slider.addEventListener("pointercancel", () => {
+    isDragging = false;
+    centerCard(true);
+    startAuto();
   });
-
-  window.addEventListener("mouseup", dragEnd);
-
-  slider.addEventListener("touchstart", e => {
-    dragStart(e.touches[0].clientX);
-  }, { passive: true });
-
-  slider.addEventListener("touchmove", e => {
-    e.preventDefault();
-    dragMove(e.touches[0].clientX);
-  }, { passive: false });
-
-  slider.addEventListener("touchend", dragEnd);
 
   window.addEventListener("resize", () => {
-    move(index, false);
+    centerCard(false);
   });
 
-  buildSlider();
-  move(index, false);
+  centerCard(false);
   startAuto();
 });
 </script>
