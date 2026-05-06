@@ -3560,7 +3560,7 @@ section{padding:80px 28px}
       <div class="swiper-wrapper">
 
 <!-- COACH 1 -->
-<div class="swiper-slide coach-card"
+<div class="swiper-slide coach-card" onclick="openDetailModal('coach1')">
   data-name="허예준 COACH"
   data-level="Junior Coach"
   data-career="기초 체력 향상 · 자세 교정 · 초보자 운동 적응 코칭"
@@ -3580,7 +3580,7 @@ section{padding:80px 28px}
         </div>
 
     <!-- coach 2 -->
-<div class="swiper-slide coach-card"
+<div class="swiper-slide coach-card" onclick="openDetailModal('coach2')">
   data-name="신예솔 COACH"
   data-level="Senior Coach"
   data-career="여성 체형관리 · 다이어트 코칭 · 소그룹 PT 수업 운영"
@@ -3600,7 +3600,7 @@ section{padding:80px 28px}
         </div>
 
         <!-- coach 3 -->
-        <div class="swiper-slide coach-card"
+   <div class="swiper-slide coach-card" onclick="openDetailModal('coach3')">
   data-name="1111 COACH"
   data-level="Se222or Coach"
   data-career="여성 체형관리 · 다이어트 코칭 · 소그룹 PT 수업 운영"
@@ -3621,7 +3621,7 @@ section{padding:80px 28px}
         </div>
 
         <!-- coach 4 -->
-        <div class="swiper-slide coach-card"
+<div class="swiper-slide coach-card" onclick="openDetailModal('coach4')">
   data-name="신333 COACH"
   data-level="S444or Coach"
   data-career="여성 체형관리 · 다이어트 코칭 · 소그룹 PT 수업 운영"
@@ -4260,7 +4260,7 @@ autoplay: {
     <button class="detail-close" onclick="closeDetailModal()">×</button>
 
     <div class="detail-modal-content">
-      <div class="detail-modal-text">
+    <div class="detail-modal-text" id="coachDetailContent">
 
 <h3>
   허예준 COACH
@@ -4319,12 +4319,160 @@ autoplay: {
     </div>
   </div>
 </div><script>
-function openDetailModal(img, title, sub, desc){
+<script>
+const coachProfiles = {
+  coach1: `
+    <h3>허예준 COACH</h3>
+    <p class="detail-role">Junior Coach</p>
+
+    <div class="profile-section">
+      <h4>학력</h4>
+      <ul>
+        <li>한국체육대학교 운동생리학 기반 트레이닝 과정</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>경력</h4>
+      <ul>
+        <li>기초 체력 향상 및 초보자 운동 적응 코칭</li>
+        <li>근력 순환 트레이닝 프로그램 지도</li>
+        <li>개인별 체력 수준에 따른 운동 강도 조절</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>자격증</h4>
+      <ul>
+        <li>생활스포츠지도사 2급</li>
+        <li>CPR 수료</li>
+        <li>기능성 트레이닝 교육 수료</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>코칭 소신</h4>
+      <p>운동은 강하게 시키는 것보다, 다시 오고 싶게 만드는 것이 먼저라고 생각합니다.</p>
+    </div>
+  `,
+
+  coach2: `
+    <h3>신예솔 COACH</h3>
+    <p class="detail-role">Senior Coach</p>
+
+    <div class="profile-section">
+      <h4>학력</h4>
+      <ul>
+        <li>생활체육 및 기능성 트레이닝 과정 수료</li>
+        <li>체형 분석 기반 운동 코칭 교육 이수</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>경력</h4>
+      <ul>
+        <li>여성 체형관리 및 다이어트 코칭</li>
+        <li>소그룹 PT 및 근력 순환 수업 진행</li>
+        <li>초보 회원 운동 적응 프로그램 지도</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>자격증</h4>
+      <ul>
+        <li>생활스포츠지도사 2급</li>
+        <li>재활 트레이닝 교육 수료</li>
+        <li>기능성 움직임 평가 과정 수료</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>코칭 소신</h4>
+      <p>운동은 단순히 몸을 바꾸는 것이 아니라, 스스로를 믿을 수 있게 만드는 과정이라고 생각합니다.</p>
+    </div>
+  `,
+
+  coach3: `
+    <h3>EVERYPT COACH</h3>
+    <p class="detail-role">Professional Trainer</p>
+
+    <div class="profile-section">
+      <h4>학력</h4>
+      <ul>
+        <li>스포츠 트레이닝 및 운동지도 과정 수료</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>경력</h4>
+      <ul>
+        <li>근력 향상 및 체력 증진 프로그램 지도</li>
+        <li>심박수 기반 운동강도 조절 수업 운영</li>
+        <li>회원별 운동 목적에 따른 루틴 설계</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>자격증</h4>
+      <ul>
+        <li>퍼스널 트레이닝 교육 수료</li>
+        <li>기능성 트레이닝 과정 수료</li>
+        <li>응급처치 및 안전관리 교육 수료</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>코칭 소신</h4>
+      <p>좋은 코칭은 운동을 많이 시키는 것이 아니라, 회원님이 꾸준히 이어갈 수 있는 방향을 함께 찾는 것이라고 생각합니다.</p>
+    </div>
+  `,
+
+  coach4: `
+    <h3>EVERYPT COACH</h3>
+    <p class="detail-role">Professional Trainer</p>
+
+    <div class="profile-section">
+      <h4>학력</h4>
+      <ul>
+        <li>체력 관리 및 소그룹 트레이닝 과정 수료</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>경력</h4>
+      <ul>
+        <li>초보자 기초 운동 습관 형성 코칭</li>
+        <li>다이어트 및 체성분 관리 프로그램 지도</li>
+        <li>운동 지속성을 높이는 맞춤형 수업 운영</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>자격증</h4>
+      <ul>
+        <li>트레이닝 지도 과정 수료</li>
+        <li>체형 분석 코칭 교육 수료</li>
+        <li>CPR 및 안전관리 교육 수료</li>
+      </ul>
+    </div>
+
+    <div class="profile-section">
+      <h4>코칭 소신</h4>
+      <p>회원님의 속도에 맞춰 운동이 부담이 아닌 생활의 루틴이 되도록 돕는 것이 코치의 역할이라고 생각합니다.</p>
+    </div>
+  `
+};
+
+function openDetailModal(coachKey){
   const modal = document.getElementById('detailModal');
+  const content = document.getElementById('coachDetailContent');
+
+  content.innerHTML = coachProfiles[coachKey];
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
+</script>
 
 function closeDetailModal(){
   document.getElementById('detailModal').classList.remove('active');
