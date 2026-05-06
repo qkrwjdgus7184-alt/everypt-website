@@ -2542,7 +2542,56 @@ section{padding:80px 28px}
   background:#fff;
   color:#06101f;
 }
-  
+  /* 코치 카드 안 CTA 제거 */
+.coach-card-cta{
+  display:none !important;
+}
+
+/* 코치 카드 이미지 A4 비율 고정 */
+.coach-photo-wrap{
+  padding:18px;
+  background:#f3f3f3;
+}
+
+.coach-photo-wrap img{
+  width:100%;
+  aspect-ratio:1 / 1.414;
+  height:auto;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:14px;
+}
+
+/* 코치 카드 하단 정보 */
+.coach-name{
+  padding:18px 20px 22px;
+  text-align:left;
+}
+
+/* 슬라이드 아래 메인 CTA */
+.coach-main-cta{
+  width:min(360px, 90%);
+  height:58px;
+  margin:28px auto 0;
+  border-radius:14px;
+  border:1px solid rgba(246,217,141,.65);
+  background:linear-gradient(180deg, rgba(246,217,141,.18), rgba(246,217,141,.06));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:17px;
+  font-weight:950;
+  letter-spacing:-.4px;
+  box-shadow:0 20px 60px rgba(0,0,0,.28);
+  transition:.28s ease;
+}
+
+.coach-main-cta:hover{
+  background:#f6d98d;
+  color:#06101f;
+  transform:translateY(-3px);
+}
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 </head>
@@ -2875,86 +2924,60 @@ section{padding:80px 28px}
       <p class="coach-highlight">성장의 한계를 뛰어넘을 수 있었던 전문성입니다.</p>
     </div>
 
-  <div class="coach-slider swiper">
+<div class="coach-slider swiper">
 
   <div class="swiper-wrapper">
 
-    <!-- COACH 1 -->
     <div class="swiper-slide coach-card">
-
       <div class="coach-photo-wrap">
         <img src="coach1.png" alt="허예준 코치">
       </div>
-
       <div class="coach-name">
         <strong>허예준 COACH</strong>
         <span>Junior</span>
       </div>
-
-      <button class="coach-card-cta">
-        내 운동 최적화 파트너는? →
-      </button>
-
     </div>
 
-    <!-- COACH 2 -->
     <div class="swiper-slide coach-card">
-
       <div class="coach-photo-wrap">
         <img src="coach2.png" alt="신예솔 코치">
       </div>
-
       <div class="coach-name">
         <strong>신예솔 COACH</strong>
         <span>Senior</span>
       </div>
-
-      <button class="coach-card-cta">
-        내 운동 최적화 파트너는? →
-      </button>
-
     </div>
 
-    <!-- COACH 3 -->
     <div class="swiper-slide coach-card">
-
       <div class="coach-photo-wrap">
         <img src="coach3.png" alt="EVERYPT 코치">
       </div>
-
       <div class="coach-name">
         <strong>EVERYPT COACH</strong>
         <span>Professional Trainer</span>
       </div>
-
-      <button class="coach-card-cta">
-        내 운동 최적화 파트너는? →
-      </button>
-
     </div>
 
-    <!-- COACH 4 -->
     <div class="swiper-slide coach-card">
-
       <div class="coach-photo-wrap">
         <img src="coach4.png" alt="EVERYPT 코치">
       </div>
-
       <div class="coach-name">
         <strong>EVERYPT COACH</strong>
         <span>Professional Trainer</span>
       </div>
-
-      <button class="coach-card-cta">
-        내 운동 최적화 파트너는? →
-      </button>
-
     </div>
 
   </div>
 
 </div>
+
+<div class="coach-main-cta">
+  내 운동 최적화 파트너는? →
 </div>
+
+
+    
     <!-- ✅ 슬라이더 밖 / 섹션 하단 CTA -->
     <div class="coach-bottom-copy">
       <a href="#reserve" class="coach-detail-btn">
