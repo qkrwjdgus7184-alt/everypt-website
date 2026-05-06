@@ -843,10 +843,7 @@ section{padding:80px 28px}
   visibility:hidden;
   pointer-events:none;
 }
-    .coach{
-  background:#000;
-  color:#fff;
-}
+
 
 
 
@@ -2146,64 +2143,8 @@ section{padding:80px 28px}
   background:#020814;
   color:#fff;
 }
-.coach-photo-wrap{
-  background:#b8b8b8;
-  padding:24px 24px 0;
-  margin-bottom:22px;
-}
 
-.coach-photo-wrap img{
-  width:100%;
-  height:310px;
-  object-fit:cover;
-  object-position:top center;
-}
-
-.coach-name{
-  text-align:center;
-}
-
-.coach-name strong{
-  display:block;
-  font-size:22px;
-  font-weight:950;
-  margin-bottom:8px;
-}
-
-.coach-name span{
-  color:rgba(255,255,255,.62);
-  font-size:14px;
-  font-weight:750;
-}
-
-.coach-bottom-copy{
-  text-align:center;
-  margin-top:18px;
-}
-
-.coach-bottom-copy p{
-  color:#fff;
-  font-size:21px;
-  line-height:1.6;
-  font-weight:850;
-  margin-bottom:26px;
-}
-
-.coach-bottom-copy strong{
-  color:var(--gold2);
-  text-shadow:0 4px 20px rgba(214,173,95,.25);
-}
-
-.coach-detail-btn{
-  width:100%;
-  max-width:300px;
-  height:58px;
-  border:1px solid rgba(255,255,255,.75);
-  border-radius:6px;
-  color:#fff;
-  font-weight:900;
-  font-size:15px;
-}.profile-modal{
+.profile-modal{
   position:fixed;
   inset:0;
   z-index:9999;
@@ -2319,41 +2260,11 @@ section{padding:80px 28px}
   font-weight:650;
   color:#333;
 }
-/* 코치 섹션 문단 간격 줄이기 */
-.coach .desc{
-  margin-top:10px;   /* 기본 22px → 10px로 축소 */
-  line-height:1.5;   /* 줄간격도 살짝 줄임 */
-}/* 1️⃣ 타이틀 아래 간격 늘리기 */
+    
+ 
 .coach .title{
-  margin-bottom:26px; /* 기본보다 넓게 */
+  margin-bottom:26px; 
 }
-
-/* 2️⃣ 두번째 줄 (desc) */
-.coach .desc{
-  margin-top:0;       /* 위 여백 제거 */
-  margin-bottom:8px;  /* 아래 간격 줄이기 */
-  line-height:1.6;
-}
-
-/* 3️⃣ 세번째 줄 (강조문) */
-.coach .desc + p{
-  margin-top:4px;     /* 2번과 간격 더 좁게 */
-}.coach .desc{
-  margin-bottom:4px;  /* 기본보다 확 줄임 */
-}
-
-.coach .desc + p{
-  margin-top:0;       /* 위 간격 제거 */
-  line-height:1.4;    /* 줄간격도 살짝 타이트하게 */
-}.coach .desc{
-  margin-bottom:2px;
-}
-
-.coach .desc + p{
-  margin-top:-2px;   /* 살짝 겹치듯 붙임 */
-}
-    
-    
     .coach-slider{
   width:100%;
   overflow:hidden;
@@ -2368,11 +2279,6 @@ section{padding:80px 28px}
   align-items:center;
 }
 
-.coach-card{
-  width:320px !important;
-  flex:0 0 320px;
-  user-select:none;
-}/* 모든 섹션 헤드라인 중앙 정렬 */
 .section-head{
   text-align:center;
 }
@@ -2403,23 +2309,7 @@ section{padding:80px 28px}
   letter-spacing:-2.5px;
   margin-bottom:22px;
 }
-
-.coach-head .desc{
-color:rgba(255,255,255,.72);
-letter-spacing:-0.2px;
-  font-size:18px;
-  font-weight:500;
-  margin:0 auto 18px;
-  line-height:1.5;
-}
-
-.coach-highlight{
-  color:#f6d98d;
-  font-size:16px;
-  font-weight:950;
-  line-height:1.55;
-  text-align:center;
-}.coach-extra{
+.coach-extra{
   margin-top:26px;
   text-align:center;
 }
@@ -2485,45 +2375,12 @@ letter-spacing:-0.2px;
   color:#fff;
   font-size:15px;
   font-weight:900;
-}.coach-detail-btn{
-  width:100%;
-  max-width:300px;
-  height:56px;
-  margin:0 auto;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:22px;
-  border:1px solid rgba(255,255,255,.9);
-  border-radius:6px;
-  color:#fff;
-  font-size:16px;
-  font-weight:950;
-  letter-spacing:-.3px;
-  transition:.28s ease;
-}
-
-.coach-detail-btn:hover{
-  background:#fff;
-  color:#050814;
-  transform:translateY(-3px);
-}
-
-.coach-bottom-copy{
-  margin-top:42px;
-  text-align:center;
-}
-
-.coach-bottom-copy p{
-  margin-bottom:28px;
-}.coach-card{
-  cursor:pointer;
 }
 
 .detail-modal{
   position:fixed;
   inset:0;
-  z-index:9999;
+  z-index:10001;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -2620,16 +2477,7 @@ letter-spacing:-0.2px;
   font-weight:500;
   color:#6e6e73;
 }
-
-/* 상품 안내 설명문과 동일한 느낌으로 코치 문구도 통일 */
-.coach-head .desc{
-  font-weight:500;
-  color:rgba(255,255,255,.62);
-}
-
-.coach-highlight{
-  font-weight:600;
-}.faq-highlight{
+.faq-highlight{
   display:inline-block;
   margin-bottom:8px;
   padding:6px 10px;
