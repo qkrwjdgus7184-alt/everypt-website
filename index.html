@@ -3443,7 +3443,7 @@ section{padding:80px 28px}
   data-level="Junior Coach"
   data-career="기초 체력 향상 · 자세 교정 · 초보자 운동 적응 코칭"
   data-edu="한국체육대학교 운동생리학 기반 트레이닝 과정"
-  data-license="생활스포츠지도사 2급 · CPR 수료 · 기능성 트레이닝 교육 수료"
+  data-license="생활스포츠지도사 2급 · CPR 수료 · 기능성 트레이닝 교육 수료">
   data-belief="운동은 강하게 시키는 것보다, 다시 오고 싶게 만드는 것이 먼저라고 생각합니다.">
 
           <div class="coach-photo-wrap">
@@ -3463,7 +3463,7 @@ section{padding:80px 28px}
   data-level="Senior Coach"
   data-career="여성 체형관리 · 다이어트 코칭 · 소그룹 PT 수업 운영"
   data-edu="스포츠건강관리 전공"
-  data-license="생활스포츠지도사 2급 · 재활 트레이닝 교육 수료 · 체형분석 코칭 과정"
+  data-license="생활스포츠지도사 2급 · 재활 트레이닝 교육 수료 · 체형분석 코칭 과정">
   data-belief="회원님의 몸 상태와 생활 패턴을 이해해야 지속 가능한 운동이 만들어진다고 생각합니다.">
 
           <div class="coach-photo-wrap">
@@ -4199,78 +4199,11 @@ document.addEventListener("DOMContentLoaded", () => {
   elements.forEach(el => observer.observe(el));
 
 });
-</script><script>
-document.addEventListener('DOMContentLoaded', () => {
-  const coachCards = document.querySelectorAll('.coach-card');
-
-  const detailModal = document.getElementById('detailModal');
-  const detailBg = document.getElementById('detailBg');
-  const detailImage = document.getElementById('detailImage');
-  const detailName = document.getElementById('detailName');
-  const detailLevel = document.getElementById('detailLevel');
-  const detailDesc = document.getElementById('detailDesc');
-  const detailClose = document.getElementById('detailClose');
-
-  if (!detailModal || !detailBg || !detailImage || !detailName || !detailLevel || !detailDesc || !detailClose) {
-    console.warn('프로필 모달 HTML이 없습니다. detailModal 영역을 확인하세요.');
-    return;
-  }
-
-  coachCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const name = card.dataset.name || 'EVERYPT COACH';
-      const level = card.dataset.level || 'Professional Trainer';
-      const img = card.dataset.img || '';
-      const desc = card.dataset.desc || '회원님의 운동 목적과 체력 수준에 맞춰 가장 적합한 코칭 방향을 안내합니다.';
-const career1 = card.dataset.career1;
-const career2 = card.dataset.career2;
-const career3 = card.dataset.career3;
-
-const edu = card.dataset.edu;
-const license = card.dataset.license;
-      detailName.textContent = name;
-detailLevel.textContent = level;
-detailDesc.textContent = desc;
-   detailImage.src = './' + img;
-detailBg.style.backgroundImage = `url('./${img}')`;
-   detailName.textContent = card.dataset.name;
-detailLevel.textContent = card.dataset.level;
-
-document.getElementById('detailCareer').textContent = card.dataset.career;
-document.getElementById('detailEdu').textContent = card.dataset.edu;
-document.getElementById('detailLicense').textContent = card.dataset.license;
-document.getElementById('detailBelief').textContent = card.dataset.belief;
-document.getElementById('detailCareer1').textContent = career1;
-document.getElementById('detailCareer2').textContent = career2;
-document.getElementById('detailCareer3').textContent = career3;
-
-document.getElementById('detailEdu').textContent = edu;
-document.getElementById('detailLicense').textContent = license;
-      detailModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function closeDetailModal() {
-    detailModal.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  detailClose.addEventListener('click', closeDetailModal);
-
-  detailModal.addEventListener('click', e => {
-    if (e.target === detailModal) {
-      closeDetailModal();
-    }
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      closeDetailModal();
-    }
-  });
-});
-</script><div class="detail-modal" id="detailModal">
+</script>
+  
+  
+  
+  <div class="detail-modal" id="detailModal">
   <div class="detail-modal-bg" id="detailBg"></div>
 
   <div class="detail-modal-box">
@@ -4325,6 +4258,47 @@ document.getElementById('detailLicense').textContent = license;
 </div>
     </div>
   </div>
-</div>
+</div><script>
+document.addEventListener('DOMContentLoaded', () => {
+  const coachCards = document.querySelectorAll('.coach-card');
+  const modal = document.getElementById('detailModal');
+  const closeBtn = document.getElementById('detailClose');
+
+  coachCards.forEach(card => {
+    card.addEventListener('click', () => {
+      document.getElementById('detailName').textContent = card.dataset.name || '';
+      document.getElementById('detailLevel').textContent = card.dataset.level || '';
+
+      document.getElementById('detailCareer').textContent =
+        card.dataset.career || card.dataset.career1 || '';
+
+      document.getElementById('detailEdu').textContent =
+        card.dataset.edu || '';
+
+      document.getElementById('detailLicense').textContent =
+        card.dataset.license || '';
+
+      document.getElementById('detailBelief').textContent =
+        card.dataset.belief || '운동은 단순한 반복이 아니라, 오래 지속될 수 있는 습관을 만드는 과정이라고 생각합니다.';
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeDetailModal(){
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeDetailModal);
+
+  modal.addEventListener('click', e => {
+    if(e.target === modal){
+      closeDetailModal();
+    }
+  });
+});
+</script>
 </body>
 </html>
