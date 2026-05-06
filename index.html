@@ -2807,6 +2807,117 @@ section{padding:80px 28px}
   .detail-modal-text h3{
     font-size:36px;
   }
+}/* =========================
+   COACH PROFILE FULL SCREEN FIX
+   클릭 시 전체 화면 고정형
+========================= */
+
+.detail-modal{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:10001 !important;
+  width:100vw !important;
+  height:100dvh !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:rgba(2,8,20,.82) !important;
+  backdrop-filter:blur(28px) !important;
+  -webkit-backdrop-filter:blur(28px) !important;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  overflow:hidden !important;
+}
+
+.detail-modal.active{
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+}
+
+.detail-modal-box{
+  width:min(980px, calc(100vw - 28px)) !important;
+  height:min(760px, calc(100dvh - 28px)) !important;
+  max-height:none !important;
+  border-radius:34px !important;
+  overflow:hidden !important;
+  background:rgba(255,255,255,.94) !important;
+  box-shadow:0 44px 140px rgba(0,0,0,.5) !important;
+}
+
+.detail-modal-content{
+  height:100% !important;
+  display:grid !important;
+  grid-template-columns:42% 58% !important;
+  gap:0 !important;
+  padding:0 !important;
+}
+
+.detail-modal-image{
+  height:100% !important;
+  background:#111 !important;
+}
+
+.detail-modal-image img{
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  object-fit:cover !important;
+  object-position:center top !important;
+  border-radius:0 !important;
+}
+
+.detail-modal-text{
+  height:100% !important;
+  padding:54px 48px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+}
+
+.detail-modal-text h3{
+  font-size:clamp(34px,4vw,52px) !important;
+  line-height:1.05 !important;
+  margin-bottom:10px !important;
+}
+
+#detailLevel{
+  font-size:18px !important;
+  font-weight:850 !important;
+  color:#777 !important;
+  margin-bottom:24px !important;
+}
+
+#detailDesc{
+  font-size:16px !important;
+  line-height:1.75 !important;
+  font-weight:650 !important;
+  color:#333 !important;
+  margin-bottom:24px !important;
+}
+
+.detail-career-box{
+  display:grid;
+  gap:10px;
+  margin-top:14px;
+}
+
+.detail-career-box div{
+  padding:14px 16px;
+  border-radius:16px;
+  background:#f5f5f7;
+  color:#111;
+  font-size:14px;
+  line-height:1.55;
+  font-weight:800;
+}
+
+.detail-close{
+  top:18px !important;
+  right:18px !important;
+  z-index:5 !important;
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -3938,8 +4049,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = card.dataset.img || '';
       const desc = card.dataset.desc || '회원님의 운동 목적과 체력 수준에 맞춰 가장 적합한 코칭 방향을 안내합니다.';
 
-      detailImage.src = img;
-      detailBg.style.backgroundImage = `url(${img})`;
+   detailImage.src = './' + img;
+detailBg.style.backgroundImage = `url('./${img}')`;
       detailName.textContent = name;
       detailLevel.textContent = level;
       detailDesc.textContent = desc;
@@ -3979,12 +4090,33 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="" id="detailImage" alt="코치 프로필">
       </div>
 
-      <div class="detail-modal-text">
-        <h3 id="detailName"></h3>
-        <p id="detailLevel"></p>
-        <div class="detail-line"></div>
-        <p id="detailDesc"></p>
-      </div>
+   <div class="detail-modal-text">
+
+  <h3 id="detailName"></h3>
+
+  <p id="detailLevel"></p>
+
+  <div class="detail-line"></div>
+
+  <p id="detailDesc"></p>
+
+  <div class="detail-career-box">
+
+    <div>
+      개인별 체력 수준에 맞춘 운동 강도 설정
+    </div>
+
+    <div>
+      운동 목적에 따른 루틴 설계 및 자세 코칭
+    </div>
+
+    <div>
+      지속 가능한 운동 습관 형성을 위한 관리형 코칭
+    </div>
+
+  </div>
+
+</div>
     </div>
   </div>
 </div>
