@@ -3457,13 +3457,14 @@ section{padding:80px 28px}
 
         </div>
 
-        <!-- coach 2 -->
-      <div class="swiper-slide coach-card">
+    <!-- coach 2 -->
+<div class="swiper-slide coach-card"
   data-name="신예솔 COACH"
   data-level="Senior Coach"
   data-career="여성 체형관리 · 다이어트 코칭 · 소그룹 PT 수업 운영"
   data-edu="스포츠건강관리 전공"
-  data-license="생활스포츠지도사 2급 · 재활 트레이닝 교육 수료 · 체형분석 코칭 과정">
+  data-license="생활스포츠지도사 2급 · 재활 트레이닝 교육 수료 · 체형분석 코칭 과정"
+  data-belief="회원님의 몸 상태와 생활 패턴을 이해해야 지속 가능한 운동이 만들어진다고 생각합니다.">
 
           <div class="coach-photo-wrap">
             <img src="coach2.png">
@@ -3477,7 +3478,14 @@ section{padding:80px 28px}
         </div>
 
         <!-- coach 3 -->
-        <div class="swiper-slide coach-card">
+        <div class="swiper-slide coach-card"
+  data-name="1111 COACH"
+  data-level="Se222or Coach"
+  data-career="여성 체형관리 · 다이어트 코칭 · 소그룹 PT 수업 운영"
+  data-edu="스포츠건강관리 전공"
+  data-license="생활스포츠지도사 2급 · 재활 트레이닝 교육 수료 · 체형분석 코칭 과정"
+  data-belief="회원님의 몸 상태와 생활 패턴을 이해해야 지속 가능한 운동이 만들어진다고 생각합니다.">
+          
 
           <div class="coach-photo-wrap">
             <img src="coach3.png">
@@ -3491,7 +3499,14 @@ section{padding:80px 28px}
         </div>
 
         <!-- coach 4 -->
-        <div class="swiper-slide coach-card">
+        <div class="swiper-slide coach-card"
+  data-name="신333 COACH"
+  data-level="S444or Coach"
+  data-career="여성 체형관리 · 다이어트 코칭 · 소그룹 PT 수업 운영"
+  data-edu="스포츠건강관리 전공"
+  data-license="생활스포츠지도사 2급 · 재활 트레이닝 교육 수료 · 체형분석 코칭 과정"
+  data-belief="회원님의 몸 상태와 생활 패턴을 이해해야 지속 가능한 운동이 만들어진다고 생각합니다.">
+          
 
           <div class="coach-photo-wrap">
             <img src="coach4.png">
@@ -4257,7 +4272,8 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
     </div>
   </div>
-</div><script>
+</div>
+  <script>
 document.addEventListener('DOMContentLoaded', () => {
   const coachCards = document.querySelectorAll('.coach-card');
   const modal = document.getElementById('detailModal');
@@ -4265,36 +4281,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   coachCards.forEach(card => {
     card.addEventListener('click', () => {
-      document.getElementById('detailName').textContent = card.dataset.name || '';
-      document.getElementById('detailLevel').textContent = card.dataset.level || '';
+      document.getElementById('detailName').textContent =
+        card.dataset.name || 'EVERYPT COACH';
+
+      document.getElementById('detailLevel').textContent =
+        card.dataset.level || 'Professional Trainer';
 
       document.getElementById('detailCareer').textContent =
-        card.dataset.career || card.dataset.career1 || '';
+        card.dataset.career || '경력 정보 입력 예정';
 
       document.getElementById('detailEdu').textContent =
-        card.dataset.edu || '';
+        card.dataset.edu || '학력 정보 입력 예정';
 
       document.getElementById('detailLicense').textContent =
-        card.dataset.license || '';
+        card.dataset.license || '자격 정보 입력 예정';
 
       document.getElementById('detailBelief').textContent =
-        card.dataset.belief || '운동은 단순한 반복이 아니라, 오래 지속될 수 있는 습관을 만드는 과정이라고 생각합니다.';
+        card.dataset.belief || '코칭 소신 입력 예정';
 
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
   });
 
-  function closeDetailModal(){
+  closeBtn.addEventListener('click', () => {
     modal.classList.remove('active');
     document.body.style.overflow = '';
-  }
-
-  closeBtn.addEventListener('click', closeDetailModal);
+  });
 
   modal.addEventListener('click', e => {
     if(e.target === modal){
-      closeDetailModal();
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
     }
   });
 });
