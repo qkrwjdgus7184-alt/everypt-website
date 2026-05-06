@@ -4255,25 +4255,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </div>
 
-<div class="detail-career-box">
-
-  <div id="detailCareer1"></div>
-
-  <div id="detailCareer2"></div>
-
-  <div id="detailCareer3"></div>
-
-  <div id="detailEdu"></div>
-
-  <div id="detailLicense"></div>
-
-</div>
-
 </div>
     </div>
   </div>
 </div>
-  <script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
   const coachCards = document.querySelectorAll('.coach-card');
   const modal = document.getElementById('detailModal');
@@ -4281,23 +4267,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   coachCards.forEach(card => {
     card.addEventListener('click', () => {
-      document.getElementById('detailName').textContent =
-        card.dataset.name || 'EVERYPT COACH';
-
-      document.getElementById('detailLevel').textContent =
-        card.dataset.level || 'Professional Trainer';
-
-      document.getElementById('detailCareer').textContent =
-        card.dataset.career || '경력 정보 입력 예정';
-
-      document.getElementById('detailEdu').textContent =
-        card.dataset.edu || '학력 정보 입력 예정';
-
-      document.getElementById('detailLicense').textContent =
-        card.dataset.license || '자격 정보 입력 예정';
-
-      document.getElementById('detailBelief').textContent =
-        card.dataset.belief || '코칭 소신 입력 예정';
+      document.getElementById('detailName').textContent = card.dataset.name || 'EVERYPT COACH';
+      document.getElementById('detailLevel').textContent = card.dataset.level || 'Professional Trainer';
+      document.getElementById('detailCareer').textContent = card.dataset.career || '경력 정보 입력 예정';
+      document.getElementById('detailEdu').textContent = card.dataset.edu || '학력 정보 입력 예정';
+      document.getElementById('detailLicense').textContent = card.dataset.license || '자격증 정보 입력 예정';
+      document.getElementById('detailBelief').textContent = card.dataset.belief || '코칭 소신 입력 예정';
 
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
