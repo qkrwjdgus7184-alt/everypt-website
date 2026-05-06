@@ -3914,6 +3914,79 @@ document.addEventListener("DOMContentLoaded", () => {
   elements.forEach(el => observer.observe(el));
 
 });
-</script>
+</script><script>
+document.addEventListener('DOMContentLoaded', () => {
+  const coachCards = document.querySelectorAll('.coach-card');
+
+  const detailModal = document.getElementById('detailModal');
+  const detailBg = document.getElementById('detailBg');
+  const detailImage = document.getElementById('detailImage');
+  const detailName = document.getElementById('detailName');
+  const detailLevel = document.getElementById('detailLevel');
+  const detailDesc = document.getElementById('detailDesc');
+  const detailClose = document.getElementById('detailClose');
+
+  if (!detailModal || !detailBg || !detailImage || !detailName || !detailLevel || !detailDesc || !detailClose) {
+    console.warn('프로필 모달 HTML이 없습니다. detailModal 영역을 확인하세요.');
+    return;
+  }
+
+  coachCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const name = card.dataset.name || 'EVERYPT COACH';
+      const level = card.dataset.level || 'Professional Trainer';
+      const img = card.dataset.img || '';
+      const desc = card.dataset.desc || '회원님의 운동 목적과 체력 수준에 맞춰 가장 적합한 코칭 방향을 안내합니다.';
+
+      detailImage.src = img;
+      detailBg.style.backgroundImage = `url(${img})`;
+      detailName.textContent = name;
+      detailLevel.textContent = level;
+      detailDesc.textContent = desc;
+
+      detailModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeDetailModal() {
+    detailModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  detailClose.addEventListener('click', closeDetailModal);
+
+  detailModal.addEventListener('click', e => {
+    if (e.target === detailModal) {
+      closeDetailModal();
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeDetailModal();
+    }
+  });
+});
+</script><div class="detail-modal" id="detailModal">
+  <div class="detail-modal-bg" id="detailBg"></div>
+
+  <div class="detail-modal-box">
+    <button class="detail-close" id="detailClose">×</button>
+
+    <div class="detail-modal-content">
+      <div class="detail-modal-image">
+        <img src="" id="detailImage" alt="코치 프로필">
+      </div>
+
+      <div class="detail-modal-text">
+        <h3 id="detailName"></h3>
+        <p id="detailLevel"></p>
+        <div class="detail-line"></div>
+        <p id="detailDesc"></p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
