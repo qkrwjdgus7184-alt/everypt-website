@@ -3351,7 +3351,15 @@ section{padding:80px 28px}
       data-name="허예준 COACH"
       data-level="Junior Coach"
       data-img="coach1.png"
-      data-desc="운동 초보자도 부담 없이 시작할 수 있도록 체력 수준과 움직임 패턴에 맞춰 안전한 운동 방향을 안내합니다.">
+     data-desc="운동 초보자도 부담 없이 시작할 수 있도록 체력 수준과 움직임 패턴에 맞춘 안전한 운동 방향을 안내합니다."
+
+data-career1="前 피트니스센터 퍼스널트레이너"
+data-career2="근력 순환 트레이닝 전문 코칭"
+data-career3="체형 교정 및 기초 체력 향상 프로그램 운영"
+
+data-edu="한국체육대학교 운동생리학 과정 수료"
+
+data-license="생활스포츠지도사 2급 · CPR 수료"
 
       <div class="coach-photo-wrap">
         <img src="coach1.png" alt="허예준 코치">
@@ -3369,7 +3377,15 @@ section{padding:80px 28px}
       data-name="신예솔 COACH"
       data-level="Senior Coach"
       data-img="coach2.png"
-      data-desc="회원님의 운동 목적과 생활 패턴을 고려해 지속 가능한 루틴과 세심한 운동 코칭을 제공합니다.">
+      data-desc="회원님의 운동 목적과 생활 패턴을 고려해 지속 가능한 루틴과 세심한 운동 코칭을 제공합니다."
+
+data-career1="現 EVERYPT Senior Coach"
+data-career2="다이어트 및 여성 체형관리 전문"
+data-career3="소그룹 PT 수업 운영 및 회원 관리"
+
+data-edu="스포츠건강관리 전공"
+
+data-license="생활스포츠지도사 2급 · 재활트레이닝 수료"
 
       <div class="coach-photo-wrap">
         <img src="coach2.png" alt="신예솔 코치">
@@ -3387,7 +3403,15 @@ section{padding:80px 28px}
       data-name="박정현"
       data-level="CEO"
       data-img="coach3.png"
-      data-desc="심박수 기반 운동 시스템과 체력 분석 데이터를 기반으로 회원님의 운동 지속성과 변화를 함께 설계합니다.">
+     data-desc="회원님의 운동 목적과 과 세심한 운동 코칭을 제공합니다."
+
+data-career1="現 EVERYPT Senior Coach"
+data-career2="다이체형관리 전문"
+data-career3="소그룹 PT 수회원 관리"
+
+data-edu="스포관리 전공"
+
+data-license="생활스포츠지도사 2급 · 재활트레이닝 수료"
 
       <div class="coach-photo-wrap">
         <img src="coach3.png" alt="EVERYPT 코치">
@@ -3405,7 +3429,15 @@ section{padding:80px 28px}
       data-name="박효솔"
       data-level="Trainer"
       data-img="coach4.png"
-      data-desc="운동 목적 · 체력 수준 · 생활 패턴까지 고려하여 회원님께 가장 적합한 운동 방향을 제안합니다.">
+    data-desc="회원님의 운동 목적과 생활 패턴을 고려해 지속 가능한 루틴과 제공합니다."
+
+data-career1="現 EVERYPT Senior Coach"
+data-career2="다이어트 및 여성 체리 전문"
+data-career3="소그룹 PT   관리"
+
+data-edu="스 전공"
+
+data-license="생활스포츠지도사 2급 · 재활트레이닝 수료"
 
       <div class="coach-photo-wrap">
         <img src="coach4.png" alt="EVERYPT 코치">
@@ -4139,13 +4171,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const level = card.dataset.level || 'Professional Trainer';
       const img = card.dataset.img || '';
       const desc = card.dataset.desc || '회원님의 운동 목적과 체력 수준에 맞춰 가장 적합한 코칭 방향을 안내합니다.';
+const career1 = card.dataset.career1;
+const career2 = card.dataset.career2;
+const career3 = card.dataset.career3;
 
+const edu = card.dataset.edu;
+const license = card.dataset.license;
+      detailName.textContent = name;
+detailLevel.textContent = level;
+detailDesc.textContent = desc;
    detailImage.src = './' + img;
 detailBg.style.backgroundImage = `url('./${img}')`;
       detailName.textContent = name;
       detailLevel.textContent = level;
       detailDesc.textContent = desc;
+document.getElementById('detailCareer1').textContent = career1;
+document.getElementById('detailCareer2').textContent = career2;
+document.getElementById('detailCareer3').textContent = career3;
 
+document.getElementById('detailEdu').textContent = edu;
+document.getElementById('detailLicense').textContent = license;
       detailModal.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
@@ -4191,21 +4236,19 @@ detailBg.style.backgroundImage = `url('./${img}')`;
 
   <p id="detailDesc"></p>
 
-  <div class="detail-career-box">
+<div class="detail-career-box">
 
-    <div>
-      개인별 체력 수준에 맞춘 운동 강도 설정
-    </div>
+  <div id="detailCareer1"></div>
 
-    <div>
-      운동 목적에 따른 루틴 설계 및 자세 코칭
-    </div>
+  <div id="detailCareer2"></div>
 
-    <div>
-      지속 가능한 운동 습관 형성을 위한 관리형 코칭
-    </div>
+  <div id="detailCareer3"></div>
 
-  </div>
+  <div id="detailEdu"></div>
+
+  <div id="detailLicense"></div>
+
+</div>
 
 </div>
     </div>
