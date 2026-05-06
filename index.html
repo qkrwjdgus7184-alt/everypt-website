@@ -3052,6 +3052,45 @@ section{padding:80px 28px}
   align-items:center;
   justify-content:center;
   color:#fff;
+}.detail-modal-image{
+  display:none !important;
+}
+
+.detail-modal-content{
+  display:block !important;
+  min-height:auto !important;
+}
+
+.detail-modal-text{
+  padding:56px 48px 48px !important;
+}
+
+.detail-profile-list{
+  display:grid;
+  gap:14px;
+  margin-top:24px;
+}
+
+.detail-profile-list div{
+  padding:18px 20px;
+  border-radius:18px;
+  background:#f5f5f7;
+  border:1px solid rgba(0,0,0,.06);
+}
+
+.detail-profile-list strong{
+  display:block;
+  margin-bottom:8px;
+  color:#b8872f;
+  font-size:14px;
+  font-weight:950;
+}
+
+.detail-profile-list p{
+  color:#222;
+  font-size:15px;
+  line-height:1.65;
+  font-weight:700;
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -3399,7 +3438,13 @@ section{padding:80px 28px}
       <div class="swiper-wrapper">
 
         <!-- coach 1 -->
-        <div class="swiper-slide coach-card">
+       <div class="swiper-slide coach-card"
+  data-name="허예준 COACH"
+  data-level="Junior Coach"
+  data-career="기초 체력 향상 · 자세 교정 · 초보자 운동 적응 코칭"
+  data-edu="한국체육대학교 운동생리학 기반 트레이닝 과정"
+  data-license="생활스포츠지도사 2급 · CPR 수료 · 기능성 트레이닝 교육 수료"
+  data-belief="운동은 강하게 시키는 것보다, 다시 오고 싶게 만드는 것이 먼저라고 생각합니다.">
 
           <div class="coach-photo-wrap">
             <img src="coach1.png">
@@ -3413,7 +3458,13 @@ section{padding:80px 28px}
         </div>
 
         <!-- coach 2 -->
-        <div class="swiper-slide coach-card">
+      <div class="swiper-slide coach-card"
+  data-name="신예솔 COACH"
+  data-level="Senior Coach"
+  data-career="여성 체형관리 · 다이어트 코칭 · 소그룹 PT 수업 운영"
+  data-edu="스포츠건강관리 전공"
+  data-license="생활스포츠지도사 2급 · 재활 트레이닝 교육 수료 · 체형분석 코칭 과정"
+  data-belief="회원님의 몸 상태와 생활 패턴을 이해해야 지속 가능한 운동이 만들어진다고 생각합니다.">
 
           <div class="coach-photo-wrap">
             <img src="coach2.png">
@@ -4073,11 +4124,6 @@ autoplay: {
     <button class="detail-close" onclick="closeDetailModal()">×</button>
 
     <div class="detail-modal-content">
-
-      <div class="detail-modal-image">
-        <img id="detailModalImg" src="">
-      </div>
-
       <div class="detail-modal-text">
         <p class="detail-eyebrow">EVERYPT DETAIL</p>
         <h3 id="detailModalTitle"></h3>
@@ -4187,9 +4233,13 @@ detailLevel.textContent = level;
 detailDesc.textContent = desc;
    detailImage.src = './' + img;
 detailBg.style.backgroundImage = `url('./${img}')`;
-      detailName.textContent = name;
-      detailLevel.textContent = level;
-      detailDesc.textContent = desc;
+   detailName.textContent = card.dataset.name;
+detailLevel.textContent = card.dataset.level;
+
+document.getElementById('detailCareer').textContent = card.dataset.career;
+document.getElementById('detailEdu').textContent = card.dataset.edu;
+document.getElementById('detailLicense').textContent = card.dataset.license;
+document.getElementById('detailBelief').textContent = card.dataset.belief;
 document.getElementById('detailCareer1').textContent = career1;
 document.getElementById('detailCareer2').textContent = career2;
 document.getElementById('detailCareer3').textContent = career3;
@@ -4227,19 +4277,36 @@ document.getElementById('detailLicense').textContent = license;
     <button class="detail-close" id="detailClose">×</button>
 
     <div class="detail-modal-content">
-      <div class="detail-modal-image">
-        <img src="" id="detailImage" alt="코치 프로필">
-      </div>
 
    <div class="detail-modal-text">
 
-  <h3 id="detailName"></h3>
+<h3 id="detailName"></h3>
 
-  <p id="detailLevel"></p>
+<p id="detailLevel"></p>
 
-  <div class="detail-line"></div>
+<div class="detail-profile-list">
 
-  <p id="detailDesc"></p>
+  <div>
+    <strong>경력</strong>
+    <p id="detailCareer"></p>
+  </div>
+
+  <div>
+    <strong>학력</strong>
+    <p id="detailEdu"></p>
+  </div>
+
+  <div>
+    <strong>자격증</strong>
+    <p id="detailLicense"></p>
+  </div>
+
+  <div>
+    <strong>코칭 소신</strong>
+    <p id="detailBelief"></p>
+  </div>
+
+</div>
 
 <div class="detail-career-box">
 
