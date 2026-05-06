@@ -3197,6 +3197,22 @@ section{padding:80px 28px}
   font-weight:950 !important;
   letter-spacing:1.7px !important;
   margin-bottom:18px !important;
+}/* 모달 내부 스크롤 */
+
+.detail-modal-content{
+  max-height:85vh !important;
+  overflow:hidden !important;
+}
+
+.detail-modal-text{
+  overflow-y:auto !important;
+  max-height:85vh !important;
+
+  /* 모바일 부드러운 스크롤 */
+  -webkit-overflow-scrolling:touch !important;
+
+  /* 스크롤 여백 */
+  padding-bottom:80px !important;
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
