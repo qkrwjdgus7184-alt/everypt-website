@@ -4590,8 +4590,18 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('detailLicense').textContent = card.dataset.license || '자격증 정보 입력 예정';
       document.getElementById('detailBelief').textContent = card.dataset.belief || '코칭 소신 입력 예정';
 
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    modal.classList.add('active');
+document.body.style.overflow = 'hidden';
+
+/* 추가 */
+setTimeout(() => {
+  modal.scrollTop = 0;
+
+  const modalBox = modal.querySelector('.detail-modal-box');
+  if(modalBox){
+    modalBox.scrollTop = 0;
+  }
+}, 0);
     });
   });
 
