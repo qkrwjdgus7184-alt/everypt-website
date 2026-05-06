@@ -3091,6 +3091,39 @@ section{padding:80px 28px}
   font-size:15px;
   line-height:1.65;
   font-weight:700;
+}/* 예전 자동 문구 제거 */
+.detail-modal-text::after{
+  display:none !important;
+  content:none !important;
+}
+
+/* 경력/학력/자격증/소신 보이게 */
+.detail-profile-list{
+  display:grid !important;
+  gap:14px !important;
+  margin-top:24px !important;
+}
+
+.detail-profile-list div{
+  padding:18px 20px !important;
+  border-radius:18px !important;
+  background:#fff !important;
+  border:1px solid rgba(0,0,0,.08) !important;
+}
+
+.detail-profile-list strong{
+  display:block !important;
+  margin-bottom:8px !important;
+  color:#b8872f !important;
+  font-size:14px !important;
+  font-weight:950 !important;
+}
+
+.detail-profile-list p{
+  color:#111 !important;
+  font-size:15px !important;
+  line-height:1.6 !important;
+  font-weight:750 !important;
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -3437,7 +3470,7 @@ section{padding:80px 28px}
 
       <div class="swiper-wrapper">
 
-  <!-- coach 1 -->
+<!-- coach 1 -->
 <div class="swiper-slide coach-card"
   data-name="허예준 COACH"
   data-level="Junior Coach"
