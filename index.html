@@ -3422,6 +3422,66 @@ section{
     letter-spacing:1.5px;
   }
 
+}/* PC 전용 2호점 준비중 카드 */
+.branch-coming-pc{
+  display:none;
+}
+
+@media(min-width:981px){
+  .branch-wrap{
+    grid-template-columns:.92fr 1.08fr;
+    align-items:stretch;
+  }
+
+  .branch-coming-pc{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    min-height:720px;
+    padding:64px;
+    border-radius:42px;
+    background:
+      radial-gradient(circle at 70% 20%, rgba(214,173,95,.16), transparent 34%),
+      linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.42));
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 34px 100px rgba(0,0,0,.08);
+  }
+
+  .coming-badge{
+    width:max-content;
+    padding:8px 14px;
+    border-radius:999px;
+    background:rgba(214,173,95,.12);
+    color:#b8872f;
+    font-size:12px;
+    font-weight:950;
+    letter-spacing:2px;
+    margin-bottom:28px;
+  }
+
+  .branch-coming-pc h3{
+    font-size:clamp(54px,4.2vw,76px);
+    line-height:1.02;
+    letter-spacing:-3px;
+    font-weight:980;
+    color:#111;
+    margin-bottom:24px;
+  }
+
+  .branch-coming-pc p{
+    color:#555;
+    font-size:18px;
+    line-height:1.8;
+    font-weight:650;
+    margin-bottom:34px;
+  }
+
+  .branch-coming-pc span{
+    color:#999;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:2.5px;
+  }
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -3969,29 +4029,9 @@ section{
       <img src="suyu-5.jpg" alt="에브리피티 수유점 내부 사진 5" loading="lazy">
     </div>
 
-  <div class="branch-coming reveal">
-    <div class="branch-coming-badge">
-      PREPARING
-    </div>
-
-    <h3>
-      EVERYPT<br>
-      2호점 준비중
-    </h3>
-
-    <p>
-      더 넓은 공간과 새로운 시스템으로<br>
-      다음 지점을 준비하고 있습니다.
-    </p>
-
-    <span>
-      Coming Soon
-    </span>
-  </div>
-
-</div>
 
     
+
     <div class="branch-info">
       <div>📋예약제 기반 수업 운영</div>
       <div>📍서울 강북구 오패산로411, B1</div>
@@ -4015,6 +4055,30 @@ section{
   </div>
 </div>
   </div>
+</div>
+
+      <div class="branch-wrap branch-wrap-upgraded">
+
+  <div class="branch-card">
+    <!-- 수유역점 기존 내용 전부 -->
+  </div>
+
+  <div class="branch-coming-pc reveal">
+    <div class="coming-badge">PREPARING</div>
+
+    <h3>
+      EVERYPT<br>
+      2호점 준비중
+    </h3>
+
+    <p>
+      더 넓은 공간과 새로운 시스템으로<br>
+      다음 지점을 준비하고 있습니다.
+    </p>
+
+    <span>COMING SOON</span>
+  </div>
+
 </div>
 <div class="suyu-service reveal">
   <div class="section-head suyu-service-head">
