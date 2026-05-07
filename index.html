@@ -3496,6 +3496,68 @@ section{
     justify-content:center;
     min-height:100%;
   }
+}.branch-map-cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+  overflow:hidden;
+
+  width:100%;
+  height:58px;
+
+  margin:16px 0 0;
+
+  border-radius:18px;
+
+  background:#111;
+  color:#fff;
+
+  font-size:16px;
+  font-weight:900;
+  letter-spacing:-.3px;
+
+  box-shadow:0 18px 44px rgba(0,0,0,.16);
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+}
+
+.branch-map-cta::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.22),
+    transparent
+  );
+
+  transform:translateX(-120%);
+  transition:.8s ease;
+}
+
+.branch-map-cta:hover{
+  transform:translateY(-3px);
+  background:#000;
+  box-shadow:0 24px 60px rgba(0,0,0,.22);
+}
+
+.branch-map-cta:hover::after{
+  transform:translateX(120%);
+}
+
+@media(max-width:560px){
+  .branch-map-cta{
+    height:54px;
+    font-size:15px;
+    border-radius:16px;
+  }
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -4051,6 +4113,12 @@ section{
       <div>📍서울 강북구 오패산로411, B1</div>
       <div>💬체험 혜택 및 카카오톡 상담 가능</div>
     </div>
+
+<a href="https://naver.me/xf5A9rE1" target="_blank" class="branch-map-cta">
+  네이버지도 바로가기
+</a>
+
+    
     <div class="good-price-box">
   <div class="good-price-badge">정부 인증 착한가격업소</div>
 
