@@ -3290,6 +3290,21 @@ section{
 .coach-highlight span{
   color:#f6d98d;
   font-weight:950;
+}/* PC에서만 데이터 카드 세로 배치 */
+@media(min-width:981px){
+  .data-board{
+    grid-template-columns:1fr;
+    max-width:760px;
+    margin:0 auto;
+  }
+
+  .data-card{
+    width:100%;
+  }
+
+  .data-card:first-child{
+    min-height:auto;
+  }
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
