@@ -3619,6 +3619,18 @@ section{
   font-weight:950;
   letter-spacing:2px;
   margin-bottom:18px;
+}@media (min-width: 769px){
+  .coach-slider{
+    cursor: grab;
+  }
+
+  .coach-slider:active{
+    cursor: grabbing;
+  }
+
+  .coach-slider .swiper-slide{
+    user-select: none;
+  }
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -4629,18 +4641,19 @@ window.addEventListener("load", () => {
     spaceBetween: 24,
   speed: 1000,
 
-autoplay: {
+autoplay: window.innerWidth <= 768 ? {
   delay: 2200,
   disableOnInteraction: false,
   pauseOnMouseEnter: false,
-},
+} : false,
 
-    grabCursor: true,
-    observer: true,
-    observeParents: true,
+  grabCursor: true,
+simulateTouch: true,
+allowTouchMove: true,
+
+observer: true,
+observeParents: true,
   });
-
-  coachSwiper.autoplay.start();
 });
 </script>
 <div class="detail-modal" id="detailModal">
