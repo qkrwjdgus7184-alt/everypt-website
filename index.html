@@ -3655,6 +3655,24 @@ section{
   max-height:none !important;
   overflow:visible !important;
   padding-bottom:80px !important;
+}/* 온라인 상담 신청 CTA 강조 모션 */
+.floating .yellow{
+  animation: softCtaPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes softCtaPulse{
+  0%{
+    transform:translateY(0) scale(1);
+    box-shadow:0 14px 36px rgba(255,212,0,.28);
+  }
+  50%{
+    transform:translateY(-4px) scale(1.035);
+    box-shadow:0 22px 58px rgba(255,212,0,.48);
+  }
+  100%{
+    transform:translateY(0) scale(1);
+    box-shadow:0 14px 36px rgba(255,212,0,.28);
+  }
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
