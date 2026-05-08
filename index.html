@@ -3655,23 +3655,25 @@ section{
   max-height:none !important;
   overflow:visible !important;
   padding-bottom:80px !important;
-}/* 온라인 상담 신청 CTA 강조 모션 */
+}
+    
+    
+/* 온라인 상담 신청 CTA */
 .floating .yellow{
-  animation: softCtaPulse 2.8s ease-in-out infinite;
+  animation: softFloat 2.8s ease-in-out infinite;
 }
 
-@keyframes softCtaPulse{
+@keyframes softFloat{
   0%{
     transform:translateY(0) scale(1);
-    box-shadow:0 14px 36px rgba(255,212,0,.28);
   }
+
   50%{
-    transform:translateY(-4px) scale(1.035);
-    box-shadow:0 22px 58px rgba(255,212,0,.48);
+    transform:translateY(-4px) scale(1.03);
   }
+
   100%{
     transform:translateY(0) scale(1);
-    box-shadow:0 14px 36px rgba(255,212,0,.28);
   }
 }
   </style>
