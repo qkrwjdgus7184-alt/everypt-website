@@ -4654,25 +4654,30 @@ document.addEventListener("keydown", (e) => {
 
 <script>
 window.addEventListener("load", () => {
+  const isMobile = window.innerWidth <= 768;
+
   const coachSwiper = new Swiper(".coach-slider", {
-    loop: true,
-    centeredSlides: true,
+    loop: isMobile,
+    centeredSlides: isMobile,
     slidesPerView: "auto",
     spaceBetween: 24,
-  speed: 1000,
+    speed: 600,
 
-autoplay: window.innerWidth <= 768 ? {
-  delay: 2200,
-  disableOnInteraction: false,
-  pauseOnMouseEnter: false,
-} : false,
+    autoplay: isMobile ? {
+      delay: 2200,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false,
+    } : false,
 
-  grabCursor: true,
-simulateTouch: true,
-allowTouchMove: true,
+    grabCursor: true,
+    simulateTouch: true,
+    allowTouchMove: true,
 
-observer: true,
-observeParents: true,
+    resistanceRatio: 0.65,
+    freeMode: !isMobile,
+
+    observer: true,
+    observeParents: true,
   });
 });
 </script>
