@@ -3631,6 +3631,26 @@ section{
   .coach-slider .swiper-slide{
     user-select: none;
   }
+}/* 코치 상세 모달 스크롤 복구 */
+.detail-modal{
+  overflow-y:auto !important;
+}
+
+.detail-modal-box{
+  max-height:88vh !important;
+  overflow-y:auto !important;
+  -webkit-overflow-scrolling:touch !important;
+}
+
+.detail-modal-content{
+  max-height:none !important;
+  overflow:visible !important;
+}
+
+.detail-modal-text{
+  max-height:none !important;
+  overflow:visible !important;
+  padding-bottom:80px !important;
 }
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
